@@ -1,0 +1,14 @@
+/* zh_jd/pages/noticeinfo/noticeinfo.wxss */
+@import "../../resource/wxParse/wxParse.wxss";
+.container{
+  padding: 5px;
+}
+.title{
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

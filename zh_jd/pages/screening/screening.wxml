@@ -1,0 +1,90 @@
+<view class="screening">
+  <!-- 价格区间 -->
+  <view class="price_screening">
+    <view class='slider_title'>价格区间</view>
+    <view class='sliderHCon box'>
+      <view class='showMoney'>
+      </view>
+      <view class='twoSlider box'>
+        <slider min='{{leftMin}}' max='{{leftMax}}' value='{{leftValue}}' activeColor='#cecacb' backgroundColor='#40AB91' block-size='20' step='100' style='width:{{leftWidth}}%;margin-right:0rpx;' bindchange="leftChange" block-color="#40AB91" />
+        <slider min='{{rightMin}}' max='{{rightMax}}' value='{{rightValue}}' activeColor='#40AB91' backgroundColor='#cecacb' block-size='20' step='100' style='width:{{rightWidth}}%;margin-left:0rpx;' bindchange="rightChange" block-color="#40AB91" />
+      </view>
+      <view class="box showMoney">
+        <text class='MoneyValue'>￥0</text>
+        <text class='MoneyValue'>￥200</text>
+        <text class='MoneyValue'>￥400</text>
+        <text class='MoneyValue'>￥600</text>
+        <text class='MoneyValue'>￥800</text>
+        <text class='MoneyValue'>￥1000</text>
+        <text class='MoneyValue'>不限</text>
+      </view>
+    </view>
+  </view>
+  <!-- 入住要求 -->
+  <view class="slider_title">入户要求</view>
+  <view class="host_type_box">
+    <view class="xiao_title">户型</view>
+    <view class="host_type box">
+      <view class="huxing_title {{huIndex == index ? 'active' : ''}}" wx:for="{{huxing}}" wx:key="index" bindtap='huxing' id="{{index}}">
+        <view>{{item}}</view>
+      </view>
+    </view>
+    <!-- 人数 床位数-->
+    <view class='box'>
+      <!-- 人数 -->
+      <view>
+        <view class="xiao_title">人数</view>
+        <!-- 主容器 -->
+        <view class="stepper box">
+          <!-- 减号 -->
+          <view class="{{renStatus}}" bindtap="bindMinus">-</view>
+          <!-- 遮罩 -->
+          <text class="zhezhao"></text>
+          <!-- 数值 -->
+          <input type="number" bindchange="bindManual" value="{{renShu==0 ? moren : renShu}}" />
+          <!-- 加号 -->
+          <view class="normal" bindtap="bindPlus">+</view>
+        </view>
+      </view>
+      <!-- 床位数 -->
+      <view class="bed_num">
+        <view class="xiao_title">床位数</view>
+        <!-- 主容器 -->
+        <view class="stepper box">
+          <!-- 减号 -->
+          <view class="{{chuangStatus}} minus" bindtap="bedMinus">-</view>
+          <!-- 遮罩 -->
+          <text class="zhezhao"></text>
+          <!-- 数值 -->
+          <input type="number" bindchange="bedNum" value="{{chuangShu==0 ? moren : chuangShu}}" />
+          <!-- 加号 -->
+          <view class="normal" bindtap="bedAdd">+</view>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+  <view class="slider_title">房屋要求</view>
+  <view class="housing_box">
+    <view class="xiao_title">出租类</view>
+    <view class="housing_title box">
+      <view class="housing_content {{housingIndex == index ? 'active' : ''}}" wx:for="{{housing}}" wx:key="index" bindtap='housing' id="{{index}}">
+        <view>
+          <view class="h_title1">{{item.title}}</view>
+          <view class="h_title2">{{item.content}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="slider_title">优惠</view>
+  <view class="housing_box">
+    <view class="housing_title box">
+      <view class="discount_content {{discountIndex == index ? 'active' : ''}}" wx:for="{{discount}}" wx:key="index" bindtap='discount' id="{{index}}">
+        <view>
+          <view>{{item}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,4 @@
+<!--zh_jd/pages/sord/sord.wxml-->
+<view class="sord">
+  <view bindtap="sordTab" class="sord_title" wx:for="{{title}}" wx:key="key">{{item}}</view>
+</view>

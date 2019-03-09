@@ -1,0 +1,9 @@
+<!--zh_jd/pages/noticeinfo/noticeinfo.wxml-->
+<view class='container font'>
+  <view wx:if="{{travel}}">
+    <view class='title'>{{travel[0].title}}</view>
+    <import src="../../resource/wxParse/wxParse.wxml"/>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+    <view wx:else style='color:#8a8a8a;text-align:center;font-size:12px;'>暂无信息</view>
+</view>

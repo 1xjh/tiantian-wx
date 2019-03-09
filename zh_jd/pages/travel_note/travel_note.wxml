@@ -1,0 +1,73 @@
+<!--zh_jd/pages/travel_note/travel_note.wxml-->
+<!--zh_jd/pages/travel/travel.wxml-->
+<view class='container font'>
+   <!-- <swiper class='swiper' indicator-dots="{{indicatorDots}}"
+  autoplay="true" interval="3000" duration="500"> 
+     <block wx:for="{{travel.img}}" wx:for-item="img"> 
+       <swiper-item> 
+        <image mode='aspectFill' src="{{url+img}}" class="slide-image" width="100%" height="150"/>
+       </swiper-item> 
+    </block>
+   </swiper>   -->
+  <view class='cover'>
+    <image mode='aspectFill' src='{{url+travel.cover_img}}'  width="100%" ></image>
+  </view>
+
+
+  <view wx:if="{{travel}}" style='padding:10rpx;'>
+    <view class='title'>{{travel.title}}</view>
+    <view class='userinfo'>
+      <view class='msg'>
+        <image src='{{travel.pic}}'></image>
+      </view>
+      <view class='msg'>
+        <view class='text'>{{travel.name}}</view>
+        <view class='text'>
+          <view>{{travel.create_time}}</view> 
+          <view class='img'>
+              <image style='width:14px;height:14px;'  src='../../images/views.png'></image>
+          </view>
+          <view class='numbers'>{{travel.views}}</view>
+          <!-- <view class='img'>
+              <image style='width:14px;height:14px;'  src='../../images/comment.png'></image>
+          </view>
+          <view class='numbers'>{{travel.comments}}</view> -->
+        </view>
+      </view>
+    </view>
+    <view class='place' >{{travel.city}}</view>
+
+    <!-- 详细 -->
+    <view class='introduce'>
+      <view>我的出行信息</view>
+      <view class='info'>
+        <view class='item'>
+          <view><text>出发时间：</text> </view>
+          <text>{{travel.travel_time}}</text>
+        </view>
+        <view class='item'>
+          <view><text>人均费用：</text></view>
+          <text>{{travel.travel_fee}}元</text>
+        </view>
+      </view>
+      <view class='info'>
+        <view class='item'>
+          <view><text>人数：</text> </view>
+          <text>{{travel.people}}</text>
+        </view>
+        <view class='item'>
+          <view><text>天数：</text></view>
+          <text>{{travel.days}}</text>
+        </view>
+        
+      </view>
+    </view>
+    <view class='details'>
+    <import src="../../resource/wxParse/wxParse.wxml"/>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+       <!-- <rich-text nodes="{{travel.content}}"></rich-text>  -->
+      <view wx:for="{{travel.img}}" ><image  wx:if="{{item}}" style='width:100%' mode='widthFix' src='{{url+item}}'></image></view>
+    </view>
+  </view>
+</view>
+

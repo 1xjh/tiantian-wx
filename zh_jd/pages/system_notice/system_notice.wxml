@@ -1,0 +1,27 @@
+<!--zh_jd/pages/system_notice/system_notice.wxml-->
+<view class='container font'>
+  <view  class="nav bc_white top_fixed">
+      <view class="{{typeid==2 ? 'tab_selectedtab' : 'tab_default'}}"  data-current="2" data-ordertype="look_cnt" bindtap="swichNav">
+      <text>系统通知</text>
+      </view>
+      <view class="{{typeid==1 ? 'tab_selectedtab' : 'tab_default'}}" >
+    <navigator url='../logs/content/content'>
+      <text>联系客服</text>
+      </navigator>
+      </view>
+  </view>
+
+  <!-- 内容列表开始 -->
+  <view class='many_hotel'>
+    <navigator class='hotel fon' wx:for="{{travel}}" wx:for-item="travel"  wx:key="{{travel.value}}" id="{{travel.id}}" url='../noticeinfo/noticeinfo?id={{travel.id}}' >
+        <view class='hotel_info fl rel'>
+          <view class='info_name'>{{travel.title}}</view>
+          <view class='content'>
+             <view>{{travel.secondtitle}}</view>
+          </view>
+        </view>
+    </navigator>
+  </view>
+   <view style='text-align:center;font-size:12px;color:#C3C3C3'>没有更多信息</view>
+</view>
+

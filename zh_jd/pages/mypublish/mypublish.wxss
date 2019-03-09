@@ -1,0 +1,161 @@
+/* zh_jd/pages/mypublish/mypublish.wxss */
+/* 内容 */
+.many_hotel {
+  padding-bottom: 20rpx;
+  /* width: 100%; */
+  height: auto;
+  /* border-top: 1px solid #c1c1c1; */
+  margin:5px;
+}
+
+.hotel {
+  width: 100%;
+  /* height: 220rpx; */
+  height: 110px;
+  background: #fff;
+  /* border-bottom: 1rpx solid #e5e5e5; */
+  border-bottom:2rpx solid #f4f4f4;
+
+}
+
+.hotel_icon {
+  /* width: 250rpx; */
+  width: 40%;
+  height: 110px;
+  background: #fff;
+}
+
+.hotel_info {
+  /* width: 500rpx; */
+  width: 60%;
+  height: 110px;
+  background: #fff;
+  /* border-bottom: 2rpx solid #f4f4f4; */
+}
+
+.hotel_icon image {
+  /* width: 180rpx; */
+  width: 100%;
+  height: 190rpx;
+}
+
+.info_name {
+  width: 100%;
+  height: 50rpx;
+  font-size: 30rpx;
+  color: #333;
+  margin-top: 10rpx;
+  line-height: 60rpx;
+}
+
+.info_address {
+  width: 100%;
+  color: #666;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  /* margin: 28rpx 0; */
+  margin-top: 60rpx;
+}
+
+.info_address view:nth-child(1) {
+  left: 0;
+  /* width: 20rpx; */
+  /* height: 25rpx; */
+  width: 40rpx;
+  height: 40rpx;
+}
+.info_address .img {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 30rpx;
+}
+/* .info_address text:nth-child(2) {
+  margin-left: 40rpx;
+} */
+
+.info_address text:nth-child(2) {
+  margin-left: 10rpx;
+  margin-right: 20rpx;
+}
+
+.info_address text:nth-child(3) {
+  width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.info_score {
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.info_score text:nth-child(1) {
+  font-size: 36rpx;
+  color: #000;
+}
+
+.info_score text:nth-child(2) {
+  font-size: 26rpx;
+  color: #000;
+  margin-right: 20rpx;
+}
+
+.info_score text:nth-child(3) {
+  font-size: 30rpx;
+  color: #000;
+  margin-right: 30rpx;
+}
+
+.info_score text:nth-child(4) {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.info_score text:nth-child(5) {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.info_privilege {
+  width: 100%;
+  height: 30rpx;
+  margin-top: 10rpx;
+  display: inline-block;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+
+
+.info_privilege view {
+  width: 32rpx;
+  height: 32rpx;
+  float: left;
+}
+.info_privilege .numbers {
+  width: auto;
+  height: 32rpx;
+  line-height: 32rpx;
+  margin-right: 10rpx;
+}
+.publish_note{
+  position: fixed;
+  z-index: 1000;
+  width: 36px;
+  height: 36px;
+  top: 80%;
+  right: 5px;
+  background-color: #fff;
+  border-radius: 18px;
+}
+.publish_note image{
+  width: 40px;
+  height: 40px;
+  position: relative;
+  left: -2px;
+  top: -2px;
+}

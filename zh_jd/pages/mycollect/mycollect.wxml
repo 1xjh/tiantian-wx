@@ -1,0 +1,50 @@
+<!--zh_jd/pages/mycollect/mycollect.wxml-->
+<view class='many_hotel'>
+  <view class='hotel fon' wx:for="{{hotel}}" wx:for-item="hotel" wx:key="{{hotel.value}}" id="{{hotel.id}}" data-name="{{hotel.name}}" >
+    <navigator url='../hotel/hotel_detail?id={{hotel.id}}'>
+      <view class='hotel_icon fl rel'>
+        <image mode='aspectFill' wx:if="{{url}}{{hotel.img}}!=''" class='ab ud' src="{{url}}{{hotel.ewm_logo}}"></image>
+      </view>
+      <view class='hotel_info fl rel'>
+        <view class='info_name'>{{hotel.name}}</view>
+        <view class='info_address rel'>
+          <view class='ab ud'>
+            <image  class=' ab udlr' style='width:100%;' mode='widthFix' src='../../images/ditu.png'></image>
+          </view>
+          <!-- <text class='fl'>距您:</text>
+          <text class='fl' wx:if="{{hotel.distance!=NaN}}">{{hotel.distance}}千米</text>
+          <text class='fl' wx:if="{{hotel.distance==NaN}}">0千米</text> -->
+          <text class='fl'>{{hotel.address}} </text>
+        </view>
+        <view class='info_score'>
+          <text>{{hotel.score}}</text>
+          <text>分</text>
+          <text></text>
+          <text>{{hotel.total}}</text>
+          <text>条评论</text>
+        </view>
+        <!-- <view class='info_privilege'>
+            <view>星级:</view>
+            <view wx:for="{{star1}}" wx:if="{{hotel.num==1}}">
+                <image class='img' mode='widthFix' src='{{item.num}}'></image>
+            </view>
+            <view wx:for="{{star3}}" wx:if="{{hotel.num==3}}">
+                <image class='img' mode='widthFix' src='{{item.num}}'></image>
+            </view>
+            <view wx:for="{{star4}}" wx:if="{{hotel.num==4}}">
+                <image class='img' mode='widthFix' src='{{item.num}}'></image>
+            </view>
+            <view wx:for="{{star5}}" wx:if="{{hotel.num==5}}">
+                <image class='img' mode='widthFix' src='{{item.num}}'></image>
+            </view>
+        </view> -->
+        <!-- <view class='price ab'>
+          <text>￥</text>
+          <text>{{hotel.price}}</text>
+          <text>起</text>
+        </view> -->
+      </view>
+    </navigator>
+  </view>
+  <view style='text-align:center;color:#808080;font-size:12px;'>无更多信息</view>
+</view>

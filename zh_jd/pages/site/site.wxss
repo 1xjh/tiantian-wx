@@ -1,0 +1,73 @@
+/* zh_jd/pages/site/site.wxss */
+
+.aside-nav{
+  height:100vh;
+  width:230rpx;
+  background:#f7f7f7;
+  border:1px solid #fff;
+  box-shadow: 0 0 0 1px #f7f7f7;
+  position: fixed;
+  left:0;
+  top:0;
+  }
+.nav-item{
+  padding:25rpx 35rpx;
+  font-size:14px;
+  color:#222222;
+}
+.nav-item.active{
+  color: #40AB91;
+  position: relative;
+  background:#fff;
+}
+.nav-item.active::after{
+  display: inline-block;
+  content: "";
+  position: absolute;
+  width:12rpx;
+  height:12rpx;
+  border-radius: 50%;
+  background:#40AB91;
+  left:14rpx;
+  top:40rpx;
+}
+.category{
+  width:61%;
+  float: right;
+  padding:0 25rpx;
+}
+/* 右边样式 */
+.category-content{
+  width: 100%;
+  margin:28rpx 0;
+  font-size: 28rpx;
+  color:#222222;
+}
+/* 视觉效果 */
+.category.activeUp{
+  animation: slideUp .15s ease;
+}
+.category.activeDn{
+  animation: slideDown .15s ease;
+}
+
+@keyframes slideUp{
+  0%{
+   transform: translateY(-50%);
+   opacity: 0;
+  }
+  100%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideDown{
+  0%{
+   transform: translateY(50%);
+   opacity: 0;
+  }
+  100%{
+    transform: translateY(0);
+   opacity: 1;
+  }
+}

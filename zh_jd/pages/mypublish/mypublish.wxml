@@ -1,0 +1,36 @@
+<!--zh_jd/pages/mypublish/mypublish.wxml-->
+  <!-- 内容列表开始 -->
+  <view class='many_hotel'>
+    <navigator class='hotel fon' wx:for="{{hotel}}" wx:for-item="hotel" wx:key="{{hotel.value}}" id="{{hotel.id}}" data-name="{{hotel.name}}" url='../travel_note/travel_note?id={{hotel.id}}' >
+      <view class='hotel_info fl rel'>
+        <view class='info_name'>{{hotel.title}}</view>
+        <view class='info_address rel'>
+          <view class='fl' >
+            <image class='img' src="{{hotel.pic}}"></image>
+          </view>
+          <text class='fl'>{{hotel.name}}</text>
+          <text class='fl' wx:if="{{hotel.location}}">在<text style='color:red;'>{{hotel.location}}</text>  </text>
+        </view>
+        <view class='info_privilege'>
+            <view >
+                <image class='img' mode='widthFix' src='../../images/views.png'></image>
+            </view>
+            <view class='numbers'>{{hotel.views}}</view>
+            <!-- <view >
+                <image class='img' mode='widthFix' src='../../images/comment.png'></image>
+            </view>
+            <view class='numbers'>{{hotel.comments}}</view> -->
+        </view>
+      </view>
+      <view class='hotel_icon fl rel'>
+        <image mode='aspectFill' wx:if="{{url}}{{hotel.img}}!=''" class='ab ud' src="{{url}}{{hotel.img[0]}}"></image>
+      </view>
+      
+    </navigator>
+   
+    <navigator url="../publish/publish">
+    <view class='publish_note'><image src='../../images/edit.png'></image></view>
+  </navigator>
+  </view>
+   <view style='text-align:center;font-size:12px;color:#C3C3C3;width:100%'>没有更多信息</view>
+

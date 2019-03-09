@@ -1,0 +1,79 @@
+/* zh_jd/pages/travel_note/travel_note.wxss */
+@import "../../resource/wxParse/wxParse.wxss";
+.container{
+  border: none;
+}
+.cover{
+  height: 180px;
+}
+.cover image{
+  height: 180px;
+  width: 100%;
+}
+.title{
+  font-size:36rpx;
+  font-weight:600;
+  margin-bottom: 20rpx;
+}
+.userinfo{
+  height: 40px;
+  width: 65%;
+  display: inline-block;
+}
+.userinfo .msg{
+  height: 30px;
+   display: inline-block; 
+}
+ .userinfo .msg image{
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  margin-right: 5px;
+ }
+ .msg .text{
+   line-height: 20px;
+   font-size: 24rpx;
+   color: #505050;
+ }
+ .text view{
+   display: inline-block;
+ }
+ .text .img{
+   width: 14px;
+   height: 14px;
+   margin-left: 5px;
+   position: relative;
+   top: 3px;
+ }
+ .place{
+   width: 33%;
+   line-height: 20px;
+   float: right;
+   text-align: center;
+   border-left: 1px solid #c1c1c1;
+   font-size: 16px;
+   overflow:hidden;
+   text-overflow:ellipsis;
+   white-space: nowrap;
+ }
+ .details{
+   font-size:14px;
+   /* padding: 14rpx; */
+ }
+ .introduce{
+   font-size: 12px;
+   margin-top: 20rpx;
+ }
+ .introduce .info{
+   /* width: 90%; */
+   margin: 10px 5px;
+ }
+ .info .item{
+   width: 50%;
+ }
+ .info view{
+    display: inline-block;
+ }
+ .info text{
+   color: #505050;
+ }

@@ -1,0 +1,32 @@
+<!--zh_jd/pages/logs/member/mine_balance.wxml-->
+<view class='container font'>
+  <view class='body'>
+    <view class='mine_intergal'>
+      <view>
+        <text class='fl'>我的余额：</text>
+        <navigator url='charge'>
+          <text class='fr' style='font-size:24rpx;color:#666'>充值</text>
+        </navigator>
+      </view>
+      <view wx:if="{{balance!=null}}">{{balance}}</view>
+      <view wx:else>0</view>
+    </view>
+    <view></view>
+    <view class='intergral' wx:for="{{detailed}}" wx:key = "{{item.value}}">
+      <view class='intergral_img rel'>
+        <view class='ab ud'>
+          <image class='img' mode='widthFix' src="../../../images/intergral.png"></image>
+        </view>
+      </view>
+      <view class='intergral_one fl'>
+        <text>{{item.name+' '+item.seller_name}}</text>
+        <text>{{item.amount}}</text>
+      </view>
+      <view class='intergral_two fl'>
+        <text>{{item.create_time}}</text>
+        <text wx:if="{{item.type==1}}">消费扣除</text>
+        <text wx:if="{{item.type==2}}">会员充值</text>
+      </view>
+    </view>
+  </view>
+</view>

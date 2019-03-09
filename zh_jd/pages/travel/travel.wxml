@@ -1,0 +1,56 @@
+<!--zh_jd/pages/travel/travel.wxml-->
+<scroll-view scroll-y bindscroll='jumpto' class='container font'>
+  <swiper class='swiper' indicator-dots="{{indicatorDots}}"
+  autoplay="true" interval="3000" duration="500">
+     <block wx:for="{{banner}}"> 
+      <swiper-item>
+        <image mode='aspectFill' src="{{url+item}}" class="slide-image" width="100%" height="150"/>
+      </swiper-item>
+    </block>
+  </swiper> 
+  <view  class="nav bc_white {{is_top ? 'top_fixed' : ''}}">
+      <view class="{{typeid==3 ? 'tab_selectedtab' : 'tab_default'}}" data-current="3" bindtap="swichNav">
+      <text>头条</text>
+      </view>
+      <view class="{{typeid==2 ? 'tab_selectedtab' : 'tab_default'}}" data-current="2" data-ordertype="look_cnt" bindtap="swichNav">
+      <text>攻略</text>
+      </view>
+      <view class="{{typeid==1 ? 'tab_selectedtab' : 'tab_default'}}" data-current="1" data-ordertype="comments_cnt" bindtap="swichNav">
+      <text>游记</text>
+      </view>
+  </view>
+
+  <!-- 内容列表开始 -->
+  <view class='many_hotel'>
+    <navigator class='hotel fon' wx:for="{{travel}}" wx:for-item="travel"  wx:key="{{travel.value}}" id="{{travel.id}}" data-name="{{travel.name}}" url='../travel_note/travel_note?id={{travel.id}}' >
+        <view class='hotel_info fl rel'>
+          <view class='info_name'>{{travel.title}}</view>
+          <view class='info_address rel'>
+            <view class='fl' >
+              <image class='img' src="{{travel.pic}}"></image>
+            </view>
+            <text class='fl'>{{travel.name}}</text>
+            <text class='fl' wx:if="{{travel.location}}">在<text style='color:red;'>{{travel.location}}</text> </text>
+          </view>
+          <view class='info_privilege'>
+              
+              <view >
+                  <image class='img' mode='widthFix' src='../../images/views.png'></image>
+              </view>
+              <view class='numbers'>{{travel.views}}</view>
+              <!-- <view >
+                  <image class='img' mode='widthFix' src='../../images/comment.png'></image>
+              </view>
+              <view class='numbers'>{{travel.comments}}</view> -->
+          </view>
+        </view>
+        <view class='hotel_icon fl rel'>
+          <image mode='aspectFill' wx:if="{{url}}{{travel.img}}!=''" class='ab ud' src="{{url+travel.cover_img}}"></image>
+        </view>
+    </navigator>
+  </view>
+   <view style='text-align:center;font-size:12px;color:#C3C3C3'>没有更多信息</view>
+  <navigator url="../publish/publish">
+    <view class='publish_note'><image src='../../images/edit.png'></image></view>
+  </navigator>
+</scroll-view>

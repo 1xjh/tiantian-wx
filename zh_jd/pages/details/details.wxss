@@ -1,0 +1,167 @@
+/* zh_jd/pages/details/details.wxss */
+
+/* 输入框 */
+
+.details_head {
+  height: 60rpx;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.details_head>view {
+  margin-top: 10rpx;
+  display: flex;
+  background: #eee;
+  border-radius: 50rpx;
+  width: 100%;
+  height: 66rpx;
+}
+
+.details_icon {
+  width: 55rpx;
+  /* margin-top:-8rpx; */
+  margin-left: 15rpx;
+}
+
+.details_search {
+  width: 85%;
+  margin-top: 7rpx;
+}
+
+.screening_box {
+  margin-top: 20rpx;
+}
+
+/* 筛选screening */
+
+.tabTit {
+  height:65rpx;
+  line-height: 90rpx;
+  border-bottom: solid 1px #eee;
+  background: #fff;
+  font-size: 15px;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.fle1 image {
+  width: 30rpx;
+  height: 30rpx;
+  display: block;
+  padding-left: 10rpx;
+}
+
+.fle1 {
+  overflow: hidden;
+  display: block;
+  line-height: 28rpx;
+}
+
+/*弹性盒模型*/
+
+.box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* 详情列表 */
+.d_bakcground{
+  height: 10rpx;
+  width: 100%;
+  background: #eeeeee;
+}
+.d_list {
+  background: #eee;
+  height: 100vh;
+}
+
+.d_content {
+  width: 95%;
+  margin: 0  auto;
+  background: #fff;
+}
+
+.d_img {
+  width: 100%;
+  height: 360rpx;
+  background: #0ff;
+}
+.d_img image{
+  width: 100%;
+  height: 100%;
+}
+.d_good{
+  margin-top: 11rpx;
+}
+.d_good>view {
+  margin-right: 20rpx;
+  border:1px solid rgba(64, 171, 145, 1);
+  width: 82rpx;
+  height: 26rpx;
+  font-family: SourceHanSansCN-Medium;
+  font-weight: 500;
+  border-radius: 5rpx;
+  line-height: 16rpx;
+}
+.d_good .d_good_font{
+  font-size:16rpx;
+  padding: 7rpx;
+  color: rgba(64, 171, 145, 1);
+  text-align: center;
+}
+.d_site{
+  width: 22rpx;
+  height: 31rpx;
+  background:#0ff;
+  margin: 3rpx 12rpx 0 12rpx;
+}
+.d_title{
+  margin-top: 28rpx;
+}
+.d_site_name{
+  height: 25rpx;
+  font-size:25rpx;
+  color:#222222;
+}
+.d_info{
+  margin-left: 44rpx;
+  padding-top: 10rpx;
+}
+.d_info .d_fang{
+  font-size:24rpx;
+}
+.d_info .d_ren{
+  font-size:18rpx;
+  margin-left:92rpx;
+}
+.d_info .d_fen{
+  font-size:18rpx;
+  color:#40AB91;
+  margin-left:50rpx;
+}
+.d_price1{
+  font-size:26rpx;
+  padding-bottom:16rpx;
+}
+.d_price2{
+  font-size:26rpx;
+  margin-left: 50rpx;
+}
+.d_yuding{
+  width: 86rpx;
+  height: 46rpx;
+  background:#DE351F;
+  color:#fff;
+  position: absolute;
+  right:40rpx;
+  margin-top:-84rpx;
+  line-height: 46rpx;
+  border-radius:6px;
+}
+.d_yuding>view{
+ font-size:24rpx;
+ text-align: center;
+}

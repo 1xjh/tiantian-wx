@@ -1,0 +1,102 @@
+<!--zh_jd/pages/check/check.wxml-->
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view class='container font'>
+    <!-- <view>免责声明</view> -->
+    <view class='header'>
+      <!-- <view class='apply rel'>
+        <view class='ab udlr'>
+          <text></text>
+          <text>免责声明:入驻申请完成之后，</text>
+        </view>
+      </view> -->
+
+    </view>
+    <view class='detailed'>
+      <view>
+        <view class='hotel_name '>
+          <view class='total fl'>标题</view>
+          <view class='input fl'>
+            <input name='title' placeholder='请输入标题'></input>
+          </view>
+        </view>
+        <view class='hotel_name ' >
+          <view class='total fl'>出行天数</view>
+          <view class='input fl'>
+            <input name='days' placeholder='请输入出行天数'></input>
+          </view>
+        </view>
+        <view class='hotel_name'>
+          <view class='total fl'>出行人数</view>
+          <view class='input fl'>
+            <input name="people" placeholder='请输入出行人数'></input>
+          </view>
+        </view>
+        <view class='hotel_name'>
+          <view class='total fl'>人均费用</view>
+          <view class='input fl'>
+            <input name="travel_fee"  type='digit' class='travel_fee' placeholder='人均费用'></input>
+          </view>
+        </view>
+        <view class='hotel_name'>
+          <view class='total fl'>目的地</view>
+          <view class='input fl'>
+            <input name="city"  placeholder='目的城市'></input>
+          </view>
+        </view>
+        <view class='hotel_name '>
+          <view class='total fl'>出发日期</view>
+          <picker class="choice" mode="date" value="{{dates}}" bindchange="startDateChange">
+            <view class='input fl'>
+              <text wx:if="{{dates==null}}">请选择出发日期</text>
+              <text wx:if="{{dates!=null}}">{{dates}}</text>
+            </view>
+          </picker>
+        </view>
+        <view class='upload'>
+          <view class='upload_head'>上传封面图片
+          </view>
+          <view class='upload_img'>
+            <view class='rel'>
+              <view class='ab udlr' bindtap='choose1'>
+                <image class='im ab udlr' wx:if="{{logo1==null}}" src='../../images/sz.png'></image>
+                <image class='img' wx:if="{{logo1!=null}}" src='{{logo1}}'></image>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class='verification '>详细描述</view>
+        <view class='supplement '>
+          <textarea name="textarea" placeholder='详细描述'></textarea>
+        </view>
+
+        <view class='upload'>
+          <view class='upload_head'>上传更多图片
+          </view>
+          <view class='upload_img'>
+            <view class='rel'>
+              <view class='ab udlr' bindtap='choose'>
+                <image class='im ab udlr' src='../../images/sz.png'></image>
+              
+              </view>
+            </view>
+
+          </view>
+          <view class='upload_img' wx:if="{{hasimg}}">
+            <view class='rel' wx:for="{{tempimg}}" wx:for-item="img">
+              <view class='ab udlr' >
+                <image class='img'   src='{{img}}'></image>
+              </view>
+            </view>
+
+          </view>
+        </view>
+
+        <view class='footer'>
+          <button form-type="submit">发布</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</form>

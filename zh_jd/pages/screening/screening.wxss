@@ -1,0 +1,188 @@
+/* zh_jd/pages/screening/screening.wxss */
+
+.box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* 小标题 */
+
+.xiao_title {
+  color: #222;
+  font-size: 24rpx;
+  padding: 20rpx 0;
+}
+
+/* 大标题 */
+
+.slider_title {
+  font-size: 28rpx;
+  width: 95%;
+  margin: 0 auto;
+  padding-top: 40rpx;
+}
+
+/* 价格区间 */
+
+.price_screening {
+  background: #eee;
+}
+
+.sliderHCon {
+  margin: 0 auto;
+  height: 200rpx;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.showMoney text {
+  font-size: 20rpx;
+  text-align: center;
+  color: #999;
+  margin-top: 15rpx;
+}
+
+.showMoney {
+  width: 90%;
+  justify-content: space-around;
+}
+
+.twoSlider {
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 入户要求 */
+
+.host_type_box {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.host_type {
+  justify-content: space-between;
+}
+
+.huxing_title {
+  background: #40ab91;
+  color: #fff;
+  width: 100rpx;
+  height: 40rpx;
+  border-radius: 10rpx;
+}
+
+.host_type .huxing_title.active, .housing_content.active,
+.discount_content.active {
+  background: red;
+}
+
+.host_type view view {
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 40rpx;
+}
+
+/* 人数的增减 */
+
+/*主容器*/
+
+.stepper {
+  width: 220rpx;
+  height: 51rpx;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-radius: 40rpx;
+  background: #d7d4d4;
+}
+
+.stepper view {
+  width: 59rpx;
+  height: 53rpx;
+  line-height: 42rpx;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 40rpx;
+  background: #ededed;
+  margin-top: -4rpx;
+}
+
+.stepper input {
+  width: 40px;
+  height: 26px;
+  float: left;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 12px;
+}
+
+.stepper .normal {
+  color: black;
+}
+
+.stepper .disabled {
+  color: #ccc;
+}
+
+.bed_num {
+  margin-left: 70rpx;
+}
+
+.zhezhao {
+  width: 79rpx;
+  height: 53rpx;
+  position: absolute;
+  z-index: 1000;
+  margin-left: 73rpx;
+}
+
+/* 房屋要求 */
+
+.housing_box {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.housing_content {
+  margin-right: 70rpx;
+  background: #40ab91;
+  color: #fff;
+  width: 220rpx;
+  height: 80rpx;
+  border-radius: 30rpx;
+}
+
+.housing_content view {
+  text-align: center;
+}
+.h_title1{
+  line-height:20rpx;
+  padding-top:20rpx;
+  font-size:26rpx;
+}
+.h_title2{
+  line-height: 32rpx;
+  padding-bottom:20rpx;
+  font-size:18rpx
+}
+/* 优惠 */
+.discount_content {
+  margin-right: 70rpx;
+  background: #40ab91;
+  color: #fff;
+  width: 104rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+
+.discount_content view {
+  text-align: center;
+  font-size: 18rpx;
+  line-height: 40rpx;
+}

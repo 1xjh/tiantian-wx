@@ -1,0 +1,67 @@
+<!--zh_jd/pages/details/details.wxml-->
+<!-- 我的头部 -->
+<view class="details">
+  <view class="details_head">
+    <view>
+      <view class="details_icon">
+        <icon type="search" size="20" />
+      </view>
+      <input class="details_search"  value="{{name}}" placeholder="{{name!='' ? name : '可以搜索珠海'}}"></input>
+    </view>
+  </view>
+  <view class="screening_box">
+    <!-- 筛选标题 -->
+    <view class="tabTit box">
+      <navigator url="../sord/sord">
+        <view class="fle1 box">
+          <text>推荐排序</text>
+          <image src="../../images/Path-2@2x.png"></image>
+        </view>
+      </navigator>
+      <navigator url="../site/site">
+        <view class="fle1 box">
+          <text>位置</text>
+          <image src="../../images/Path-2@2x.png"></image>
+        </view>
+      </navigator>
+      <navigator url="../screening/screening">
+        <view class="fle1 box">
+          <text>筛选</text>
+          <image  src="../../images/Path-2@2x.png"></image>
+        </view>
+      </navigator>
+    </view>
+    <view class="d_list">
+
+      <view class="d_content" wx:for="{{room_list}}"   wx:key="id" >
+        <view class="d_bakcground"></view>
+        <view class="d_img">
+          <image src='{{item.logo}}'></image>
+        </view>
+        <view class="d_good box">
+          <view wx:for="{{item.tab_arr}}" wx:for-item='tab'  wx:key="id">
+            <view class="d_good_font">{{tab}}</view>
+          </view>
+        </view>
+        <view class="d_title box">
+          <view class="d_site">
+            <!-- <image></image> -->
+          </view>
+          <view class="d_site_name">{{item.s_name}}</view>
+        </view>
+        <view class="d_info box">
+          <view class="d_fang">{{item.name}}</view>
+          <text class="d_ren" decode="{{true}}">{{item.room_norms}} &nbsp;&nbsp;&nbsp;  {{item.people}}人</text>
+          <view class="d_fen">{{item.room_score}}分</view>
+        </view>
+        <view class="d_info box">
+          <view class="d_price1">市场价格：{{item.original_price}}元</view>
+          <view class="d_price2">会员价格: {{item.online_price}}元</view>
+        </view>
+        <view class="d_yuding">
+          <view>预定</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

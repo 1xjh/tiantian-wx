@@ -1,0 +1,87 @@
+{
+  "pages": [
+    "zh_jd/pages/details/details",
+    "zh_jd/pages/index/index",    
+    "zh_jd/pages/city/city",
+    "zh_jd/pages/site/site",
+    "zh_jd/pages/screening/screening",
+    "zh_jd/pages/sord/sord",
+    "zh_jd/pages/mylist/mylist",
+    "zh_jd/pages/travel/travel",
+    "zh_jd/pages/travel_note/travel_note",
+    "zh_jd/pages/publish/publish",
+    "zh_jd/pages/hotel/hotel",
+    "zh_jd/pages/hotel/hotel_detail",
+    "zh_jd/pages/hotel/hotel_list",
+    "zh_jd/pages/shouye/shouye",
+    "zh_jd/pages/book/book",
+    "zh_jd/pages/check/check",
+    "zh_jd/pages/merchant/merchant",
+    "zh_jd/pages/dingdan/dingdan",
+    "zh_jd/pages/dingevaluate/dingevaluate",
+    "zh_jd/pages/daodianzhifu/daodianzhifu",
+    "zh_jd/pages/yuding/yuding",
+    "zh_jd/pages/coupon/coupon",
+    "zh_jd/pages/ruzhu/ruzhu",
+    "zh_jd/pages/wode/index",
+    "zh_jd/pages/logs/logs",
+    "zh_jd/pages/calendar/calendar",
+    "zh_jd/pages/pinglun/pinglun",
+    "zh_jd/pages/introduce/introduce",
+    "zh_jd/pages/logs/member/mine_integral",
+    "zh_jd/pages/logs/member/mine_balance",
+    "zh_jd/pages/logs/member/charge",
+    "zh_jd/pages/logs/rurle",
+    "zh_jd/pages/logs/content/content",
+    "zh_jd/pages/logs/insider/insider",
+    "zh_jd/pages/mypublish/mypublish",
+    "zh_jd/pages/logs/refund/refund",
+    "zh_jd/pages/mycollect/mycollect",
+    "zh_jd/pages/system_notice/system_notice",
+    "zh_jd/pages/noticeinfo/noticeinfo",
+    "zh_jd/pages/auth/auth"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#41ac8d",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "selectedColor": "#41ac8d",
+    "color": "#8a8a8a",
+    "list": [
+      {
+        "pagePath": "zh_jd/pages/index/index",
+        "text": "首页",
+        "iconPath": "zh_jd/images/index_1.png",
+        "selectedIconPath": "zh_jd/images/index_2.png"
+      },
+      {
+        "pagePath": "zh_jd/pages/hotel/hotel",
+        "text": "精选民宿",
+        "iconPath": "zh_jd/images/position11.png",
+        "selectedIconPath": "zh_jd/images/position22.png"
+      },
+      {
+        "pagePath": "zh_jd/pages/mylist/mylist",
+        "text": "我的订单",
+        "iconPath": "zh_jd/images/travel11.png",
+        "selectedIconPath": "zh_jd/images/travel22.png"
+      },
+      {
+        "pagePath": "zh_jd/pages/logs/logs",
+        "text": "我的",
+        "iconPath": "zh_jd/images/my1.png",
+        "selectedIconPath": "zh_jd/images/my2.png"
+      }
+    ]
+  }
+}

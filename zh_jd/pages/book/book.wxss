@@ -1,0 +1,139 @@
+/* pages/dingdan/dingdan.wxss */
+page{background-color: #F5F5F5;}
+.order_room{
+  background-color: white;
+  padding: 30rpx;
+}
+.order_title{
+  color: #222;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+.order_header{
+  font-size: 28rpx;
+  color: #222;
+}
+.order_content{
+  padding: 0rpx 30rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+  border-top: 1rpx solid #F0F0F0;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  background-color: white;
+  line-height: 90rpx;
+  color: #222;
+}
+.content_room{  
+  height: 90rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+  display: flex;
+  align-items: center;
+}
+.content_room view:nth-child(1){
+  width: 114rpx;
+}
+.content_room view:nth-child(2){
+  margin-left: 70rpx;
+}
+.content_room input{
+  margin-left: 70rpx;
+  width: 70%;
+  color: #222;
+}
+.rule{
+  padding: 30rpx;
+  color: #B5B5B5;
+  font-size: 24rpx;
+}
+.rule view:nth-child(2){
+  margin-top: 30rpx;
+}
+.input{
+  font-size: 28rpx;
+}
+.footer{
+  height: 110rpx;
+  width: 100%;
+  display: flex;
+  line-height: 110rpx;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+}
+.footer_money{
+  background-color: #fff;
+  width: 65%;
+  height: 110rpx;
+  color: #ed0a15;
+  text-indent: 1em;
+  border-top: 1rpx solid #F0F0F0;
+}
+.footer_order{
+  background-color: #41ac8d;
+  width: 35%;
+  text-align: center;
+  color: white;
+  line-height: 110rpx;
+  font-size: 36rpx;
+  border-radius: 0rpx;
+  border: none;
+}
+.footer_rmb{
+  font-size: 28rpx;
+}
+.footer_rmb2{
+  font-size: 44rpx;
+}
+
+.fui-list-inner .subtitle{ color: #8a8a8a ;display: flex;font-size: 12px;}
+.fui-list{ padding:20rpx 10rpx ;display: flex;position: relative;text-align: left;line-height: 20px;}
+.credit,.wechat{ height: 90rpx; width: 90rpx; display: -webkit-flex; display: flex; -webkit-justify-content: center; justify-content: center; border-radius:10rpx }
+.credit{ background:#e2cb04; }
+.wechat{ background:#04ab02; }
+.credit wx-image,.wechat wx-image,.car wx-image{ width: 60rpx; height:60rpx; }
+.row{ font-size: 14px; }
+.round{
+  margin-top: 14rpx;
+}
+.fui-list-inner{
+  margin-left: 10px;
+}
+.angle{
+  width: 90rpx;
+  height: 90rpx;
+  position: absolute;
+  top: 14px;
+  right: 0;
+}
+.angle image{
+  width: 15px;
+  height: 20px;
+}
+.chooseway{
+  background-color:#fff;
+  height:200px;
+  width:100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 11
+}
+.showprice{
+  background-color:#fff;
+  width:100%;
+  position: fixed;
+  bottom: 110rpx;
+  z-index: 11;
+  font-size:14px;
+}
+.back{
+  width:100%;
+  position:fixed;
+  bottom:0;
+  z-index:10;
+  height:100%;
+  background:rgba(27,27,27,0.5);
+}
+
+
+
+

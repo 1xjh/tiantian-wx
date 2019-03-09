@@ -1,0 +1,100 @@
+/* zh_jd/pages/system_notice/system_notice.wxss */
+/* 内容列表导航 */
+.nav {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10rpx;
+  border-bottom:1px solid #efeff7;
+  padding-bottom:4px;
+  background-color: #fff;
+}
+
+.tab_default {
+  line-height: 88rpx;
+  text-align: center;
+  flex: 1; 
+}
+.tab_default text{
+color: #777;
+padding-bottom:20rpx;
+padding-left:20rpx;
+padding-right:20rpx;
+}
+.tab_selectedtab {
+  line-height: 88rpx;
+  text-align: center;  
+  flex: 1;  
+}
+.tab_selectedtab text{
+padding-bottom:20rpx;
+padding-left:20rpx;
+padding-right:20rpx;
+color: #41ac8d;
+border-bottom:2px solid #41ac8d;
+}
+/* 导航结束 */
+.tab_show {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.tab_hidden {
+  display: none;
+  text-align: center;
+}
+/* 内容 */
+.many_hotel {
+  padding-bottom: 20rpx;
+  /* width: 100%; */
+  height: auto;
+  /* border-top: 1px solid #c1c1c1; */
+  margin: 0 20px;
+}
+
+.hotel {
+  width: 100%;
+  /* height: 220rpx; */
+  /* height: 110px; */
+  background: #fff;
+  /* border-bottom:2rpx solid #f4f4f4; */
+}
+.hotel_info {
+  /* width: 500rpx; */
+   width: 100%; 
+  height: 110px;
+  background: #fff;
+  border:1px solid #efeff7;
+  border-radius:5px;
+  margin-bottom:5px;
+  padding:5px;
+
+}
+.info_name{
+  font-size: 14px;
+  color: #222;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 80%;
+}
+.content{
+  padding-left: 10px;
+  font-size: 12px;
+  /* width: 100%; */
+  /* height: 100px; */
+  margin-top: 10px;
+  display:-webkit-box;
+word-break:break-all;
+text-overflow:ellipsis;
+overflow:hidden;
+-webkit-box-orient:vertical;
+-webkit-line-clamp:3;
+  color: #8a8a8a;
+
+}
+
+
+
