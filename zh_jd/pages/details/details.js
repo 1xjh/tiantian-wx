@@ -1,12 +1,11 @@
 
 const app=getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
-  data: {
-    name:'',
+  data: { 
+    name:'', 
     parameter:{},
     page:1,
     room_list:'',
@@ -16,16 +15,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //家庭定制
-    var that=this;
-    options.is_home = 1
-      this.setData({
-        "parameter" :options       
-      })
+    
+    //首页进来的条件，要缓存
+
+    if(options.save==1){
+      delete options.save; 
+      wx.setStorageSync("parameter", options);
+    } 
+
+
+    this.setData({
+      parameter: wx.getStorageSync("parameter")
+    })
+   
+    console.log(this.data.parameter,"eeee");
+
+    if (options.order_id){
+      this.data.parameter.order_id = options.order_id;
+    }
+    //位置
+    if (options.tourist_id) {
+      this.data.parameter.tourist_id = options.tourist_id;
+    }
       request(this);
 
   },
-
+  jumpDetails:function(e){
+    console.log(e)
+    var id = e.currentTarget.dataset.id;
+    console.log(id);
+    wx.navigateTo({
+      url: '../yuanzi_details/yuanzi_details?id='+id
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -82,17 +104,15 @@ Page({
 
   }
 
-  
 })
 
 function request(e,page=1){
-  if (e.data.parameter.is_home) {
+  e.data.parameter.city=wx.getStorageSync("city");
+  e.data.parameter.page=page;
     app.util.request({
-      'url': 'index/Accommoda/gethomelist',
+      'url': 'index/Accommoda/getBywhereAccommoda',
       'cachetime': '0',
-      data: {
-        page: page
-      },
+      data: e.data.parameter,
       success: function (res) {
         console.log(res);
         if(res.data.success="1"){
@@ -103,6 +123,7 @@ function request(e,page=1){
             for (var i = 0; i < res.length; i++) {
               tmp.push(res[i]);
             }
+
             e.setData({
               room_list: tmp
             })
@@ -111,11 +132,9 @@ function request(e,page=1){
               room_list: res
             })
           }
-        
-
         }
        
       },
     })
-  }
+ 
 }

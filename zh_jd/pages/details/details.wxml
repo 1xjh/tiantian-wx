@@ -33,9 +33,8 @@
     </view>
     <view class="d_list">
 
-      <view class="d_content" wx:for="{{room_list}}"   wx:key="id" >
-        <view class="d_bakcground"></view>
-        <view class="d_img">
+      <view class="d_content "  wx:for="{{room_list}}"   wx:key="id" >
+        <view class="d_img" data-id='{{item.id}}' bindtap='jumpDetails'>
           <image src='{{item.logo}}'></image>
         </view>
         <view class="d_good box">

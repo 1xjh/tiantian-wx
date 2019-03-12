@@ -1,2 +1,40 @@
 <!--zh_jd/pages/city/city.wxml-->
-<text>zh_jd/pages/city/city.wxml</text>
+<view>
+  <!-- 头部 -->
+  <view class="details_head">
+    <view>
+      <view class="details_icon">
+        <icon type="search" size="20" />
+      </view>
+      <input class="details_search" value="{{cityName}}" placeholder="城市/位置"></input>
+    </view>
+  </view>
+    <view class="c_host">
+      <view >热门城市</view>
+    </view>
+    <view class="c_content box">
+        <view wx:for="{{remen}}" wx:for-item="item1" wx:key="key" bindtap='cityName'>{{item1}}</view>
+    </view>
+  <scroll-view scroll-y="true" style="height: {{winHeight}}px;" scroll-into-view="{{scrollTopId}}" class="city_list">
+  <!-- 热门城市 -->
+    <block wx:for="{{city}}" wx:for-index="idx" wx:for-item="cityName" wx:key="index">
+      <text id="{{idx}}" class="list_tit">{{idx}}</text>
+      <block wx:for="{{cityName}}" wx:key="index">
+        <view class="list_con" data-city="{{item.name}}" bindtap="bindCity">{{item.name}}</view>
+      </block>
+    </block>
+  </scroll-view>
+  <!--城市选择列表-->
+  <view class="scroll_list" bindtouchstart="chStart" bindtouchend="chEnd" catchtouchmove="chMove" style="background: rgba(0,0,0,{{trans}});">
+    <block wx:for="{{city}}" wx:for-index="idx" wx:for-item="cityName" wx:key="key">
+      <block wx:if="{{idx != '热门城市'}}">
+        <view id="{{idx}}" class="scroll_list_chi"  style="line-height:{{lineHeight}}px ; height:{{lineHeight}}px ;font-size:{{lineHeight/1.7}}px;" bindtouchstart="getWords" bindtouchend="setWords">{{idx}}</view>
+      </block>
+    </block>
+  </view>
+
+  <!--选择显示-->
+  <view hidden="{{hidden}}" class="showwords">
+    {{showwords}}
+  </view>
+</view>

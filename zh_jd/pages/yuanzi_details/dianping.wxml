@@ -1,0 +1,120 @@
+<!--zh_jd/pages/yuanzi_details/dianping.wxml-->
+<view>
+  <!-- 综合评分 -->
+  <view class="comment_top box">
+    <view class="comment_left">
+      <view class="comment_left_fen">4.8分</view>
+      <view class="box comment_image">
+        <image src='../../images/xing-hui@2x.png'></image>
+        <image src='../../images/xing-hui@2x.png'></image>
+        <image src='../../images/xing-hui@2x.png'></image>
+        <image src='../../images/xing-hui@2x.png'></image>
+        <image src='../../images/xing-hui@2x.png'></image>
+      </view>
+      <view>
+        45条点评
+      </view>
+    </view>
+    <view class="comment_right">
+      <view>卫生环境：4.8</view>
+      <view>房东服务：4.8</view>
+    </view>
+    <view class="comment_right">
+      <view>交通位置：4.8</view>
+      <view>室内装修：4.8</view>
+    </view>
+  </view>
+  <!-- 评论内容 -->
+  <view class='comment_content_box'>
+    <view class='comment_content'>
+      <!-- 头像 -->
+      <view class='comment_title box'>
+        <view>
+          <image src='../../images/love_icon.png'></image>
+        </view>
+        <view class='comment_title_time'>
+          <view class="comment_title_name">shelly</view>
+          <view>2019-03-01 点评</view>
+        </view>
+      </view>
+      <!-- 等级 -->
+      <view class="comment_fen box">
+        <view>5分</view>
+        <view>
+          <image src='../../images/xing-hui@2x.png'></image>
+          <image src='../../images/xing-hui@2x.png'></image>
+          <image src='../../images/xing-hui@2x.png'></image>
+          <image src='../../images/xing-hui@2x.png'></image>
+          <image src='../../images/xing-hui@2x.png'></image>
+        </view>
+      </view>
+      <!-- 内容 -->
+      <view class='comment_a_content'>
+        <view>
+          我想说这个价钱能租到这个高级公寓真心不错，虽然具体天安门 有点距离去市中心要一个小时，但是房子距离4号线地铁站很近， 附近也有大商圈美食电影院等大型超市。 房间很大，两室一厅， 客厅也很大，厨房和卫生间和图片一模一样，图片都是真实的， 房子装修很不错，客厅大房间小房间都有空调并且卫生间还是浴 缸，也有洗衣机等，厨房可以烧菜还有烤箱冰箱等。有wifi信号 很好，如果不想做菜可以APP叫外卖，天街很多美食可以叫外卖。 去的时候交押金500，退房时候会还。小区环
+        </view>
+        <view class="comment_gendou">
+            展开全部
+        </view> 
+      </view>
+      <!-- 用户上传的图 -->
+      <view class="comment_info_image box">
+        <image src='../../images/back.png'></image>
+        <image src='../../images/back.png'></image>
+        <image src='../../images/back.png'></image>
+        <image src='../../images/back.png'></image>
+      </view>
+      <!-- 房东回复 -->
+      <view class="hui_fu">
+        <view>房东回复:
+          <text> 非常好的客人，离店时别墅内保持的很整洁，太贴心了，欢迎下次再来啊</text>
+        </view>
+      </view>
+    </view>
+    <view class='comment_content'>
+      <!-- 头像 -->
+      <view class='comment_title box'>
+        <view>
+          <image src='../../images/love_icon.png'></image>
+        </view>
+        <view class='comment_title_time'>
+          <view class="comment_title_name">shelly</view>
+          <view>2019-03-01 点评</view>
+        </view>
+      </view>
+      <!-- 等级 -->
+      <view class="comment_fen box">
+        <view>5分</view>
+        <view>
+          <image src='../../images/xing-hui@2x.png'></image>
+          <image src='../../images/xing-hui@2x.png'></image>
+          <image src='../../images/xing-hui@2x.png'></image>
+          <image src='../../images/xing-hui@2x.png'></image>
+          <image src='../../images/xing-hui@2x.png'></image>
+        </view>
+      </view>
+      <!-- 内容 -->
+         <view class='comment_a_content'>
+        <view>
+          我想说这个价钱能租到这个高级公寓真心不错，虽然具体天安门 有点距离去市中心要一个小时，但是房子距离4号线地铁站很近， 附近也有大商圈美食电影院等大型超市。 房间很大，两室一厅， 客厅也很大，厨房和卫生间和图片一模一样，图片都是真实的， 房子装修很不错，客厅大房间小房间都有空调并且卫生间还是浴 缸，也有洗衣机等，厨房可以烧菜还有烤箱冰箱等。有wifi信号 很好，如果不想做菜可以APP叫外卖，天街很多美食可以叫外卖。 去的时候交押金500，退房时候会还。小区环
+        </view>
+        <view class="comment_gendou">
+            展开全部
+        </view> 
+      </view>
+      <!-- 用户上传的图 -->
+      <view class="comment_info_image box">
+        <image src='../../images/back.png'></image>
+        <image src='../../images/back.png'></image>
+        <image src='../../images/back.png'></image>
+        <image src='../../images/back.png'></image>
+      </view>
+      <!-- 房东回复 -->
+      <view class="hui_fu">
+        <view>房东回复:
+          <text> 非常好的客人，离店时别墅内保持的很整洁，太贴心了，欢迎下次再来啊</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

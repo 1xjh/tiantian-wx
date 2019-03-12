@@ -1,0 +1,12 @@
+/* zh_jd/pages/yuanzi_details/synopsis.wxss */
+
+.synopiss_centent {
+  width: 90%;
+  margin: 0 auto;
+  padding: 40rpx;
+  font-size: 24rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  line-height: 45rpx;
+}

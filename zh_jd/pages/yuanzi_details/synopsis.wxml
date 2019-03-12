@@ -1,0 +1,6 @@
+<!--zh_jd/pages/yuanzi_details/synopsis.wxml-->
+<view class="synopsis_box">
+  <view class="synopiss_centent">
+    {{art}}
+  </view>
+</view>

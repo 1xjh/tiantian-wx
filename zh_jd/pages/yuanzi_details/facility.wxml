@@ -1,0 +1,173 @@
+<!--zh_jd/pages/yuanzi_details/facility.wxml-->
+<view>
+  <!-- 基础设施 -->
+  <view class="facility_box">
+    <view class="facility_title">基础设施</view>
+    <view class='facility_content box'>
+      <view class="box">
+        <image src='../../images/tv.png'></image>
+        <text>电视</text>
+      </view>
+      <view class="box">
+        <image src='../../images/home2.png'></image>
+        <text>冰箱</text>
+      </view>
+      <view class="box">
+        <image src='../../images/kongTiao.png'></image>
+        <text>空调</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+    </view>
+  </view>
+  <!-- 卫浴设施 -->
+  <view class="facility_box">
+    <view class="facility_title">卫浴设施</view>
+    <view class='facility_content box'>
+      <view class="box">
+        <image src='../../images/tv.png'></image>
+        <text>电视</text>
+      </view>
+      <view class="box">
+        <image src='../../images/home2.png'></image>
+        <text>冰箱</text>
+      </view>
+      <view class="box">
+        <image src='../../images/kongTiao.png'></image>
+        <text>空调</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+    </view>
+  </view>
+  <!-- 厨房设施 -->
+  <view class="facility_box">
+    <view class="facility_title">厨房设施</view>
+    <view class='facility_content box'>
+      <view class="box">
+        <image src='../../images/tv.png'></image>
+        <text>电视</text>
+      </view>
+      <view class="box">
+        <image src='../../images/home2.png'></image>
+        <text>冰箱</text>
+      </view>
+      <view class="box">
+        <image src='../../images/kongTiao.png'></image>
+        <text>空调</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+    </view>
+  </view>
+  <!-- 特色及其他 -->
+  <view class="facility_box">
+    <view class="facility_title">特色及其他</view>
+    <view class='facility_content box'>
+      <view class="box">
+        <image src='../../images/tv.png'></image>
+        <text>电视</text>
+      </view>
+      <view class="box">
+        <image src='../../images/home2.png'></image>
+        <text>冰箱</text>
+      </view>
+      <view class="box">
+        <image src='../../images/kongTiao.png'></image>
+        <text>空调</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+    </view>
+  </view>
+  <!-- 周边500米 -->
+  <view class="facility_box">
+    <view class="facility_title">周边500米</view>
+    <view class='facility_content box'>
+      <view class="box">
+        <image src='../../images/tv.png'></image>
+        <text>电视</text>
+      </view>
+      <view class="box">
+        <image src='../../images/home2.png'></image>
+        <text>冰箱</text>
+      </view>
+      <view class="box">
+        <image src='../../images/kongTiao.png'></image>
+        <text>空调</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+      <view class="box">
+        <image src='../../images/shuiHu.png'></image>
+        <text>热水壶</text>
+      </view>
+    </view>
+  </view>
+</view>

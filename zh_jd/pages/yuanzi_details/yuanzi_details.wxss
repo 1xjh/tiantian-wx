@@ -1,0 +1,483 @@
+/* zh_jd/pages/yuanzi_details/yuanzi_details.wxss */
+
+/* 轮播 */
+
+.swiper {
+  width: 100%;
+  height: 450rpx;
+  background: #eee;
+}
+.yz_banner{
+  width: 100%;
+  height: 100%;
+}
+.yz_banner image{
+  width: 100%;
+  height: 100%;
+}
+.box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.xian {
+  width: 100%;
+  height: 1px;
+  background: #eee;
+}
+
+/* 房屋类型 */
+
+.yz_type {
+  width: 90%;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+
+.yz_type_title text {
+  font-size: 35rpx;
+}
+
+.yz_type_title view {
+  font-size: 23rpx;
+}
+
+.yz_type_title view image {
+  width:42rpx;
+  height:35rpx;
+  margin-right:7rpx;
+  float:left;
+}
+
+.yz_icon image {
+  width:33rpx;
+  height:29rpx;
+  margin-left:6rpx; 
+}
+
+.yz_icon {
+  font-size: 23rpx;
+  margin-top: 20rpx;
+    color: #40AB91;
+}
+
+/* 优惠 */
+
+.yz_discounts {
+  font-size: 17rpx;
+  padding: 20rpx 0;
+  line-height: 32rpx;
+}
+
+.yz_discounts view {
+  margin-left: 44rpx;
+  color: #40ab91;
+}
+
+.yz_discounts view:first-child {
+  margin-left: 44rpx;
+  background: #40ab91;
+  color: #fff;
+  width: 100rpx;
+  height: 32rpx;
+  text-align: center;
+  border-radius: 16rpx;
+}
+
+/* 底下内容背景色 */
+
+.content_color {
+  width: 100%;
+  height: 100%;
+  background: #eee;
+}
+
+/* 图标内容 */
+
+.yz_icon_title {
+  justify-content: space-around;
+  width: 100%;
+  padding: 10rpx 0;
+  flex: 1;
+  background-color:#fff;
+}
+.yz_icon_title1{
+  padding: 30rpx 0;
+  justify-content: space-around;
+  width: 100%;
+  background-color:#eeeeee;
+}
+
+.yz_icon_content {
+  flex-direction: column;
+  align-items: center;
+}
+
+.yz_icon_content image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.yz_icon_content view {
+  font-size: 16rpx;
+}
+
+.yz_icon_content text {
+  display: block;
+  font-size: 24rpx;
+}
+
+/* 入离时间 */
+
+.residence_box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  padding: 12rpx 0;
+  font-size: 30rpx;
+}
+
+.residence_box text {
+  font-size: 24rpx;
+  color: rgba(95, 95, 95, 1);
+}
+
+.search_box {
+  display: flex;
+  padding: 12rpx 0;
+}
+
+.residence_day {
+  color: #40ab91;
+}
+
+/* 标题 */
+
+.yz_box {
+  width: 93%;
+  margin: 0 auto;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.yz_title {
+  font-size: 40rpx;
+  font-family: SourceHanSansCN-Medium;
+  font-weight: 500;
+  color: #222;
+  line-height: 30px;
+  margin-left: 13rpx;
+}
+
+.yz_jianJie {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 26rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: #5f5f5f;
+  margin: 20rpx 13rpx;
+}
+
+.kong {
+  width: 100%;
+  height: 1rpx;
+}
+
+/* 综合评价 */
+
+.liuyan {
+  justify-content: space-between;
+}
+
+.liuyan view image {
+  width: 36rpx;
+  height: 39rpx;
+}
+
+.yz_pingjia {
+  font-size: 20rpx;
+  margin-top: 11rpx;
+}
+
+.yz_pingJia_title {
+  margin: 2rpx 30rpx 0 30rpx;
+}
+
+.yz_title1 {
+  justify-content: space-between;
+}
+
+.yz_title1 image {
+  width: 36rpx;
+  height: 39rpx;
+  margin-top: 4rpx;
+}
+
+/* 留言内容 */
+
+.name_info {
+  justify-content: space-between;
+  width: 96%;
+  margin: 0 auto;
+}
+
+.name_info image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.name_info .info_name {
+  font-size: 36rpx;
+  margin-left: 12rpx;
+  color: #222;
+}
+
+.info_time {
+  font-size: 26rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  line-height: 70rpx;
+}
+
+.yz_info_content {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-size: 27rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: #5f5f5f;
+  margin-left: 70rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 便利设施 */
+
+.sheSi {
+  font-size: 50rpx;
+  line-height: 105rpx;
+  color: #40ab91;
+}
+
+.yz_reserve {
+  font-size: 24rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: #5f5f5f;
+  margin-left: 13rpx;
+  margin-top: 10rpx;
+}
+
+.yz_reserve>view {
+  justify-content: space-between;
+  line-height: 50rpx;
+  padding-right: 5px;
+}
+
+.yz_reserve_title {
+  font-size: 24rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: #5f5f5f;
+  margin-left: 13rpx;
+}
+
+.yz_reserve_content {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.yz_reserve_content view {
+  display: flex;
+  justify-content: space-between;
+  color: #222;
+}
+
+.yz_reserve_content view.active {
+  color: #5f5f5f;
+}
+
+.yz_reserve_content image {
+  width: 32rpx;
+  height: 34rpx;
+  margin-right: 11rpx;
+}
+
+/* 周边房源 */
+
+.d_list {
+  background: #eee;
+  height: 100vh;
+}
+
+.d_img {
+  width: 100%;
+  height: 360rpx;
+  background: #0ff;
+}
+
+.d_img image {
+  width: 100%;
+  height: 100%;
+}
+
+.d_good {
+  margin-top: 11rpx;
+}
+
+.d_good>view {
+  margin-right: 20rpx;
+  border: 1px solid rgba(64, 171, 145, 1);
+  width: 82rpx;
+  height: 26rpx;
+  font-family: SourceHanSansCN-Medium;
+  font-weight: 500;
+  border-radius: 5rpx;
+  line-height: 16rpx;
+}
+
+.d_good .d_good_font {
+  font-size: 16rpx;
+  padding: 7rpx;
+  color: rgba(64, 171, 145, 1);
+  text-align: center;
+}
+
+.d_site {
+  width: 22rpx;
+  height: 31rpx;
+  background: #0ff;
+  margin: 3rpx 12rpx 0 12rpx;
+}
+
+.d_title {
+  margin-top: 28rpx;
+}
+
+.d_site_name {
+  height: 25rpx;
+  font-size: 25rpx;
+  color: #222;
+}
+
+.d_info {
+  margin-left: 44rpx;
+  padding-top: 10rpx;
+  width:308px;
+}
+
+.d_info .d_fang {
+  font-size: 24rpx;
+}
+
+.d_info .d_ren {
+  font-size: 18rpx;
+  margin-left: 92rpx;
+}
+
+.d_info .d_fen {
+  font-size: 18rpx;
+  color: #40ab91;
+  margin-left: 50rpx;
+}
+
+.d_price1 {
+  font-size: 26rpx;
+  padding-bottom: 16rpx;
+}
+
+.d_price2 {
+  font-size: 26rpx;
+  margin-left: 50rpx;
+}
+
+.d_yuding {
+  width: 86rpx;
+  height: 46rpx;
+  background: #de351f;
+  color: #fff;
+  float: right;
+  margin-right: 20rpx;
+  margin-top: -68rpx;
+  line-height: 46rpx;
+  border-radius: 6px;
+}
+
+.d_yuding>view {
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.yz_circum_box {
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 300px;
+}
+
+.yz_circum_title {
+  color: #40ab91;
+  background: #eee;
+}
+
+.d_content {
+  width: 100%;
+  margin-left:10px;
+  background: #fff;
+}
+.yz_price{
+  width: 93%;
+  margin:0 auto;
+  color:#5F5F5F;
+  font-size:24rpx;
+}
+
+.yz_price view{
+  margin: 20rpx 0;
+}
+/* 底部 */
+.yz_button{
+  background: #40AB91;
+  height: 136rpx;
+  flex: 1;
+  justify-content: space-around;
+  color:#fff;
+  line-height: 136rpx;
+}
+.yz_button image{
+  background: #40AB91;
+  width: 44rpx;
+  height: 43rpx;
+}
+.yz_taber{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.yz_taber_top{
+  height: 136rpx;
+}
+/* 客服 */
+.button_server{
+  background-color: #fff;
+  border-radius:0;
+  height:115rpx;
+  line-height: 32rpx
+}
+button::after {
+  border: none;
+}

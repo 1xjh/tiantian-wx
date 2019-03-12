@@ -1,0 +1,349 @@
+<!--zh_jd/pages/yuanzi_details/yuanzi_details.wxml-->
+<view>
+  <!-- 头部轮播 -->
+  <view class="swiper" style="height:{{bannerHeight+'px'}};width:{{bannerWidth+'px'}}">
+    <swiper indicator-dots="true" indicator-active-color="#fb5100" autoplay="true" interval="3000" duration="1200" circular='true ' class="yz_banner">
+      <swiper-item wx:for="{{details.img}}" wx:key="key" >
+        <image src='{{item}}'></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 房间类型 -->
+  <view class='box yz_type'>
+    <view class="yz_type_title">
+      <text>{{details.name}}</text>
+      <view>
+        <image src='../../images/xiangqingdizhi@2x.png'></image> {{details.address}}</view>
+    </view>
+    <view class='yz_icon'>
+      <image src='../../images/fenxiang.png'></image>
+      <view>分享</view>
+    </view>
+  </view>
+  <view class='xian'></view>
+  <!-- 优惠 -->
+  <view class="yz_discounts box" >
+    <view>连住优惠</view>
+    <view wx:for="{{details.favourable}}"  wx:key="key">
+    {{item.day}}天{{item.Sale}}折
+    <text  wx:if="{{item.type===1}}">以上</text>
+    </view>
+  
+  </view>
+  <view class="content_color">
+    <!-- 图标标题 -->
+    <view class='yz_icon_title1 box'>
+      <view class="yz_icon_content box">
+        <image src='../../images/independent.png'></image>
+        <text wx:if="{{details.room_type===1}}">{{details.name_type}}</text>
+        <text wx:else>独立单间</text>
+        <view wx:if="{{details.room_type===1}}">独立里院子共享</view>
+        <view wx:else>共享院子空间</view>
+      </view>
+      <view class="yz_icon_content box">
+        <image src='../../images/bed.png'></image>
+        <text >宜住{{details.people}}人 2床</text>
+        <view>（2米x1.2米）2张 </view>
+      </view>
+      <view class="yz_icon_content box">
+        <image src='../../images/toilet.png'></image>
+        <text>卫生间</text>
+        <view>独立卫生间</view>
+      </view>
+    </view>
+    <!-- 入离时间 -->
+    <view class="yz_box">
+      <view class='yz_title'>入离日期</view>
+      <view class="residence_box" bindtap="bindViewTap">
+        <view class="residence_start">
+          <text>入住</text>
+          <view role="" aria-label="">{{date}}</view>
+        </view>
+        <view class="residence_day">共{{time}}晚</view>
+        <view class="residence_end">
+          <text>离店</text>
+          <view role="" aria-label="">{{tomorrow}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- 房源简介 -->
+    <view class="yz_box">
+      <view bindtap='synopsis' class='yz_title1 box'>
+        <view class='yz_title'>房源简介</view>
+        <image src='../../images/jiantou1.png'></image>
+      </view>
+      <view class="yz_jianJie">
+        {{art}}
+      </view>
+      <view class="kong"></view>
+    </view>
+    <!-- 留言 -->
+    <view class="yz_box">
+      <view class="liuyan box">
+        <view class='yz_title'>留言 (28)</view>
+        <view class='yz_pingjia box'>
+          <image src='../../images/xing-hui@2x.png'></image>
+          <view class="yz_pingJia_title">综合评价 4.6</view>
+          <image src='../../images/jiantou1.png'></image>
+        </view>
+      </view>
+      <view class="name">
+        <view class='name_info box'>
+          <view class='box'>
+            <image src='../../images/love_icon.png'></image>
+            <view class="info_name">name</view>
+          </view>
+          <view class="info_time">2019年3月3日入住</view>
+        </view>
+        <view class="yz_info_content">
+          房间的层高很高，亮堂，内饰很简洁。阳台借星湖风光很成 功的，有特色。在阳台喝茶感觉很好。早餐中西式混搭，有 一小碗粥，1-2片面包，一只小红薯，一只煮鸡蛋......
+        </view>
+        <view class="kong"></view>
+      </view>
+    </view>
+    <!-- 交通位置 -->
+    <view class="yz_box">
+      <view class='yz_title1 box'>
+        <view class='yz_title'>交通位置</view>
+        <image src='../../images/jiantou1.png'></image>
+      </view>
+      <map bindtap='intoMap' id="myMap" markers="{{markers}}" style="width:100%;height:244rpx;" longitude="116.313972" latitude="39.980014" scale='16'>
+      </map>
+
+    </view>
+    <!-- 便利设施 -->
+    <view class="yz_box"> 
+      <navigator url='facility' class='yz_title1 box' hover-class="none">    
+        <view class='yz_title'>便利设施</view>
+        <image src='../../images/jiantou1.png'></image>
+      </navigator>
+      <view class='yz_icon_title box'>
+        <view class="yz_icon_content box">
+          <image src='../../images/tv.png'></image>
+          <text>电视</text>
+        </view>
+        <view class="yz_icon_content box">
+          <image src='../../images/home2.png'></image>
+          <text>冰箱</text>
+        </view>
+        <view class="yz_icon_content box">
+          <image src='../../images/kongTiao.png'></image>
+          <text>空调</text>
+        </view>
+        <view class="yz_icon_content box">
+          <image src='../../images/shuiHu.png'></image>
+          <text>热水壶</text>
+        </view>
+        <view>
+          <view class='sheSi'>+15</view>
+        </view>
+      </view>
+    </view>
+    <!-- 预定须知 -->
+    <view class="yz_box">
+      <view class='yz_title'>预定须知</view>
+      <view class="yz_reserve">
+        <view>退订规则（由房东制定）</view>
+        <view>取消订单，收取订金的100%作为违约金支付给房东</view>
+        <view>提供发票</view>
+        <view>开具发票，详见开票说明</view>
+      </view>
+    </view>
+    <!-- 入住须知 -->
+    <view class="yz_box">
+      <view class='yz_title'>入住须知</view>
+      <view class="yz_reserve">
+        <view class="box">
+          <view>入住|退房</view>
+          <view> 14：00后|12：00前</view>
+        </view>
+        <view class="box">
+          <view>接待时间</view>
+          <view>00：00-24：00</view>
+        </view>
+        <view class="box">
+          <view>卫生打扫</view>
+          <view> 1客1扫</view>
+        </view>
+        <view class="box">
+          <view>被单更换</view>
+          <view> 1客1换</view>
+        </view>
+        <view class="box">
+          <view>洗漱更换</view>
+          <view> 1客1换</view>
+        </view>
+        <view class="box">
+          <view>毛巾更换</view>
+          <view> 1客1换</view>
+        </view>
+        <view class="box">
+          <view>被单更换</view>
+          <view> 1客1换</view>
+        </view>
+        <view class="box">
+          <view>被单更换</view>
+          <view> 1客1换</view>
+        </view>
+      </view>
+      <view class="yz_reserve_title">
+        <view>接待要求</view>
+        <view class="yz_reserve_content">
+          <view>
+            <view>
+              <image src='../../images/dui.png'></image> 接待儿童</view>
+            <view>
+              <image src='../../images/dui.png'></image> 接待老人</view>
+          </view>
+          <view>
+            <view>
+              <image src='../../images/dui.png'></image> 可以商业拍摄</view>
+            <view>
+              <image src='../../images/dui.png'></image> 可以做饭</view>
+          </view>
+          <view>
+            <view class="active">
+              <image src='../../images/cuo.png'></image> 不接待外宾</view>
+            <view>
+              <image src='../../images/dui.png'></image> 可以聚会</view>
+          </view>
+          <view>
+            <view class="active">
+              <image src='../../images/cuo.png'></image> 不可带宠物</view>
+            <view>
+              <image src='../../images/dui.png'></image> 可以吸烟</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 额外费用 -->
+    <view class="yz_box">
+      <view class='yz_title'>额外费用</view>
+      <view class="yz_reserve">
+        <view>不包含在总房费里，由房东线下收取</view>
+        <view>加人：最多入住3人，不接受加人</view>
+        <view>加床：不允许加床</view>
+        <view>做饭：可做饭</view>
+      </view>
+    </view>
+    <!-- 周边房源推荐 -->
+    <view class="yz_box">
+      <view class="yz_circum_title">周边房源推荐</view>
+    </view>
+    <scroll-view scroll-x class="yz_circum_box box scroll-header" style="width: 100%">
+      <view class="yz_circum_box box">
+        <view class="d_content">
+          <view class="d_bakcground"></view>
+          <view class="d_img">
+            <!-- <image src='{{item.logo}}'></image> -->
+          </view>
+          <view class="d_good box">
+            <view>
+              <view class="d_good_font">可做饭</view>
+            </view>
+            <view>
+              <view class="d_good_font">可做饭</view>
+            </view>
+            <view>
+              <view class="d_good_font">可做饭</view>
+            </view>
+            <view>
+              <view class="d_good_font">可做饭</view>
+            </view>
+          </view>
+          <view class="d_title box">
+            <view class="d_site">
+              <!-- <image></image> -->
+            </view>
+            <view class="d_site_name">肇庆天天惦记超级民宿</view>
+          </view>
+          <view class="d_info box">
+            <view class="d_fang">壹号院双床房 </view>
+            <text class="d_ren" decode="{{true}}">3居4床  6人</text>
+            <view class="d_fen">5.0分</view>
+          </view>
+          <view class="d_info box">
+            <view class="d_price1">市场价格：899元</view>
+            <view class="d_price2">会员价格: 599元</view>
+          </view>
+          <view class="d_yuding">
+            <view>预定</view>
+          </view>
+        </view>
+        <view class="d_content">
+          <view class="d_bakcground"></view>
+          <view class="d_img">
+            <!-- <image src='{{item.logo}}'></image> -->
+          </view>
+          <view class="d_good box">
+            <view>
+              <view class="d_good_font">可做饭</view>
+            </view>
+            <view>
+              <view class="d_good_font">可做饭</view>
+            </view>
+            <view>
+              <view class="d_good_font">可做饭</view>
+            </view>
+            <view>
+              <view class="d_good_font">可做饭</view>
+            </view>
+          </view>
+          <view class="d_title box">
+            <view class="d_site">
+              <!-- <image></image> -->
+            </view>
+            <view class="d_site_name">肇庆天天惦记超级民宿</view>
+          </view>
+          <view class="d_info box">
+            <view class="d_fang">壹号院双床房 </view>
+            <text class="d_ren" decode="{{true}}"> 3居4床  6人</text>
+            <view class="d_fen">5.0分</view>
+          </view>
+          <view class="d_info box">
+            <view class="d_price1">市场价格：899元</view>
+            <view class="d_price2">会员价格: 599元</view>
+          </view>
+          <view class="d_yuding">
+            <view>预定</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <!-- 价格说明 -->
+    <view class="yz_price">
+      <view>价格说明</view>
+      <view>划线价格作为参考价，改价格指商品或服务器的门市价、服务提 供商指导价、零售价或该商品或服务曾经展示过的销售价等，并非原价。</view>
+      <view>如有疑问，您可在预订前联系客服咨询。</view>
+    </view>
+    <view class="yz_taber_top"></view>
+    <!-- 底部栏 -->
+    <view class="yz_taber">
+      <view class='box'>
+        <view class='yz_icon_title box'>
+          <view class="yz_icon_content box">
+            <button class='button_server' open-type="contact">
+            <image src='../../images/chat.png'></image>
+            <text>聊天</text>
+            </button>
+          </view>
+          <view class="yz_icon_content box">
+            <image src='../../images/call.png'></image>
+            <text>电话</text>
+          </view>
+          <view class="yz_icon_content box">
+            <image src='../../images/collect.png'></image>
+            <text>收藏</text>
+          </view>
+        </view>
+        <view class='yz_button box'>
+            <view>￥599</view>
+            <view>
+                <image src='../../images/sandian.png'></image>
+                立即预订
+            </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

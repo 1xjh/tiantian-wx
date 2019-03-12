@@ -46,7 +46,7 @@
     <!-- 家庭定制 -->
     <view class="content_box">
       <view>
-        <navigator url="../details/details?is_home=1">
+        <navigator url="../details/details?is_home=1&save=1">
           <view class="title_left">
             <text>家庭定制</text>
             <view>家的温馨，在途中</view>
@@ -94,130 +94,16 @@
           </view>
           <view class='imgRight'>
             <text>更多</text>
-            <!-- <image src='../../images/Path1@2x.png'></image> -->
+            <image src='../../images/Path1@2x.png'></image>
           </view>
         </navigator>
       </view>
       <view class="hot_img_box">
-          <view class="hot_img">图一</view>
-          <view class="hot_img">图二</view>
+          <view class="hot_img" wx:for="{{quan_arr}}" wx:key="index" wx:if="{{index<4}}" >
+            <image src="{{item.logo}}"></image>
+          </view>
       </view>
+
     </view>
-    <!-- 限时特价 -->
-    <block wx:if="{{hotel_onsale}}">
-      <view class="item">
-        <navigator url="../hotel/hotel_list?onsale=1">
-          <text>限时特价</text>
-          <view class='imgRight'>
-            <text>更多</text>
-            <image src='../../images/Path1@2x.png'></image>
-            <view class='imgprice' wx:if="{{item.min_price!=null}}">
-              <text style='font-size:12px;'>￥</text>
-              {{item.min_price}}
-            </view>
-          </view>
-        </navigator>
-      </view>
-      <view class="swiper" style="height:{{onsaleHeight+'px'}};width:{{onsaleWidth+'px'}}">
-        <swiper indicator-dots="" indicator-active-color="" autoplay="true" interval="4000" duration="1200">
-          <swiper-item wx:for="{{hotel_onsale}}" wx:for-item='item' wx:key="key">
-            <navigator url="../hotel/hotel_detail?id={{item.id}}">
-              <view style="position:relative;height:{{onsaleHeight+'px'}};width:{{onsaleWidth+'px'}}">
-                <image style="height:{{onsaleHeight+'px'}};width:{{onsaleWidth+'px'}}" bindload='onsaleImg' class="nav-icon" mode="aspectFill" src="{{url + item.img[0]}}" />
-                <view class='onsale_price' wx:if="{{item.min_price!=null}}">
-                  <text style='font-size:12px;line-height:24px;'>￥</text>
-                  {{item.min_price}}
-                </view>
-              </view>
-            </navigator>
-          </swiper-item>
-        </swiper>
-      </view>
-    </block>
-    <!-- 精选民宿 -->
-    <block wx:if="{{hotel_top}}">
-      <view class="item">
-        <navigator url="../hotel/hotel_list?top=1">
-          <text>精选民宿</text>
-          <view class='imgRight'>
-            <text>更多</text>
-            <image src='../../images/Path1@2x.png'></image>
-          </view>
-        </navigator>
-      </view>
-      <view class="swiper" style="height:{{topHeight+'px'}};width:{{topWidth+'px'}}">
-        <swiper indicator-dots="" indicator-active-color="" autoplay="true" interval="5000" duration="1200">
-          <swiper-item wx:for="{{hotel_top}}" wx:for-item='item' wx:key="key">
-            <navigator style='position:relative;' url="../hotel/hotel_detail?id={{item.id}}">
-              <image style="height:{{topHeight+'px'}};width:{{topWidth+'px'}}" bindload='topImg' class="nav-icon" mode="aspectFill" src="{{url + item.img[0]}}" />
-              <view style='position:absoute;left:0;bottom:0;z-index:1000;width:50px;height:20px;background:yelow;'></view>
-            </navigator>
-          </swiper-item>
-        </swiper>
-      </view>
-    </block>
-    <!-- 精选攻略 -->
-    <block wx:if="{{hotel_travels!=''}}">
-      <view class="item">
-        <navigator url="../travel/travel" open-type='switchTab'>
-          <text>精选攻略</text>
-          <view class='imgRight'>
-            <text>更多</text>
-            <image src='../../images/Path1@2x.png'></image>
-          </view>
-        </navigator>
-      </view>
-      <view class="swiper" style="height:{{travelHeight+'px'}};width:{{travelWidth+'px'}}">
-        <swiper indicator-dots="" indicator-active-color="" autoplay="true" interval="6000" duration="1200">
-          <swiper-item wx:for="{{hotel_travels}}" wx:for-item='item' wx:key="key">
-            <navigator style='position:relative;' url="../travel_note/travel_note?id={{item.id}}">
-              <image style="height:{{travelHeight+'px'}};width:{{travelWidth+'px'}}" bindload='travelImg' class="nav-icon" mode="aspectFill" src="{{url + item.cover_img}}" />
-            </navigator>
-          </swiper-item>
-        </swiper>
-      </view>
-    </block>
   </view>
-  <!-- <image mode='widthFix' src='http://www.szmihua.com/attachment/images/43/2017/06/tMydDyMOEEcaMeyTQ6E3OM3MY36QZc.jpg' class='midImg'></image>
-  <view class='seckill'>
-    <navigator url='../seckill/seckill'>
-      <view class='top'>
-        距离结束
-        <text class='timeWrapper'>20</text>：
-        <text class='timeWrapper'>10</text>：
-        <text class='timeWrapper'>30</text>：
-        <text class='timeWrapper'>40</text>
-        <text class='more'>更多</text>
-      </view>
-    </navigator>
-    <view class='bottom clearfix'>
-      <view class='item'>
-        <image class='img' mode='scaleToFill' src='http://www.szmihua.com/attachment/images/43/2017/06/aG1GB0tMl0t2MLb2gbCR1y1TBimbBZ.jpg'>
-        </image>
-        <view class='txt'>芒果芝士蛋糕</view>
-        <view class='price'>
-          <text class='now'>￥ 10.10</text>
-          <text class='before'>￥ 10.10</text>
-        </view>
-      </view>
-      <view class='item'>
-        <image class='img' mode='scaleToFill' src='http://www.szmihua.com/attachment/images/43/2017/06/aG1GB0tMl0t2MLb2gbCR1y1TBimbBZ.jpg'>
-        </image>
-        <view class='txt'>芒果芝士蛋糕</view>
-        <view class='price'>
-          <text class='now'>￥ 10.10</text>
-          <text class='before'>￥ 10.10</text>
-        </view>
-      </view>
-      <view class='item'>
-        <image class='img' mode='scaleToFill' src='http://www.szmihua.com/attachment/images/43/2017/06/aG1GB0tMl0t2MLb2gbCR1y1TBimbBZ.jpg'>
-        </image>
-        <view class='txt'>芒果芝士蛋糕</view>
-        <view class='price'>
-          <text class='now'>￥ 10.10</text>
-          <text class='before'>￥ 10.10</text>
-        </view>
-      </view>
-    </view>
-  </view> -->
 </view>

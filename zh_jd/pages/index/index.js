@@ -88,10 +88,11 @@ Page({
         let province = res.result.ad_info.province
         let city = res.result.ad_info.city
         city = city.substring(0, city.length - 1); 
-        console.log(city,"city");
+        wx.setStorageSync("city", city);
         jia(vm,city)
         pintai(vm,city)
         recommend(vm,city)
+        quna(vm,city)
         vm.setData({
           province: province,
           city: city,
@@ -109,6 +110,7 @@ Page({
     });
   },
   data: {
+    quan_arr:[], //去哪
     recommend:[],//热门推荐
     types:"",
     platform: [],
@@ -124,7 +126,8 @@ Page({
     province: '',
     city: '',
     latitude: '',
-    longitude: ''
+    longitude: '',
+
   },
   // ——————————日历点击事件————————
   //事件处理函数
@@ -165,9 +168,22 @@ Page({
  
   //事件处理函数
   onLoad: function(option) {
-    // 调用地图
-    let vm = this;
-    vm.getUserLocation();
+
+    console.log(option);
+    if(option.city){
+      this.setData({
+        city:option.city
+      })
+      jia(this, option.city)
+      pintai(this, option.city)
+      recommend(this, option.city)
+      quna(this, option.city)
+      wx.setStorageSync("city",option.city);
+    }else{
+      let vm = this;
+      vm.getUserLocation();
+    }
+    
     qqmapsdk = new QQMapWX({
       key: 'S5BBZ-YO534-EPPUR-DLQWP-ZPW5Z-V5FIM' //这里自己的key秘钥
     });
@@ -177,17 +193,17 @@ Page({
     wx.setStorageSync('startDate', '')
     wx.setStorageSync('endDate', '')
 
-    // 获取网址信息
-    app.util.request({
-      'url': 'entry/wxapp/attachurl',
-      'cachetime': '3600',
-      success: function(res) {
-        wx.setStorageSync("url", res.data)
-        that.setData({
-          url: res.data
-        })
-      },
-    })
+    // // 获取网址信息
+    // app.util.request({
+    //   'url': 'entry/wxapp/attachurl',
+    //   'cachetime': '3600',
+    //   success: function(res) {
+    //     wx.setStorageSync("url", res.data)
+    //     that.setData({
+    //       url: res.data
+    //     })
+    //   },
+    // })
     // 获取用户登录信息
     wx.login({
       success: function(res) {
@@ -373,7 +389,7 @@ Page({
     var name = this.data.searchName;
     // console.log(name)
     wx.navigateTo({
-      url: "../details/details?name=" + name,
+      url: "../details/details?name=" + name+"&save=1",
     })
   },
   searchClick: function(e) {
@@ -526,92 +542,7 @@ Page({
       });
     }
   },
-  // 订酒店
-  // hotel: function(e) {
-  //   var that = this
-  //   // console.log(this.data)
-
-  //   function getNewDay(dateTemp, days) {
-  //     var dateTemp = dateTemp.split("-");
-  //     var nDate = new Date(dateTemp[1] + '-' + dateTemp[2] + '-' + dateTemp[0]); //转换为MM-DD-YYYY格式    
-  //     var millSeconds = Math.abs(nDate) + (days * 24 * 60 * 60 * 1000);
-  //     var rDate = new Date(millSeconds);
-  //     var year = rDate.getFullYear();
-  //     var month = rDate.getMonth() + 1;
-  //     if (month < 10) month = "0" + month;
-  //     var date = rDate.getDate();
-  //     if (date < 10) date = "0" + date;
-  //     return (year + "-" + month + "-" + date);
-  //   }
-  //   var myDate = new Date().toLocaleDateString().replace(/\//g, "-");
-  //   var date = getNewDay(myDate, 27)
-  //   if (this.data.startDate == null) {
-  //     wx.setStorageSync('startDate', this.data.startDate)
-  //     wx.setStorageSync('endDate', this.data.endDate)
-  //   } else {
-  //     if (this.data.endDate > date) {
-  //       wx: wx.showModal({
-  //         title: '提示',
-  //         content: '最多只能选择28天以内的日期',
-  //         showCancel: true,
-  //         cancelText: '取消',
-  //         cancelColor: '',
-  //         confirmText: '确定',
-  //         confirmColor: '',
-  //         success: function(res) {},
-  //         fail: function(res) {},
-  //         complete: function(res) {},
-  //       })
-  //     }
-  //     else {
-  //       if (this.data.city == null) {
-  //         wx: wx.showToast({
-  //           title: '定位失败',
-  //           icon: '',
-  //           image: '',
-  //           duration: 1500,
-  //           mask: true,
-  //           success: function(res) {},
-  //           fail: function(res) {},
-  //           complete: function(res) {},
-  //         })
-  //       }
-  //       else {
-  //         wx.setStorageSync('startDate', this.data.startDate)
-  //         wx.setStorageSync('endDate', this.data.endDate)
-  //         if (that.data.types == 2) {
-  //           if (this.data.endDate == null) {
-  //             console.log(this.data)
-  //             wx: wx.navigateTo({
-  //               url: "../merchant/merchant?time=" + this.data.time + '&date=' + this.data.date + '&tomorrow=' + this.data.tomorrow + '&dd=' + this.data.startDate + '&to=' + this.data.endDate + '&lat=' + this.data.location.lat + '&lng=' + this.data.location.lng,
-  //             })
-  //           } else {
-  //             console.log('居然有东西')
-  //             wx: wx.navigateTo({
-  //               url: "../merchant/merchant?time=" + this.data.time + '&to=' + this.data.endDate + '&dd=' + this.data.startDate + '&date=' + this.data.date + '&tomorrow=' + this.data.tomorrow + '&lat=' + this.data.location.lat + '&lng=' + this.data.location.lng,
-  //             })
-  //           }
-  //         } else if (that.data.types == 1) {
-  //           if (this.data.endDate == null) {
-  //             wx: wx.navigateTo({
-  //               url: "../wode/index?time=" + this.data.time + '&date=' + this.data.date + '&tomorrow=' + this.data.tomorrow + '&dd=' + this.data.startDate + '&to=' + this.data.endDate + '&lat=' + this.data.location.lat + '&lng=' + this.data.location.lng,
-  //             })
-  //           }
-  //           else {
-  //             console.log('居然有东西')
-  //             wx: wx.navigateTo({
-  //               url: "../wode/index?time=" + this.data.time + '&to=' + this.data.endDate + '&dd=' + this.data.startDate + '&date=' + this.data.date + '&tomorrow=' + this.data.tomorrow + '&lat=' + this.data.location.lat + '&lng=' + this.data.location.lng,
-  //             })
-  //           }
-  //         }
-
-  //       }
-  //     }
-
-  //     wx.setStorageSync('startDate', this.data.startDate)
-  //     wx.setStorageSync('endDate', this.data.endDate)
-  //   }
-  // },
+  
   onReady: function() {
     var that = this
     // console.log(that.data)
@@ -647,7 +578,6 @@ function jia(e,city){
     'cachetime': '0',
     data: { "city": city },
     success: function (res) {
-      wx.setStorageSync("url", res.data)
       e.setData({
         family: res.data.data
       })
@@ -665,31 +595,32 @@ function pintai(e,city){
       e.setData({
         getHomeSet: res
       })
-      wx.setStorageSync('platform', res.data)
-      wx.setStorageSync('platform_type', res.data.type)
-      if (res.data.db_color == '') {
-        wx.setStorageSync('platform_color', '#F9882B')
-      } else {
-        wx.setStorageSync('platform_color', res.data.db_color)
-      }
+      // wx.setStorageSync('platform', res.data)
+      // wx.setStorageSync('platform_type', res.data.type)
+      // if (res.data.db_color == '') {
+      //   wx.setStorageSync('platform_color', '#F9882B')
+      // } else {
+      //   wx.setStorageSync('platform_color', res.data.db_color)
+      // }
 
       wx.setNavigationBarTitle({
-        title: res.data.name
+        title: "天天"
       })
-      wx.setNavigationBarColor({
-        frontColor: '#ffffff',
-        backgroundColor: wx.getStorageSync('platform_color'),
-        animation: {
-          duration: 0,
-          timingFunc: 'easeIn'
-        }
-      })
+
+      // wx.setNavigationBarColor({
+      //   frontColor: '#ffffff',
+      //   backgroundColor: wx.getStorageSync('platform_color'),
+      //   animation: {
+      //     duration: 0,
+      //     timingFunc: 'easeIn'
+      //   }
+      // })
       if (res.data.type == 1) {
         wx: wx.setStorageSync('hotel', res.data.seller_id)
       }
       e.setData({
         platform: res.data.data,
-        types: res.data.type
+        // types: res.data.type
       })
     },
   })
@@ -702,10 +633,23 @@ function recommend(e,city){
     data: { "city": city },
     success: function (res) {
       wx.setStorageSync("url", res.data)
-      
       e.setData({
         recommend: res.data.data
       })
     },
   })
+}
+// 周末去哪
+function quna(e, city) {
+  app.util.request({
+    'url': 'index/Accommoda/getBywhereAccommoda',
+    'cachetime': '0',
+    data: { "city": city },
+    success: function (res) {
+      e.setData({
+        quan_arr: res.data.data
+      })
+    },
+  })
+  console.log(e.data.quan_arr,"周末去哪");
 }

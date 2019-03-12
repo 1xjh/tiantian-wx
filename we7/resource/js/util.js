@@ -48,6 +48,7 @@ function getSign(url, data, token) {
 	var _ = require('underscore.js');
 	var md5 = require('md5.js');
 	var querystring = '';
+  var urlData = '';
 	var sign = getUrlParam(url, 'sign');  
 	if (sign || (data && data.sign)) {
 		return false;
@@ -58,40 +59,41 @@ function getSign(url, data, token) {
     //   return;
 		// }
    
-		if (data) { //post
+    if (JSON.stringify(data)!="{}") { //post
+    console.log(data,"sss")
 			var theRequest = [];
-      
 			for (let param in data) {
 				if (param && data[param]) {
-					theRequest = theRequest.concat({
-						'name': param, 
-						'value': data[param]
-					})
+          if (param!='page'){
+            theRequest = theRequest.concat({
+              'name': param,
+              'value': data[param]
+            })
+          }
+				
 				}
 			}
+      //排序
+      querystring = _.sortBy(theRequest, 'name'); //用key排序
+      //去重
+      querystring = _.uniq(querystring, true, 'name');
      
-		}
-    
-		//排序
-    querystring = _.sortBy(theRequest, 'name'); //用key排序
+      for (let i = 0; i < querystring.length; i++) {
+        if (querystring[i] && querystring[i].name && querystring[i].value) {
+          urlData += querystring[i].name + '=' + querystring[i].value;
+          if (i < (querystring.length - 1)) {
+            urlData += '&';
+          }
+        }
+      }
+      if (data){
+        urlData += "&";
+      }
+    }
 
-		//去重
-    querystring = _.uniq(theRequest, true, 'name');
- 
-    
-		var urlData = '';
-		for (let i = 0; i < querystring.length; i++) {
-			if (querystring[i] && querystring[i].name && querystring[i].value) {
-				urlData += querystring[i].name + '=' + querystring[i].value;
-				if (i < (querystring.length - 1)) {
-					urlData += '&';
-				}
-			}
-		}
-
-    urlData+="&";
 		token = token ? token : wx.getStorageSync("token");
     sign = md5(urlData +"token="+token + "&yan="+getApp().siteInfo.yan);
+    console.log(urlData + "token=" + token + "&yan=" + getApp().siteInfo.yan);
 		return sign;
 	}
 }

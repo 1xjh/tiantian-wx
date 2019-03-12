@@ -1,10 +1,10 @@
 <!--zh_jd/pages/site/site.wxml-->
 <view class="main clearFix">
-  <view class="aside-nav" bindtap='tapJump'>
+  <view class="aside-nav" bindtap='tapJump' >
     <view class="nav-item {{navIndex==index?'active':''}}" wx:for="{{res}}" wx:key="index" data-index="{{index}}">{{item.tourist_name}}</view>
   </view>
 
   <view class="category" wx:for="{{navItems}}" wx:for-item="item1" wx:key="index">
-        <view class="category-content"  bindtap='category' >{{item1.tourist_name}}</view>
+        <view class="category-content"  bindtap='category' data-id="{{item1.tourist_id}}"  >{{item1.tourist_name}}</view>
   </view>
 </view>

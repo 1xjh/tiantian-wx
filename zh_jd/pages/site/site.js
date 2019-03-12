@@ -1,6 +1,5 @@
 var app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -21,6 +20,7 @@ Page({
       })
     } else {
       that.setData({
+        navItems: this.data.res[index]["son"],
         SlideActive: "activeDn"
       })
     }
@@ -28,20 +28,14 @@ Page({
       navIndex: index
     })
   },
+
   category(e){
-    console.log(e)
+    wx.navigateTo({
+      url: '../details/details?tourist_id=' + e.currentTarget.dataset.id,
+    })
+
   }, 
-  // getDetails() {
-  //   wx.request({
-  //     url: 'http://192.168.43.137:7070/category',
-  //     success: res => {
-  //       console.log(res.data)
-  //       this.setData({
-  //         res: res.data.data.ctgList
-  //       })
-  //     }
-  //   })
-  // },
+ 
   /**
    * 生命周期函数--监听页面加载
    */
