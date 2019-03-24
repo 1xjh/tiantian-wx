@@ -59,11 +59,8 @@ page {
 }
 
 .hotel_name {
-  /* width: 95%; */
-  height: 80rpx;
-  /* margin: 0 auto; */
+  height: 90rpx;
   background: #fff;
-  /* padding-bottom: 30rpx; */
   margin-top: 3rpx;
 }
 
@@ -74,15 +71,15 @@ page {
 .hotel_name .total {
   width: 160rpx;
   height: 100%;
-  line-height: 80rpx;
+  line-height: 90rpx;
   font-size: 28rpx;
   margin-left: 30rpx;
-  color: #333;
+  color: #222222;
 }
 
 .hotel_name .input {
   width: auto;
-  height: 80rpx;
+  height: 90rpx;
   max-width: 300rpx;
   line-height: 80rpx;
   font-size: 28rpx;
@@ -90,6 +87,7 @@ page {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-left: 40rpx;
 }
 
 .hotel_name .input input {
@@ -145,6 +143,7 @@ page {
 .upload_head {
   font-size: 28rpx;
   text-indent: 30rpx;
+  padding: 14rpx 0;
 }
 
 .upload_img>view {
@@ -185,18 +184,17 @@ page {
   width: 92%;
   height: 180rpx;
   margin:  0 auto;
+  padding-bottom:100rpx;
 }
+
 
 .footer {
   width: 100%;
-  height: 200rpx;
-}
-
-.footer {
-  width: 100%;
-  height: 80rpx;
+  height: 153rpx;
   line-height: 80rpx;
   font-size: 30rpx;
+  position: fixed;
+  bottom:0;
 }
 
 .footer button:nth-child(1) {

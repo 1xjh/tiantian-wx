@@ -1,0 +1,24 @@
+<view class="daodian font">
+  <!-- 提醒 -->
+  <view class="ddzf box">
+    <image src='../../images/intergral.png'></image>
+    <view class="ddzf_title">
+        <view>订单已提交，房屋将为您保留 <text class="ddzf_time"> 40分钟</text> </view>
+        <view> 请尽快完成付款，逾期将不再留房 </view>
+    </view>
+  </view>
+  <!-- 押金 -->
+  <view class="ddzf_price">待付金额：<text>¥{{price}}.00</text> </view>
+  <!-- 支付 -->
+  <view class="daodian7">
+    <view class="daodian7_1">
+      <text class="daodian7_5">需支付：</text>
+      <text class="daodian7_3">¥</text>
+      <text class="daodian7_4">{{price}}.</text>
+      <text class="daodian7_3">00</text>
+    </view>
+    <view class="daodian7_2" bindtap='payment'>
+      立即支付
+    </view>
+  </view>
+</view>

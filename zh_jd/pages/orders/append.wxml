@@ -1,0 +1,35 @@
+<view class="append">
+<!-- 填写内容 -->
+  <view class="append_top">
+    <!-- 姓名 -->
+    <view class='append_title box'>
+      <view>姓名</view>
+      <input placeholder='请输入正确的姓名' bindinput="bindKeyName"></input>
+    </view>
+    <!-- 证件类型  -->
+    <view class='xian'></view>
+    <view class='append_title box' bindtap='onlyType'>
+      <view>证件类型 </view>
+      <text>{{tapIndex}}</text>
+      <image src='../../images/jiantou.png'></image>
+    </view>
+    <view class='xian'></view>
+    <!-- 证件号码  -->
+    <view class='append_title box'>
+      <view>证件号码 </view>
+      <input placeholder='请输入正确证件号码' bindinput="bindKeyCredentials"></input>
+    </view>
+    <view class='xian'></view>
+    <view class='append_title box'>
+      <view>手机 号码 </view>
+      <input placeholder='请输入正确手机号码' bindinput="bindKeyPhone"  maxlength="11" type="number"></input>
+    </view>
+
+  </view>
+  <!-- 声明 -->
+  <view class="append_shengming">
+    <view>根据公安酒店管理条例，入住经营性质的酒店/民宿，需要入住人的身份证明信息。</view>
+    <view>入住人的身份信息只用于必要的身份核实和保险理赔事项，天天惦记会为你严格保密。</view>
+  </view>
+  <view bindtap="baoCun" class="yuding_fanhui" >保存</view>
+</view>

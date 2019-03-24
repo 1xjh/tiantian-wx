@@ -1,205 +1,98 @@
 <!--logs.wxml-->
 <view class="container font">
-  <!-- <view class="top">
-    <image mode="aspectFill" src="../../images/backgroud.png"></image>
-    <view class='users'>
-      <view class='rel'>
-        <image class="ab udlr" src="{{avatarUrl}}"></image>
+  <view class='member-head'>
+    <!-- 用户信息 -->
+    <view class='child userinfo'>
+      <view class='avatar'>
+        <image class='icon' wx:if="{{avatarUrl===''}}" src='../../images/yonghu-fill@3x.png'></image>
+        <image class='icon' wx:else src='{{avatarUrl}}'></image>
       </view>
-      <view>{{nickName}}</view>
-      <view bindtap='Member' class='member' wx:if="{{type==1||type==0}}">绑定会员卡</view>
-      <view bindtap='Member' class='member' wx:if="{{type==2}}">
-        <view wx:if="{{level_name==null}}">普通会员</view>
-        <view wx:else>{{level_name}}</view>
+      <view class="box logs_name">
+        <view class="login_box" wx:if="{{nickName===''}}">
+          <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="login">登陆</button>
+        </view>
+        <view class='nickname' wx:else>{{nickName}}
+          <text bindtap='Member' class='level'>砖石会员</text>
+        </view>
       </view>
     </view>
-    <view class="realy_top rel">
-      <view class='layer ab lr'>
-        <view class='classification ab udlr'>
-           <navigator bindtap='Member'>
-            <view class='child'>
-              <view class='rel'>
-                <view class='ab udlr classification1'>
-                  <image mode='widthFix' class='img' src='../../images/one.png'></image>
-                </view>
-              </view>
-              <view wx:if="{{type==1||type==0}}">绑定会员卡</view>
-              <view wx:if="{{type==2}}">
-                <view wx:if="{{level_name==null}}">普通会员</view>
-                <view wx:else>{{level_name}}</view>
-              </view>
-              <view>等级</view>
-            </view>
-          </navigator> 
-          <navigator url='member/mine_balance'>
-            <view class='child'>
-              <view class='rel'>
-                <view class='ab udlr classification1'>
-                  <image mode='widthFix' class='img' src='../../images/cost.png'></image>
-                </view>
-              </view>
-              <view wx:if="{{balance==null}}">0</view>
-              <view wx:if="{{balance!=null}}">{{balance}}</view>
-              <view>余额</view>
-
-            </view>
-          </navigator>
-          <navigator url='member/mine_integral'>
-            <view class='child'>
-              <view class='rel'>
-                <view class='ab udlr classification1'>
-                  <image mode='widthFix' class='img' src='../../images/three.png'></image>
-                </view>
-              </view>
-              <view wx:if="{{score==null}}">0</view>
-              <view wx:if="{{score!=null}}">{{score}}</view>
-              <view>积分</view>
-            </view>
-          </navigator>
-          <navigator url='../coupon/coupon'>
-            <view class='child'>
-              <view class='rel'>
-                <view class='ab udlr classification1'>
-                  <image mode='widthFix' class='img' src='../../images/two.png'></image>
-                </view>
-              </view>
-              <view>{{coupon_len}}</view>
-              <view>优惠券</view>
-            </view>
-          </navigator>
+    <view class='integral box'>
+      <!-- 收藏 -->
+      <view class='integral_left box' bindtap='collect'>
+        <view class="left_image">
+          <image src='../../images/icon_collect.png'></image>
         </view>
+        <text>我的收藏</text>
       </view>
-
+      <view class="integral_right box">
+        <view class="right_image">
+          <image src='../../images/icon_integral.png'></image>
+        </view>
+        <text>我的积分</text>
+      </view>
     </view>
-  </view> -->
-<view class='member-head'>
-      <view class='child'>
-        <view class='name'>余额</view>
-        <view class='number' wx:if="{{balance==null}}">0</view>
-        <view class='number' wx:if="{{balance!=null}}">{{balance}}</view>
-        <block >
-          <navigator class='btn' hoverClass='btn-hover' url='member/charge'>充值</navigator>
-        </block>
-      </view>
-      <view class='child userinfo'>
-        <view class='avatar'>
-          <image class='icon' src='{{avatarUrl}}'></image>
-        </view>
-        <view class='nickname'>{{nickName}}</view>
-        <view bindtap='Member' class='level' wx:if="{{type==1||type==0}}">绑定会员卡</view>
-        <view bindtap='Member' wx:if="{{type==2}}">
-          <view class='level' wx:if="{{level_name==null}}">普通会员</view>
-          <view class='level' wx:else>{{level_name}}</view>
-        </view>
-      </view>
-      <view class='child'>
-        <view class='name'>积分</view>
-        <view class='number' wx:if="{{score==null}}">0</view>
-        <view class='number' wx:if="{{score!=null}}">{{score}}</view>
-        <block >
-          <navigator class='btn' hoverClass='btn-hover' url='member/mine_integral'>明细</navigator>
-        </block>
-       
-      </view>
   </view>
-
-
+  <!-- 我的收藏/积分 -->
+  <view class="integral_background"></view>
+  <!-- 信息列表 -->
   <view class='mine'>
-  <view class='order rel'>
-    <navigator url='member/mine_balance'>
-      <image mode='widthFix' class='img3 ab ud' src='../../images/mybalance.png'></image>
-      <text>余额明细</text>
-      <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
-    </navigator>
+    <!-- 优惠券 -->
+    <view class='order rel'>
+      <navigator url='../coupon/coupon'>
+        <image mode='widthFix' class='img3 ab ud' src='../../images/icon_coupon.png'></image>
+        <text>我的优惠券</text>
+        <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+      </navigator>
     </view>
-  <view class='order rel'>
-    <navigator url='../coupon/coupon'>
-      <image mode='widthFix' class='img3 ab ud' src='../../images/mycoupon.png'></image>
-      <text>我的优惠券</text>
-      <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
-    </navigator>
+    <!-- 名宿入驻 -->
+    <view class='order rel'>
+      <navigator url='../check/check'>
+        <image mode='widthFix' class='img3 ab ud' src='../../images/move.png'></image>
+        <text>名宿入驻</text>
+        <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+      </navigator>
     </view>
-    <view class='order rel' catchtap="my_list">
-      <image mode='widthFix' class='img3 ab ud' src='../../images/order.png'></image>
-      <text>我的订单</text>
-      <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+    <!-- 意见反馈 -->
+    <view class='order rel'>
+      <navigator url="../feedback/feedback">
+        <image mode='widthFix' class='img3 ab ud' src='../../images/yj.png'></image>
+        <text>意见反馈</text>
+        <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+      </navigator>
     </view>
     <view class='order rel'>
-      <navigator url='../mypublish/mypublish'>
-        <image mode='widthFix' class='img3 ab ud' src='../../images/mytravel.png'></image>
-        <text>我的游记</text>
+      <navigator url=''>
+        <image mode='widthFix' class='img3 ab ud' src='../../images/gy.png'></image>
+        <text>关于天天惦记</text>
         <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
       </navigator>
     </view>
-    <view class='business rel' bindtap='business' wx:if="{{platform.status==2}}">
-      <image mode='widthFix' class='img3 ab ud' src='../../images/rz.png'></image>
-      <text>商家入驻</text>
+    <view class='order rel' catchtap="my_list">
+      <image mode='widthFix' class='img3 ab ud' src='../../images/fp.png'></image>
+      <text>开具发票</text>
       <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
     </view>
-    <!-- <view class='business rel' bindtap='refund' wx:if="{{platform.status==2}}">
-      <image mode='widthFix' class='img3 ab ud' src='../../images/bussiness.png'></image>
-      <text>我的退款</text>
-      <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
-    </view> -->
-    <view class='contant rel' bindtap='content'>
-      <image mode='widthFix' class='img3 ab ud' src='../../images/consume.png'></image>
-      <text>我的客服</text>
-      <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+    <view class='business rel' bindtap='business'>
+      <navigator url='javascript:;'>
+        <image mode='widthFix' class='img3 ab ud' src='../../images/hy.png'></image>
+        <text>升级会员</text>
+        <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+      </navigator>
     </view>
-    
+    <!-- 客服 -->
     <view class='contant rel'>
-    <navigator url='../mycollect/mycollect'>
-        <image mode='widthFix' class='img3 ab ud' src='../../images/mycollect.png'></image>
-        <text>我的收藏</text>
+      <button open-type="contact" class="button">
+        <image mode='widthFix' class='img3 ab ud' src='../../images/kf.png'></image>
+        <text>我的客服</text>
+        <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+      </button>
+    </view>
+    <view class='contant rel'>
+      <navigator url='javascript:;'>
+        <image mode='widthFix' class='img3 ab ud' src='../../images/shezhi.png'></image>
+        <text>设置</text>
         <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
       </navigator>
     </view>
-    
   </view>
-
-  
-  <!--技术支持  -->
-  <view class='support' bindtap='jump'>
-    <image mode='widthFix' src='{{url}}{{platform.copy_logo}}'></image>
-    {{platform.wz}}
-  </view>
-</view>
-<view class='validate udlr {{proving==1?"show":"hidden"}}'>
-  <view class='back' bindtap='back'></view>
-  <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
-    <view class='body udlr'>
-      <view>绑定会员卡</view>
-      <view class='rel'>
-        <view class='ab ud'>
-          <image class='img' mode='widthFix' src='../../images/xm.jpg'></image>
-        </view>
-        <view class='ab ud'>
-          <input name="name" bindblur="user_name" placeholder='请输入您的真实姓名' placeholder-style='color:#999'></input>
-        </view>
-      </view>
-      <view class='rel'>
-        <view class='ab ud'>
-          <image class='img' mode='widthFix' src='../../images/ph.jpg'></image>
-        </view>
-        <view class='ab ud'>
-          <input name="phone" type='number' bindblur="user_tel" placeholder='请输入您的手机号' placeholder-style='color:#999'></input>
-        </view>
-      </view>
-      <view class='rel'>
-        <view class='ab ud'>
-          <image class='img' mode='widthFix' src='../../images/yz.jpg'></image>
-        </view>
-        <view class='ab ud'>
-          <input name="code" placeholder='请输入获取到的验证码' placeholder-style='color:#999'></input>
-        </view>
-        <view class='ab code' wx:if="{{getmsg=='获取验证码'}}" bindtap='sendmessg'>
-          {{getmsg}}
-        </view>
-        <view class='ab code' wx:if="{{getmsg!='获取验证码'}}" bindtap='sendmessg'>
-          {{getmsg}}
-        </view>
-      </view>
-      <button class="lgbut lr" formType="submit">免费申请</button>
-    </view>
-  </form>
 </view>

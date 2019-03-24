@@ -17,19 +17,19 @@ Page({
   onLoad: function (options) {
     
     //首页进来的条件，要缓存
-
+    console.log(options)
     if(options.save==1){
       delete options.save; 
       wx.setStorageSync("parameter", options);
     } 
-
-
+    if(options.name!=undefined){
+      this.setData({
+        name:options.name
+      })
+    }
     this.setData({
-      parameter: wx.getStorageSync("parameter")
+      parameter: wx.getStorageSync("parameter"),
     })
-   
-    console.log(this.data.parameter,"eeee");
-
     if (options.order_id){
       this.data.parameter.order_id = options.order_id;
     }
@@ -119,11 +119,9 @@ function request(e,page=1){
           var res = res.data.data;
           if (e.data.page !=1) {
             var tmp = e.data.room_list;
-
             for (var i = 0; i < res.length; i++) {
               tmp.push(res[i]);
             }
-
             e.setData({
               room_list: tmp
             })

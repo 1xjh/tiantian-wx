@@ -1,0 +1,254 @@
+page{
+  margin: 0 !important;
+}
+.box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-boxflex;
+  display: box;
+}
+
+.orders_top {
+  width: 85%;
+  margin: 20rpx auto;
+}
+
+.top_title_box {
+  margin-bottom: 13rpx;
+}
+
+.top_title_box image {
+  width: 179rpx;
+  height: 170rpx;
+}
+
+.top_title_box .top_title view:first-child {
+  font-size: 35rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(95, 95, 95, 1);
+  line-height: 60rpx;
+}
+
+.top_title_box .top_title {
+  font-size: 26rpx;
+  white-space: nowrap;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(95, 95, 95, 1);
+  line-height: 54rpx;
+  margin-left: 40rpx;
+}
+
+/* 入离时间 */
+
+.orders_time {
+  background: #e6f4f1;
+}
+
+.orders_box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  padding: 12rpx 0;
+  font-size: 25rpx;
+  color: rgba(95, 95, 95, 1);
+}
+
+.orders_box text {
+  font-size: 34rpx;
+}
+
+.search_box {
+  display: flex;
+  padding: 12rpx 0;
+}
+
+.orders_day {
+  color: #40ab91;
+  width: 90rpx;
+  height: 40rpx;
+  border: 1px solid #40ab91;
+  border-radius: 40rpx;
+  text-align: center;
+}
+
+.juchi_image {
+  width: 100%;
+  height: 60rpx;
+}
+
+/* 加减 */
+
+.stepper {
+  width: 140rpx;
+  height: 51rpx;
+  border-radius: 40rpx;
+}
+
+.stepper view {
+  width: 59rpx;
+  height: 53rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  margin-top: -4rpx;
+}
+
+.stepper input {
+  width: 40px;
+  height: 26px;
+  float: left;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 12px;
+}
+
+.stepper .normal {
+  color: #40ab91;
+}
+
+.stepper .disabled {
+  color: #000;
+}
+
+.bed_num {
+  margin-left: 70rpx;
+}
+
+.zhezhao {
+  width: 79rpx;
+  height: 53rpx;
+  position: absolute;
+  z-index: 1000;
+  margin-left: 73rpx;
+}
+
+/* 内容区 */
+
+.orders_content {
+  justify-content: space-between;
+  width: 90%;
+  margin: 10rpx auto;
+}
+
+.orders_title1 {
+  font-size: 24rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  line-height: 30px;
+}
+
+.xian {
+  width: 100%;
+  height: 1px;
+  background: #eee;
+}
+
+.add_people {
+  width: 270rpx;
+}
+
+.add_people input {
+  width: 286rpx;
+  height: 19rpx;
+  font-size: 25rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(177, 177, 177, 1);
+  line-height: 30rpx;
+  margin-left: -14px;
+}
+
+.add_people view {
+  font-size: 20rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 38rpx;
+  background: #40ab91;
+  text-align: center;
+  width: 80rpx;
+  height: 40rpx;
+  margin-top: 8rpx;
+}
+
+.orders_invoice {
+  font-size: 20rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(177, 177, 177, 1);
+  line-height: 30rpx;
+}
+
+/* 预定须知 */
+
+.orders_notice {
+  padding-bottom: 100rpx;
+  background: #eee;
+}
+
+.orders_notice_box {
+  font-family: SimSun;
+  font-weight: 400;
+  line-height: 47rpx;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.bottom_title {
+  text-align: center;
+}
+
+.orders_notice_box>view {
+  margin: 30rpx 0;
+  font-size: 30rpx;
+  color: #222;
+}
+
+.orders_notice_box>view text {
+  margin: 20rpx 0;
+  font-size: 24rpx;
+  color: rgb(70, 69, 69);
+}
+
+/* 底部按钮 */
+
+.orders_bottom {
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+}
+
+.orders_bottom1 {
+  flex: 1;
+  text-align: center;
+  background: #fff;
+  line-height: 24rpx;
+}
+
+.orders_bottom1>view {
+  margin: 15rpx 0;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(64, 171, 145, 1);
+}
+
+.orders_bottom1>text {
+  font-size: 20rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(95, 95, 95, 1);
+}
+
+.orders_bottom2 {
+  flex: 1;
+  text-align: center;
+  background: #40ab91;
+  line-height: 90rpx;
+  color: #fff;
+}

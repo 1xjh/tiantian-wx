@@ -1,0 +1,89 @@
+
+
+
+
+
+
+
+
+
+
+
+
+/* zh_jd/pages/orders/my_user.wxss */
+
+.my_user {
+  height: 100vh;
+  background: #eee;
+}
+
+.box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-boxflex;
+  display: flex;
+}
+
+.add_user_title {
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  height: 100rpx;
+  background: rgba(255, 255, 255, 1);
+  font-size: 31rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(64, 171, 145, 1);
+  line-height: 100rpx;
+}
+
+.add_user {
+  margin-top: 20rpx;
+  background: #fff;
+}
+
+.add_user_content image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 20rpx;
+}
+
+.add_user_content {
+  width: 90%;
+  margin: 0 auto;
+  line-height: 54rpx;
+}
+
+.add_user_content>view:last-child {
+  width: 90%;
+  margin: 0 auto;
+  line-height: 43rpx;
+  height: 110rpx;
+  margin-top: 14rpx;
+  margin-left:30rpx;
+}
+
+.my_user_name {
+  font-size: 31rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+}
+
+.my_user_hao {
+  font-size: 21rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(95, 95, 95, 1);
+}
+.yuding_fanhui{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #40AB91;
+}

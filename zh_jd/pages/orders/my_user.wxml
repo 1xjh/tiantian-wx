@@ -1,0 +1,17 @@
+<view class="my_user">
+<navigator url='append'>
+  <view class='add_user_title'>+ 添加入住人</view>
+</navigator>
+  <view class="add_user">
+    <view class="box add_user_content" wx:for="{{items}}"  wx:key="index">
+        <view bindtap='xuan' data-index="{{index}}" data-id="{{item.id}}">
+            <image src='{{item.check? hasSelect : noSelect}}'></image>
+        </view>
+        <view>
+          <view class='my_user_name'>{{item.name}}</view>
+          <view class='my_user_hao'>{{item.credentials}}：{{item.credentials_num}}</view>
+        </view>
+    </view>
+  </view>
+   <view bindtap="baoCun" class="yuding_fanhui" >保存</view>
+</view>

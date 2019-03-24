@@ -322,7 +322,12 @@ text {
   display: flex;
   padding: 12rpx 0;
 }
-
+.search_box input{
+  margin-left: 20rpx;
+}
+.search_box icon{
+  margin-top:10rpx;
+}
 /* 横线 */
 
 .line {
@@ -338,7 +343,7 @@ text {
   text-align: center;
   color: #fff;
   height: 49rpx;
-  width: 559rpx;
+  width: 100%;
   border-radius: 10rpx;
   margin: 30rpx 0 15rpx 0;
 }
@@ -377,6 +382,7 @@ text {
 .scroll-header {
   display: block;
   white-space: nowrap;
+  height: 200rpx;
 }
 
 .content_box .imgRight {
@@ -404,6 +410,8 @@ text {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  max-height: 600rpx;
+  min-height: 300rpx;
 }
 
 .hot_img_box .hot_img {

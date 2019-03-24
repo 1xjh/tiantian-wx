@@ -1,0 +1,69 @@
+/* zh_jd/pages/orders/append.wxss */
+
+.box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-boxflex;
+  display: flex;
+}
+
+.append_title {
+  width: 90%;
+  margin: 0 auto;
+  height: 80rpx;
+  align-items: center;
+}
+
+.append_title view {
+  flex: 1;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Medium;
+  font-weight: 500;
+  color: rgba(95, 95, 95, 1);
+}
+
+.append_title input, .append_title text {
+  flex: 3;
+  font-size: 24rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(95, 95, 95, 1);
+}
+
+.xian {
+  width: 100%;
+  height: 1px;
+  background: #eee;
+}
+
+.append_title image {
+  width: 38rpx;
+  height: 34rpx;
+}
+.append_top{
+  background:#fff;
+}
+.append{
+  height: 100vh;
+  background:#eeeeee;
+}
+.append_shengming{
+  margin: 60rpx auto;
+  width: 80%;
+  font-size:24rpx;
+  font-family:SimSun;
+  font-weight:400;
+  color:rgba(95,95,95,1);
+  line-height:53rpx;
+}
+.yuding_fanhui{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #40AB91;
+}

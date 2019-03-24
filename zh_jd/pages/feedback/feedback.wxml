@@ -1,0 +1,9 @@
+<!--zh_jd/pages/feedback/feedback.wxml-->
+<view>
+  <view class="feedback_title">意见反馈</view>
+  <view class='detail-view'>
+    <textarea class='detail-textarea' bindinput='getTextareaInput' maxlength="260" />
+    <image src='../../images/feedback.png' class='images'></image>
+  </view>
+  <view class='feedback_sumbit' bindtap='sumbit'>提交意见</view>
+</view>

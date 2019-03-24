@@ -4,8 +4,7 @@
   <view class="swiper" style="height:{{bannerHeight+'px'}};width:{{bannerWidth+'px'}}">
     <swiper indicator-dots="true" indicator-active-color="#fb5100" autoplay="true" interval="3000" duration="1200" circular='true'>
       <swiper-item wx:for="{{platform.banner}}" wx:key="key">
-        <image bindload='bannerImg' bindtap='clickimg' data-index="{{index}}" style="height:{{bannerHeight+'px'}};width:{{bannerWidth+'px'}}" class="nav-icon" mode="aspectFill" 
-        src="{{item}}" />
+        <image bindload='bannerImg' bindtap='clickimg' data-index="{{index}}" style="height:{{bannerHeight+'px'}};width:{{bannerWidth+'px'}}" class="nav-icon" mode="aspectFill" lazy-load="true" src="{{item}}" />
       </swiper-item>
     </swiper>
   </view>
@@ -53,7 +52,7 @@
           </view>
           <view class='imgRight'>
             <text>更多</text>
-            <image src='../../images/Path1@2x.png'></image>
+            <image src='../../images/Path1@2x.png' lazy-load="true"></image>
           </view>
         </navigator>
       </view>
@@ -67,27 +66,27 @@
     <!-- 热门推荐 -->
     <view  class="content_box">
       <view>
-        <navigator url="../hotel/hotel_list?onsale=1">
+        <navigator url="../details/details?onsale=1">
           <view class="title_left">
             <text>热门推荐</text>
             <view>住进网红名宿,变声偶像主角</view>
           </view>
           <view class='imgRight'>
             <text>更多</text>
-            <!-- <image src='../../images/Path1@2x.png'></image> -->
+            <image src='../../images/Path1@2x.png' ></image>
           </view>
         </navigator>
       </view>
       <view class="hot_img_box">
           <view class="hot_img" wx:for="{{recommend}}"  wx:key="index"  wx:if="{{index<4}}">
-                <image src="{{item.logo}}"></image>
+            <image src="{{item.logo}}" lazy-load="true"></image>
           </view>
       </view>
     </view>
      <!-- 周末去哪尔住 -->
     <view  class="content_box">
       <view>
-        <navigator url="../hotel/hotel_list?onsale=1">
+        <navigator url="../details/details?onsale=1">
           <view class="title_left">
             <text>周末去哪尔住</text>
             <view>换个地方,发现城市之类</view>
@@ -99,11 +98,10 @@
         </navigator>
       </view>
       <view class="hot_img_box">
-          <view class="hot_img" wx:for="{{quan_arr}}" wx:key="index" wx:if="{{index<4}}" >
-            <image src="{{item.logo}}"></image>
+          <view class="hot_img" wx:for="{{quan_arr}}" wx:key="index" wx:if="{{index<2}}" >
+            <image src="{{item.logo}}" lazy-load="true"></image>
           </view>
       </view>
-
     </view>
   </view>
 </view>

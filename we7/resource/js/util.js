@@ -261,11 +261,9 @@ util.getUserInfo = function (cb) {
 		};
 		wx.login({
 			success: function (res) {
-
         wx.getUserInfo({
           success: function (wxInfo) {
             // console.log(wxInfo);
-            
             util.request({
               url: 'auth/session/userinfo',
               data: {

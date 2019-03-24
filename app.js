@@ -1,10 +1,9 @@
 //app.js
 App({
   onLaunch: function () {
-     
+    
   },
   onLoad: function (options){
-
     // 获取用户登录信息
     //判断本地有没有token
   },
@@ -50,7 +49,6 @@ App({
     returnText = returnText.replace(/"/gi, '"');
     returnText = returnText.replace(/</gi, '<');
     returnText = returnText.replace(/>/gi, '>');
-
     return returnText;
   },
   util: require('we7/resource/js/util.js'),

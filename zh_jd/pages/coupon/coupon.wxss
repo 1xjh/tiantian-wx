@@ -1,8 +1,59 @@
 /* zh_jd/pages/coupon/coupon.wxss */
-page{
-  background: #e5e5e5;
+
+.box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.coupon {
+  /* border: 1px solid #40ab91;
+  border-right: none;
+  width: 95%;
+  margin: 20rpx auto;
+  height: 180rpx;
+  color: #40ab91;
+  justify-content: space-between; */
+  display: none;
+}
+.active {
+  border: 1px solid #A4A4A4;
+  border-right: none;
+  width: 95%;
+  margin: 20rpx auto;
+  height: 180rpx;
+  color: #A4A4A4;
+  justify-content: space-between;
+}
+.coupon_price {
+  font-size: 60rpx;
+  font-family: FZCQJW--GB1-0;
+  font-weight: bold;
+}
+
+.coupon_price view:last-child{
+  margin-left: 61rpx;
+  margin-top: -25rpx;
+}
+.coupon_content {
+  width: 30%;
+  font-size: 18rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  height: 100rpx;
+  margin-top:20rpx;
+}
+
+.coupon_image {
+  width: 33%;  
+  background:#fff;
+}
+.coupon_image image{
+  width: 100%;
   height: 100%;
 }
+/* 官方版 */
 .users{
   width: 85%;
   height: 70rpx;
@@ -64,14 +115,6 @@ page{
 .option_son>view:nth-child(3){
   border: none;
 }
-.body{
-  width: 95%;
-  height: auto;
-  /* background: #fff; */
-  margin: 20rpx auto;
-  padding-top:20rpx;
-  padding-bottom: 20rpx;
-}
 .coupons{
   width: 90%;
   height: auto;
@@ -87,21 +130,6 @@ page{
   /* background: linear-gradient(to right, #F9882B , #5C38F7); */
   overflow: hidden;
 }
-.butt{
-  width: 150rpx;
-  height: 60rpx;
-  background: orange;
-  right: -50rpx;
-  top: 80rpx;
-}
- .son_right button{
-   width: 160rpx; 
-   height: 50rpx; 
-  right: -400rpx;
-  top: 50rpx;
-  position: absolute;
-  background: red;
-} 
 .none_coupon{
   width: 100%;
   height: 350rpx;
@@ -160,15 +188,7 @@ page{
   font-weight: bold;
   color: #fff;
 }
-/* .son_left>view:nth-child(4){
-  width:  150rpx;
-  height: 1rpx;
-  top: 0rpx;
-}
-.son_left>view image{
-  width: 100%;
-  background: red;
-} */
+
 .son_right{
   height: 100%;
   width: auto;

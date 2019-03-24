@@ -6,19 +6,15 @@ var app = getApp();
 var Data = require("../../utils/data.js");
 Page({
   // ________位置——————————
-  getUserLocation: function () {
+  getUserLocation: function() {
     let vm = this;
     wx.getSetting({
       success: (res) => {
-        // console.log(JSON.stringify(res))
-        // res.authSetting['scope.userLocation'] == undefined    表示 初始化进入该页面
-        // res.authSetting['scope.userLocation'] == false    表示 非初始化进入该页面,且未授权
-        // res.authSetting['scope.userLocation'] == true    表示 地理位置授权
         if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
           wx.showModal({
             title: '请求授权当前位置',
             content: '需要获取您的地理位置，请确认授权',
-            success: function (res) {
+            success: function(res) {
               if (res.cancel) {
                 wx.showToast({
                   title: '拒绝授权',
@@ -27,7 +23,7 @@ Page({
                 })
               } else if (res.confirm) {
                 wx.openSetting({
-                  success: function (dataAu) {
+                  success: function(dataAu) {
                     if (dataAu.authSetting["scope.userLocation"] == true) {
                       wx.showToast({
                         title: '授权成功',
@@ -59,40 +55,40 @@ Page({
     })
   },
   // 微信获得经纬度
-  getLocation: function () {
+  getLocation: function() {
     let vm = this;
     wx.getLocation({
       type: 'wgs84',
-      success: function (res) {
+      success: function(res) {
         var latitude = res.latitude
         var longitude = res.longitude
         var speed = res.speed
         var accuracy = res.accuracy;
         vm.getLocal(latitude, longitude)
       },
-      fail: function (res) {
+      fail: function(res) {
         // console.log('fail' + JSON.stringify(res))
       }
     })
   },
   // 获取当前地理位置
-  getLocal: function (latitude, longitude) {
+  getLocal: function(latitude, longitude) {
     let vm = this;
     qqmapsdk.reverseGeocoder({
       location: {
         latitude: latitude,
         longitude: longitude
       },
-      success: function (res) {
+      success: function(res) {
         // console.log(JSON.stringify(res));
         let province = res.result.ad_info.province
         let city = res.result.ad_info.city
-        city = city.substring(0, city.length - 1); 
+        city = city.substring(0, city.length - 1);
         wx.setStorageSync("city", city);
-        jia(vm,city)
-        pintai(vm,city)
-        recommend(vm,city)
-        quna(vm,city)
+        jia(vm, city)
+        pintai(vm, city)
+        recommend(vm, city)
+        quna(vm, city)
         vm.setData({
           province: province,
           city: city,
@@ -101,18 +97,18 @@ Page({
         })
 
       },
-      fail: function (res) {
+      fail: function(res) {
         // console.log(res);
       },
-      complete: function (res) {
+      complete: function(res) {
         // console.log(res);
       }
     });
   },
   data: {
-    quan_arr:[], //去哪
-    recommend:[],//热门推荐
-    types:"",
+    quan_arr: [], //去哪
+    recommend: [], //热门推荐
+    types: "",
     platform: [],
     family: [],
     searchName: '',
@@ -165,126 +161,114 @@ Page({
       }
     })
   },
- 
+
   //事件处理函数
   onLoad: function(option) {
-
     console.log(option);
-    if(option.city){
+    if (option.city) {
       this.setData({
-        city:option.city
+        city: option.city
       })
       jia(this, option.city)
       pintai(this, option.city)
       recommend(this, option.city)
       quna(this, option.city)
-      wx.setStorageSync("city",option.city);
-    }else{
+      wx.setStorageSync("city", option.city);
+    } else {
       let vm = this;
       vm.getUserLocation();
     }
-    
-    qqmapsdk = new QQMapWX({
-      key: 'S5BBZ-YO534-EPPUR-DLQWP-ZPW5Z-V5FIM' //这里自己的key秘钥
-    });
 
+    qqmapsdk = new QQMapWX({
+      key: 'QIVBZ-OMFCO-BQPWW-S3Y3M-4WOSS-TAFMG' //这里自己的key秘钥
+    });
     // ------------
     var that = this
     wx.setStorageSync('startDate', '')
     wx.setStorageSync('endDate', '')
 
-    // // 获取网址信息
-    // app.util.request({
-    //   'url': 'entry/wxapp/attachurl',
-    //   'cachetime': '3600',
-    //   success: function(res) {
-    //     wx.setStorageSync("url", res.data)
-    //     that.setData({
-    //       url: res.data
-    //     })
-    //   },
-    // })
     // 获取用户登录信息
-    wx.login({
-      success: function(res) {
-        var code = res.code
+    // wx.login({
+    //   success: function(res) {
+    //     var code = res.code
+    //     console.log(res)
+    //     console.log(code,"codew d dddd033IyBcA0afdBe1B90gA0JVpcA0IyBcb")
+    //     wx.setStorageSync("code", res.code)
+    //     wx.getUserInfo({
+    //       success: function(res) {
+    //         var encryptedData = res.encryptedData
+    //         // console.log(encryptedData)
+    //         var iv = res.iv;
+    //         // console.log(iv)
 
-        wx.setStorageSync("code", res.code)
-        wx.getUserInfo({
-          success: function(res) {
-            var encryptedData = res.encryptedData
-            // console.log(encryptedData)
-            var iv = res.iv;
-            // console.log(iv)
+    //         wx.setStorageSync("user_info", res.userInfo)
+    //         that.setData({
+    //           avatarUrl: res.userInfo.avatarUrl,
+    //           nickName: res.userInfo.nickName
+    //         })
 
-            wx.setStorageSync("user_info", res.userInfo)
-            that.setData({
-              avatarUrl: res.userInfo.avatarUrl,
-              nickName: res.userInfo.nickName
-            })
+    //         app.util.request({
+    //           'url': 'index/Info/getWxUserInfo',
+    //           'cachetime': '0',
+    //           data: {
+    //             code: code
+    //           },
+    //           success: function(res) {
+    //             console.log(res.data.data,"dddkkk")
 
-            app.util.request({
-              'url': 'index/Info/getWxUserInfo',
-              'cachetime': '0',
-              data: {
-                code: code
-              },
-              success: function(res) {
-                // console.log(res.data.data,"ddd")
+    //             wx.setStorageSync("key", res.data.session_key)
+    //             var session_key = res.data.data.session_key;
 
-                wx.setStorageSync("key", res.data.session_key)
-                var session_key = res.data.data.session_key;
-
-                var img = that.data.avatarUrl
-                var name = that.data.nickName
-                // 异步保存用户openid
-                wx.setStorageSync("openid", res.data.data.openid)
-                var openid = res.data.openid
-                // console.log(openid)
-                // 获取用户登录信息
-                app.util.request({
-                  'url': 'index/Info/getallUserInfo',
-                  'cachetime': '0',
-                  method: "post",
-                  data: {
-                    encryptedData: encryptedData,
-                    iv: iv,
-                    session_key: session_key
-                  },
-                  success: function(res) {
-                    // console.log(res)
-                    // 异步保存用户登录信息
-                    wx.setStorageSync('token', res.data.data.user_token);
-                    wx.setStorageSync('users', res.data.data);
-                  },
-                })
-              },
-            })
-          },
-          fail: function(e) {
-            // console.log(e)
-            wx.showModal({
-              title: '提示',
-              content: '授权获取用户信息失败！',
-              confirmText: '重新获取',
-              success: function(res) {
-                // console.log(res)
-                if (res.confirm) {
-                  wx.reLaunch({
-                    url: '../auth/auth',
-                  })
-                } else if (res.cancel) {
-                  that.onLoad()
-                }
-              }
-            })
-          }
-        })
-      }
-    })
+    //             var img = that.data.avatarUrl
+    //             var name = that.data.nickName
+    //             // 异步保存用户openid
+    //             wx.setStorageSync("openid", res.data.data.openid)
+    //             var openid = res.data.openid
+    //             // console.log(openid)
+    //             // 获取用户登录信息
+    //             app.util.request({
+    //               'url': 'index/Info/getallUserInfo',
+    //               'cachetime': '0',
+    //               method: "post",
+    //               data: {
+    //                 encryptedData: encryptedData,
+    //                 iv: iv,
+    //                 session_key: session_key
+    //               },
+    //               success: function(res) {
+    //                 // console.log(res)
+    //                 // 异步保存用户登录信息
+    //                 wx.setStorageSync('token', res.data.data.user_token);
+    //                 wx.setStorageSync('users', res.data.data);
+    //               },
+    //             })
+    //           },
+    //         })
+    //       },
+    //       fail: function(e) {
+    //         // console.log(e)
+    //         wx.showModal({
+    //           title: '提示',
+    //           content: '授权获取用户信息失败！',
+    //           confirmText: '重新获取',
+    //           success: function(res) {
+    //             // console.log(res)
+    //             if (res.confirm) {
+    //               wx.reLaunch({
+    //                 url: '../auth/auth',
+    //               })
+    //             } else if (res.cancel) {
+    //               that.onLoad()
+    //             }
+    //           }
+    //         })
+    //       }
+    //     })
+    //   }
+    // })
     wx.getSystemInfo({
       success: function(res) {
-        console.log(res)
+        console.log(res, "[pppppp")
         that.setData({
           screenHeight: res.screenHeight,
           screenWidth: res.screenWidth,
@@ -295,21 +279,7 @@ Page({
   },
   clickimg: function(e) {
     var that = this;
-    var banner_link = that.data.platform.banner_link
     var index = e.currentTarget.dataset.index
-    if (banner_link.coupon == index + 1) {
-      wx.navigateTo({
-        url: '../coupon/coupon',
-      })
-    } else if (banner_link.active == index + 1 && banner_link.activeid > 0) {
-      wx.navigateTo({
-        url: '../noticeinfo/noticeinfo?id=' + banner_link.activeid,
-      })
-    } else if (banner_link.hotel == index + 1 && banner_link.hotelid > 0) {
-      wx.navigateTo({
-        url: '../hotel/hotel_detail?id=' + banner_link.hotelid,
-      })
-    }
   },
   // 轮播图尺寸设置
   bannerImg: function(e) {
@@ -389,7 +359,7 @@ Page({
     var name = this.data.searchName;
     // console.log(name)
     wx.navigateTo({
-      url: "../details/details?name=" + name+"&save=1",
+      url: "../details/details?name=" + name + "&save=1",
     })
   },
   searchClick: function(e) {
@@ -404,33 +374,6 @@ Page({
     that.setData({
       searchName: keywords
     })
-    if (keywords) {
-      app.util.request({
-        'url': 'entry/wxapp/searchhotel',
-        data: {
-          keywords: keywords
-        },
-        success: function(res) {
-          var data = res.data
-          // console.log(res)
-          // console.log(data.length)
-          if (data.length > 0) {
-            that.setData({
-              hotels: data
-            })
-          } else {
-            that.setData({
-              hotels: false
-            })
-          }
-
-        }
-      })
-    } else {
-      that.setData({
-        hotels: false
-      })
-    }
   },
   // 下拉刷新
   onPullDownRefresh() {
@@ -542,7 +485,7 @@ Page({
       });
     }
   },
-  
+
   onReady: function() {
     var that = this
     // console.log(that.data)
@@ -572,12 +515,14 @@ Page({
   }
 })
 // 家庭定制
-function jia(e,city){
+function jia(e, city) {
   app.util.request({
     'url': 'index/Accommoda/gethomelist',
     'cachetime': '0',
-    data: { "city": city },
-    success: function (res) {
+    data: {
+      "city": city
+    },
+    success: function(res) {
       e.setData({
         family: res.data.data
       })
@@ -585,12 +530,14 @@ function jia(e,city){
   })
 }
 // 平台信息
-function pintai(e,city){
+function pintai(e, city) {
   app.util.request({
     'url': 'index/Info/getHomeSet',
     'cachetime': '0', //缓存时间 秒
-    data: { "city": city },
-    success: function (res) {
+    data: {
+      "city": city
+    },
+    success: function(res) {
       // console.log(res,222)
       e.setData({
         getHomeSet: res
@@ -626,12 +573,14 @@ function pintai(e,city){
   })
 }
 // 热门推荐
-function recommend(e,city){
+function recommend(e, city) {
   app.util.request({
     'url': 'index/Accommoda/getByHotAccommoda',
     'cachetime': '0',
-    data: { "city": city },
-    success: function (res) {
+    data: {
+      "city": city
+    },
+    success: function(res) {
       wx.setStorageSync("url", res.data)
       e.setData({
         recommend: res.data.data
@@ -644,12 +593,14 @@ function quna(e, city) {
   app.util.request({
     'url': 'index/Accommoda/getBywhereAccommoda',
     'cachetime': '0',
-    data: { "city": city },
-    success: function (res) {
+    data: {
+      "city": city
+    },
+    success: function(res) {
       e.setData({
         quan_arr: res.data.data
       })
     },
   })
-  console.log(e.data.quan_arr,"周末去哪");
+  console.log(e.data.quan_arr, "周末去哪");
 }

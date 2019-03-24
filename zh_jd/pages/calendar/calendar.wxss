@@ -60,7 +60,8 @@ page{
     align-content: center;
     text-align: center;
     height: 80rpx;
-    margin: 5rpx 0rpx;
+    /* margin: 5rpx 0rpx; */
+    padding:5rpx 0rpx;
     /* border: 1px solid lightgray; */
 }
 .day {
@@ -73,7 +74,7 @@ page{
     line-height: 50rpx;
 }
 .border-radius {
-    border-radius: 50%;
+
     position: relative;
     left: 0;
     top: 0;
@@ -83,12 +84,13 @@ page{
     color: lightgray;
 }
 .pink-bg {
-     background-color: #EB5E18; 
+     background-color: #40AB91; 
 }
 .pink-bg1 {
   font-size: 26rpx;
-  color: #EB5E18;
+  color: #fff;
   display: block; 
+  line-height:20rpx;
 }
 .pink-bg2 {
      background-color: #EB5E18;
@@ -97,4 +99,61 @@ page{
 }
 .purple-bg {
     background-color: #EB5E18;
+}
+/* 时间收搜 */
+.residence {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 10rpx;
+  height: 350rpx;
+}
+
+.residence_box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  padding: 12rpx 0;
+  font-size: 30rpx;
+}
+
+.residence_box text {
+  font-size: 24rpx;
+  color: rgba(95, 95, 95, 1);
+}
+
+.search_box {
+  display: flex;
+  padding: 12rpx 0;
+}
+.search_box input{
+  margin-left: 20rpx;
+}
+.search_box icon{
+  margin-top:10rpx;
+}
+.residence_day{
+  color:#40AB91;
+}
+.pink-bg:last-child{
+  content: "离店";
+}
+.calendar_bottom{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  position: fixed;
+  bottom:0;
+  background:#40AB91;
+  line-height: 100rpx;
+}
+.calendar_bottom view:first-child{
+  background: #fff;
+  flex: 1;
+  text-align: center;
+}
+.calendar_bottom view:last-child{
+  background: #40AB91;
+  flex: 3;
+  text-align: center;
 }

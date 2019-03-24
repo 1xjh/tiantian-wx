@@ -1,18 +1,32 @@
 // zh_jd/pages/yuanzi_details/facility.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    icon:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that =this
+    app.util.request({
+      'url': 'index/Accommoda/getRoomDetail',
+      'cachetime': '0',
+      data: {
+        id: 49
+      },
+      success: function (res) {
+        that.setData({
+          icon: res.data.data.setting,
+        })
+        console.log(that.data.icon)
+      },
+    })
   },
 
   /**

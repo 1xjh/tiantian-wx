@@ -1,0 +1,31 @@
+/* zh_jd/pages/sheji/sheji_details.wxss */
+
+.sheji_details {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.sheji_details_title {
+  font-size: 36rpx;
+  font-family: SourceHanSansCN-Medium;
+  font-weight: bold;
+  color: rgba(34, 34, 34, 1);
+  text-align: center;
+  margin-top:40rpx;
+}
+
+.sheji_details_time {
+  float:right;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  font-size:30rpx;
+}
+.sheji_details_content {
+  font-size: 28rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  line-height: 50rpx;
+  margin-top:60rpx;
+}

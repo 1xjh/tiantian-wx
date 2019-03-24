@@ -1,0 +1,11 @@
+<!--zh_jd/pages/sheji/sheji_details.wxml-->
+<view>
+  <view class="sheji_details">
+    <view class='sheji_details_title'>胡如珊建筑艺术作品欣赏</view>
+    <view class="sheji_details_time">2019-02-21</view>
+    <view class="sheji_details_content">
+      胡如珊女士毕业于加州大学伯克莱建筑学院，获建筑学 学士学位；之后又获得普林斯顿大学建筑及城市规划硕 士学位。与郭锡恩先生创立如恩设计研究室前，胡如珊 女士曾任职于迈克·格雷夫斯（Michael Graves Architects and Associates），普林斯顿的Ralph Lerner Architect PC，纽约的Skidmore, Owings and Merrill (SOM) 以及旧金山的The Architects Collaborative (TAC) 等著名建筑公司。2004年，胡如
+      珊女士和郭锡恩先生共同创立了如恩设计研究室 （Neri&Hu），一家立足于中国上海，在英国伦敦设有 分办公室的多元化建筑计公司。
+    </view>
+  </view>
+</view>

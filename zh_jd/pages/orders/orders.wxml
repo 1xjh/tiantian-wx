@@ -1,0 +1,109 @@
+<view>
+  <view class='orders_top'>
+    <view class="top_title_box box">
+      <image src='../../images/beijing.png'></image>
+      <view class='top_title'>
+        <view>{{orders.name}}</view>
+        <view class="orders_top_people">{{orders.name_type}} | {{orders.room_num}}室 | {{orders.bed_num}}床 | 宜住{{orders.people}}人</view>
+        <view>配备门禁系统及保安，入住更安心</view>
+      </view>
+    </view>
+    <view class="orders_time">
+      <view class="orders_box" bindtap="bindViewTap">
+        <view class="orders_start">
+          <text>{{date}}</text>
+          <view role="" aria-label="">14：00后入住</view>
+        </view>
+        <view class="orders_day">共{{time}}晚</view>
+        <view class="orders_end">
+          <text>{{tomorrow}}</text>
+          <view role="" aria-label="">12：00前离店</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <image src='../../images/juchi.png' class='juchi_image'></image>
+  <!-- 中间内容 -->
+  <view>
+    <!-- 房间数量 -->
+    <view class='box orders_content'>
+      <view class="orders_title1">房间数量</view>
+      <view class="stepper box">
+        <!-- 减号 -->
+        <view class="disabled minus" bindtap="roomMinus">-</view>
+        <!-- 数值 -->
+        <input type="number" bindchange="bedNum" value="{{room}}" disabled="true" />
+        <!-- 加号 -->
+        <view class="{{total.room_num>1?roomStatus : disabled}} " bindtap="roomAdd">+</view>
+      </view>
+    </view>
+    <view class="xian"></view>
+    <!-- 入住人数 -->
+    <view class='box orders_content'>
+      <view class="orders_title1">入住人数</view>
+      <view class="stepper box">
+        <!-- 减号 -->
+        <view class="disabled minus" bindtap="peopleMinus">-</view>
+        <!-- 数值 -->
+        <input type="number" bindchange="bedNum" value="{{people}}" disabled="true" />
+        <!-- 加号 -->
+        <view class="{{peopleStatus}}" bindtap="peopleAdd">+</view>
+      </view>
+    </view>
+    <view class="xian"></view>
+    <!-- 入住人 -->
+    <view class='box orders_content'>
+      <view class="orders_title1">入住人</view>
+      <view class="add_people box" bindtop="add">
+        <input placeholder='请添加入住人的信息' disabled="true" wx:if="{{name_id==0}}"></input>
+        <input placeholder='已添加 {{name_num.length}} 名入住人' disabled="true" wx:else></input>
+        <view bindtap='jumpAdd'>添加</view>
+      </view>
+    </view>
+    <view class="xian"></view>
+    <!-- 手机号 -->
+    <view class='box orders_content'>
+      <view class="orders_title1">手机号</view>
+      <view class="add_people box">
+        <input placeholder='用于接受订单信息' bindinput="bindPhone" maxlength="11" type="number"></input>
+      </view>
+    </view>
+    <view class="xian"></view>
+    <view class='box orders_content'>
+      <view class="orders_title1">优惠卷</view>
+      <view class="add_people box" bindtap='couponPrice'>
+        <input placeholder='' value='{{coupon_price===0?"使用优惠卷": -coupon_price}}'  disabled="true"></input>
+      </view>
+    </view>
+    <view class="xian"></view>
+    <!-- 开发票 -->
+    <view class='orders_content'>
+      <view class="orders_title1">如需要开发票请登录个人中心</view>
+      <view class="orders_invoice">开取路径：天天惦记小程序-我的-开具发票</view>
+    </view>
+  </view>
+  <!-- 预定须知 -->
+  <view class='orders_notice'>
+    <view class="orders_notice_box">
+      <view class="bottom_title">—— 预订须知 ——</view>
+      <view>严格退订:
+        <text>取消订单，扣取房费的50%作为违约金支付给房东，如提前离店，扣除剩余房费50%作为违约金支付给房东 </text>
+      </view>
+      <view>押金提示：
+        <text>在线支付押金，到店后无需再支付押金，住房押金离店后，如无需扣款，将原方式退还。 </text>
+      </view>
+      <view>入住提示:
+        <text>请根据实际入住人数填写，人数不同房价也将有所不同 </text>
+      </view>
+    </view>
+
+  </view>
+  <!-- 底部 -->
+  <view class='orders_bottom box'>
+    <view class='orders_bottom1'>
+      <view>￥{{orders.original_price * room}}</view>
+      <text>含押金100元（可退）</text>
+    </view>
+    <view class='orders_bottom2' bindtap="submit">提交订单</view>
+  </view>
+</view>

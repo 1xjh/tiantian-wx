@@ -1,1 +1,74 @@
 /* zh_jd/pages/sheji/sheji.wxss */
+
+.box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-boxflex;
+  display: flex;
+}
+
+.sheji_box {
+  padding-left: 43rpx;
+  padding-bottom: 43rpx;
+  border-top: 1px solid #eee;
+}
+
+.sheji_title {
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  margin-bottom: 20rpx;
+}
+
+.sheji_name {
+  font-size: 40rpx;
+  font-family: Li-Xuke;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  margin: 40rpx 0 15rpx 0;
+}
+
+.sheji_box .sheji_image image {
+  width: 100%;
+  height: 100%;
+}
+
+.sheji_box .sheji_image {
+  width: 1200rpx;
+  height: 279rpx;
+  margin-top: 88rpx;
+}
+
+/* 介绍 */
+
+.sheji_introduction {
+  width: 428rpx;
+  height: 201rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  font-size: 26rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+}
+
+.xian {
+  width: 100%;
+  height: 1px;
+  background: #eee;
+}
+
+.sheji_dou {
+  position: absolute;
+  color: #40ab91;
+  width:32%;
+  background: #fff;
+  margin-left: 189rpx;
+  margin-top: -41rpx;
+  font-size: 26rpx;
+}

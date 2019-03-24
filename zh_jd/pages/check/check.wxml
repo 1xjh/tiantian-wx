@@ -1,62 +1,34 @@
 <!--zh_jd/pages/check/check.wxml-->
 <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view>
+  </view>
   <view class='container font'>
-    <!-- <view>免责声明</view> -->
     <view class='header'>
-      <!-- <view class='apply rel'>
-        <view class='ab udlr'>
-          <text></text>
-          <text>免责声明:入驻申请完成之后，</text>
-        </view>
-      </view> -->
-
     </view>
     <view class='detailed'>
       <view>
         <view class='hotel_name '>
-          <view class='total fl'>院子名称</view>
+          <view class='total fl'>民宿名称</view>
           <view class='input fl'>
             <input name='hotel_name' placeholder='请输入院子名称'></input>
           </view>
         </view>
-        <view class='hotel_name'>
-          <view class='total fl'>院子星级</view>
-          <picker bindchange="bindPickerChanges" value="{{index}}" range="{{arrays}}">
-            <view class='input fl'>
-              {{arrays[index]}}
-            </view>
-          </picker>
+        <view class='hotel_name '>
+          <view class='total fl'>民宿地区</view>
+          <view class='input fl'>
+            <input name='hotel_name' placeholder='请输入民宿城市'></input>
+          </view>
         </view>
         <view class='hotel_name '>
-          <view class='total fl'>院子地区</view>
-          <picker bindchange="bindRegionChange" value="{{city}}" range="{{city}}">
-            <view class='input fl'>
-              {{city[inde]}}
-            </view>
-          </picker>
-        </view>
-        <view class='hotel_name ' >
           <view class='total fl'>具体地址</view>
           <view class='input fl'>
             <input name='hotel_address' placeholder='请输入具体地址'></input>
           </view>
         </view>
         <view class='hotel_name'>
-          <view class='total fl'>联系姓名</view>
+          <view class='total fl'>联系邮箱</view>
           <view class='input fl'>
-            <input name="hotel_contacts" placeholder='联系人姓名'></input>
-          </view>
-        </view>
-        <view class='hotel_name'>
-          <view class='total fl'>院子电话</view>
-          <view class='input fl'>
-            <input name="hotel_tel"  type='number' class='hotel_tel' placeholder='院子电话'></input>
-          </view>
-        </view>
-        <view class='hotel_name'>
-          <view class='total fl'>院子邮箱</view>
-          <view class='input fl'>
-            <input name="hotel_mail"  type='text' class='hotel_tel' placeholder='院子邮箱'></input>
+            <input name="hotel_mail" type='text' class='hotel_tel' placeholder='联系邮箱'></input>
           </view>
         </view>
         <view class='hotel_name '>
@@ -75,7 +47,7 @@
             <view class='rel'>
               <view class='ab udlr' bindtap='choose'>
                 <image class='im ab udlr' wx:if="{{logo==null}}" src='../../images/sz.png'></image>
-                <image class='img'  wx:if="{{logo!=null}}" src='{{logo}}'></image>
+                <image class='img' wx:if="{{logo!=null}}" src='{{logo}}'></image>
               </view>
             </view>
             <view class='rel'>
@@ -92,31 +64,13 @@
             </view>
           </view>
         </view>
-        <!-- <view class='hotel_name' style='border-radius:20rpx;height:auto;min-height:40px;max-height:230rpx'>
-           <view class='total fl' style='line-height:80rpx;'>院子设施</view>
-          <view class='input iinlin_block'>
-            <text wx:if="{{facilities==null||facilities==''}}" bindtap='choice'>选择院子设施</text>
-            <text wx:if="{{facilities!=null}}" bindtap='choice'>
-                      <text wx:for="{{facilities}}">{{item}}</text>
-            </text>
-          </view> 
-
-           <text class='fr' bindtap='complete' style='border-bottom-left-radius:20rpx;border-bottom-right-radius:20rpx;margin-right:20rpx;font-size:24rpx;color:green;line-height:80rpx;margin-bottom:20rpx;'>完成</text> 
-          <view class='checkbox rel iinlin_block' wx:if="{{choice==true}}">
-            <checkbox-group bindchange="checkboxChange">
-              <label class="checkboxs" wx:for="{{items}}">
-                <checkbox style='transform:scale(.8)' value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
-              </label>
-            </checkbox-group>
-          </view>
-        </view> -->
         <view class='hotel_name' style='margin-top:-2rpx;'>
           <view class='total fl'>手机号</view>
           <view class='input fl'>
-            <input name='yz_tel'  type='digit' bindblur="user_name" placeholder='请输入你现在的手机号'></input>
+            <input name='yz_tel' type='digit' bindblur="user_name" placeholder='请输入你现在的手机号' maxlength='11'></input>
           </view>
         </view>
-        <view class='hotel_name rel ' style='margin-top:0;'>
+        <view class='hotel_name rel'>
           <view class='total fl'>验证码</view>
           <view class='input fl'>
             <input name='yz_code' placeholder='请输入验证码'></input>
@@ -128,7 +82,7 @@
             {{getmsg}}
           </view>
         </view>
-        <view class='verification '>其他补充</view>
+        <view class='verification '>请填入其他补充</view>
         <view class='supplement '>
           <textarea name="textarea" placeholder='如您有其他补充,请在这里输入'></textarea>
         </view>
@@ -138,5 +92,4 @@
       </view>
     </view>
   </view>
-
 </form>

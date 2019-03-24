@@ -1,2 +1,38 @@
 <!--zh_jd/pages/sheji/sheji.wxml-->
-<text>zh_jd/pages/sheji/sheji.wxml</text>
+<view>
+  <view class="sheji_box box">
+    <view class="sheji_content">
+      <view class="sheji_name">胡如珊</view>
+      <view class="sheji_title">人物简介：</view>
+      <view class="sheji_introduction">乔治·索罗斯（George Soros），本 名捷尔吉·施瓦茨（Gyoumlrgy Schw artz），著名的慈善家，货币投机家， 股票投资者,1930年8月12日生于匈 利布达佩斯多粉红色的了发生了丝黛芬妮第三方看见爱上对方会
+      </view>
+      <view class="sheji_dou" bindtap='more'>查看跟多</view>
+    </view>
+    <view class="sheji_image">
+      <image src='../../images/back.png'></image>
+    </view>
+  </view>
+  <view class="sheji_box box">
+    <view class="sheji_content">
+      <view class="sheji_name">胡如珊</view>
+      <view class="sheji_title">人物简介：</view>
+      <view class="sheji_introduction">乔治·索罗斯（George Soros），本 名捷尔吉·施瓦茨（Gyoumlrgy Schw artz），著名的慈善家，货币投机家， 股票投资者,1930年8月12日生于匈牙 利布达佩斯</view>
+      <view class="sheji_dou" bindtap='more'>查看跟多</view>
+    </view>
+    <view class="sheji_image">
+      <image src='../../images/back.png'></image>
+    </view>
+  </view>
+  <view class="sheji_box box">
+    <view class="sheji_content">
+      <view class="sheji_name">胡如珊</view>
+      <view class="sheji_title">人物简介：</view>
+      <view class="sheji_introduction">乔治·索罗斯（George Soros），本 名捷尔吉·施瓦茨（Gyoumlrgy Schw artz），著名的慈善家，货币投机家， 股票投资者,1930年8月12日生于匈牙 利布达佩斯
+      </view>
+      <view class="sheji_dou">查看跟多</view>
+    </view>
+    <view class="sheji_image">
+      <image src='../../images/back.png'></image>
+    </view>
+  </view>
+</view>

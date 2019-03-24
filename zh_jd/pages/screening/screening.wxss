@@ -186,3 +186,15 @@
   font-size: 18rpx;
   line-height: 40rpx;
 }
+
+.baocun_sord{
+   position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #40AB91;
+}

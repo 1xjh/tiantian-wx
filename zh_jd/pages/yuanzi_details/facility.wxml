@@ -4,33 +4,53 @@
   <view class="facility_box">
     <view class="facility_title">基础设施</view>
     <view class='facility_content box'>
-      <view class="box">
-        <image src='../../images/tv.png'></image>
-        <text>电视</text>
+      <view class="box" wx:if="{{icon.home[1]==1}}">
+        <image src='../../images/home1.png'></image>
+        <text>无限网络</text>
       </view>
-      <view class="box">
+      <view class="box" wx:if="{{icon.home[2]==1}}">
         <image src='../../images/home2.png'></image>
-        <text>冰箱</text>
-      </view>
-      <view class="box">
-        <image src='../../images/kongTiao.png'></image>
         <text>空调</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.home[3]==1}}">
+        <image src='../../images/home3.png'></image>
+        <text>电视</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.home[4]==1}}">
+        <image src='../../images/home4.png'></image>
+        <text>冰箱</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.home[5]==1}}">
+        <image src='../../images/home5.png'></image>
+        <text>洗衣机</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.home[6]==1}}">
+        <image src='../../images/home6.png'></image>
+        <text>电热水壶</text>
+      </view>
+      <view class="box" wx:if="{{icon.home[8]==1}}">
+        <image src='../../images/home7.png'></image>
+        <text>电吹风</text>
+      </view>
+      <view class="box" wx:if="{{icon.home[9]==1}}">
+        <image src='../../images/home8.png'></image>
+        <text>晾衣架</text>
+      </view>
+      <view class="box" wx:if="{{icon.home[10]==1}}">
+        <image src='../../images/home9.png'></image>
+        <text>拖鞋</text>
+      </view>
+      <view class="box" wx:if="{{icon.home[11]==1}}">
+        <image src='../../images/home10.png'></image>
+        <text>装饰字画</text>
+      </view>
+      <view class="box" wx:if="{{icon.home[12]==1}}">
+        <image src='../../images/home11.png'></image>
+        <text>休闲椅</text>
+      </view>
+      <view class="box" wx:if="{{icon.home[7]==1}}">
+        <image src='../../images/home12.png'></image>
+        <text>茶几</text>
       </view>
     </view>
   </view>
@@ -38,33 +58,37 @@
   <view class="facility_box">
     <view class="facility_title">卫浴设施</view>
     <view class='facility_content box'>
-      <view class="box">
-        <image src='../../images/tv.png'></image>
-        <text>电视</text>
+      <view class="box" wx:if="{{icon.bathroom[1]==1}}">
+        <image src='../../images/bathroom1.png'></image>
+        <text>全天热水</text>
       </view>
-      <view class="box">
-        <image src='../../images/home2.png'></image>
-        <text>冰箱</text>
+      <view class="box" wx:if="{{icon.bathroom[2]==1}}">
+        <image src='../../images/bathroom2.png'></image>
+        <text>洗浴用品</text>
       </view>
-      <view class="box">
-        <image src='../../images/kongTiao.png'></image>
-        <text>空调</text>
+      <view class="box" wx:if="{{icon.bathroom[3]==1}}">
+        <image src='../../images/bathroom3.png'></image>
+        <text>毛巾</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.bathroom[4]==1}}">
+        <image src='../../images/bathroom4.png'></image>
+        <text>牙刷</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.bathroom[5]==1}}">
+        <image src='../../images/bathroom5.png'></image>
+        <text>独立卫浴</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.bathroom[6]==1}}">
+        <image src='../../images/bathroom6.png'></image>
+        <text>浴巾</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.bathroom[7]==1}}">
+        <image src='../../images/bathroom7.png'></image>
+        <text>香皂</text>
+      </view>
+      <view class="box" wx:if="{{icon.bathroom[8]==1}}">
+        <image src='../../images/bathroom8.png'></image>
+        <text>卫生纸</text>
       </view>
     </view>
   </view>
@@ -72,33 +96,37 @@
   <view class="facility_box">
     <view class="facility_title">厨房设施</view>
     <view class='facility_content box'>
-      <view class="box">
-        <image src='../../images/tv.png'></image>
-        <text>电视</text>
+      <view class="box" wx:if="{{icon.kitchen[1]==1}}">
+        <image src='../../images/kitchen1.png'></image>
+        <text>烹饪锅具</text>
       </view>
-      <view class="box">
-        <image src='../../images/home2.png'></image>
-        <text>冰箱</text>
+      <view class="box" wx:if="{{icon.kitchen[2]==1}}">
+        <image src='../../images/kitchen2.png'></image>
+        <text>餐具</text>
       </view>
-      <view class="box">
-        <image src='../../images/kongTiao.png'></image>
-        <text>空调</text>
+      <view class="box" wx:if="{{icon.kitchen[3]==1}}">
+        <image src='../../images/kitchen3.png'></image>
+        <text>燃气炉</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.kitchen[4]==1}}">
+        <image src='../../images/kitchen4.png'></image>
+        <text>调料</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.kitchen[5]==1}}">
+        <image src='../../images/kitchen5.png'></image>
+        <text>电饭煲</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.kitchen[6]==1}}">
+        <image src='../../images/kitchen6.png'></image>
+        <text>洗涤用具</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.kitchen[7]==1}}">
+        <image src='../../images/kitchen7.png'></image>
+        <text>整体橱柜</text>
+      </view>
+      <view class="box" wx:if="{{icon.kitchen[8]==1}}">
+        <image src='../../images/kitchen8.png'></image>
+        <text>红酒杯</text>
       </view>
     </view>
   </view>
@@ -106,33 +134,37 @@
   <view class="facility_box">
     <view class="facility_title">特色及其他</view>
     <view class='facility_content box'>
-      <view class="box">
-        <image src='../../images/tv.png'></image>
-        <text>电视</text>
+      <view class="box" wx:if="{{icon.other[1]==1}}">
+        <image src='../../images/other1.png'></image>
+        <text>观景露台</text>
       </view>
-      <view class="box">
-        <image src='../../images/home2.png'></image>
-        <text>冰箱</text>
+      <view class="box" wx:if="{{icon.other[2]==1}}">
+        <image src='../../images/other2.png'></image>
+        <text>门禁系统</text>
       </view>
-      <view class="box">
-        <image src='../../images/kongTiao.png'></image>
-        <text>空调</text>
+      <view class="box" wx:if="{{icon.other[3]==1}}">
+        <image src='../../images/other3.png'></image>
+        <text>灭火器</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.other[4]==1}}">
+        <image src='../../images/other4.png'></image>
+        <text>保安</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.other[5]==1}}">
+        <image src='../../images/other5.png'></image>
+        <text>有窗户</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.other[6]==1}}">
+        <image src='../../images/other6.png'></image>
+        <text>落地窗</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.other[7]==1}}">
+        <image src='../../images/other7.png'></image>
+        <text>浴缸</text>
+      </view>
+      <view class="box" wx:if="{{icon.other[8]==1}}">
+        <image src='../../images/other8.png'></image>
+        <text>湖景</text>
       </view>
     </view>
   </view>
@@ -140,33 +172,25 @@
   <view class="facility_box">
     <view class="facility_title">周边500米</view>
     <view class='facility_content box'>
-      <view class="box">
-        <image src='../../images/tv.png'></image>
-        <text>电视</text>
+      <view class="box" wx:if="{{icon.surround[1]==1}}">
+        <image src='../../images/surround1.png'></image>
+        <text>菜市场</text>
       </view>
-      <view class="box">
-        <image src='../../images/home2.png'></image>
-        <text>冰箱</text>
+      <view class="box" wx:if="{{icon.surround[2]==1}}">
+        <image src='../../images/surround2.png'></image>
+        <text>餐厅</text>
       </view>
-      <view class="box">
-        <image src='../../images/kongTiao.png'></image>
-        <text>空调</text>
+      <view class="box" wx:if="{{icon.surround[3]==1}}">
+        <image src='../../images/surround3.png'></image>
+        <text>药店</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.surround[4]==1}}">
+        <image src='../../images/surround4.png'></image>
+        <text>提款机</text>
       </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
-      </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
-      </view>
-      <view class="box">
-        <image src='../../images/shuiHu.png'></image>
-        <text>热水壶</text>
+      <view class="box" wx:if="{{icon.surround[5]==1}}">
+        <image src='../../images/surround5.png'></image>
+        <text>超市</text>
       </view>
     </view>
   </view>

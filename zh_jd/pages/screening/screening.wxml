@@ -87,4 +87,5 @@
       </view>
     </view>
   </view>
+  <view class="baocun_sord" bindtap='jump_details'>保存</view>
 </view>

@@ -9,7 +9,7 @@ Page({
     chuangShu:0,//入住床数
     renStatus: 'disabled',
     chuangStatus:'disabled',
-    huxing: ["一居", "二居", "三居", "四局", "四局以上"],
+    huxing: ["一居", "二居", "三居", "四居", "四居以上"],
     discount: ["今日甩卖", "断房特惠","连住优惠"],
     housing:[
       {id:1, title: "整套出租", content: "独享整套房屋" },
@@ -26,7 +26,7 @@ Page({
     rightValue: 1200,
     leftWidth: '40', 
     rightWidth: '40',
-    sumPrice:"8000"
+    sumPrice:"80000"
   },
 
   // 左边滑块滑动的值
@@ -81,13 +81,28 @@ Page({
     this.setData({
       housingIndex:e.currentTarget.id
     })
-    console.log(this.data.housingIndex)
   },
   // 优惠
   discount:function(e){
     this.setData({
       discountIndex:e.currentTarget.id
     })
+  },
+  //保存
+  jump_details:function(e){
+    var that = this
+    console.log(that.data.sumPrice)//价格
+    console.log(that.data.huIndex)//户型
+    console.log(that.data.renShu)//人数
+    console.log(that.data.chuangShu)//床数
+    console.log(that.data.housingIndex)//户型
+    console.log(that.data.discountIndex)//优惠
+    // wx.navigateTo({
+    //   url: '../details/details',
+    //   success: function(res) {},
+    //   fail: function(res) {},
+    //   complete: function(res) {},
+    // })
   },
   // 人数数量的加减
   bindMinus: function () {
@@ -141,7 +156,6 @@ Page({
         chuangStatus: chuangStatus
       })
       // chuangShu++;
-      console.log(chuangShu)
     },
     // 加
     bedAdd:function(){
@@ -152,7 +166,6 @@ Page({
         chuangShu:chuangShu,
         chuangStatus:chuangStatus
       })
-      console.log(chuangShu)
     },
   /**1
    * 生命周期函数--监听页面加载

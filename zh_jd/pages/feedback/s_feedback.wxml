@@ -1,0 +1,5 @@
+<!--zh_jd/pages/feedback/s_feedback.wxml-->
+<view>
+  <view class="s_feedback_title">感谢亲的意见反馈，我们将努力改进，尽力做得最好</view>
+  <view class='s_feedback_home' bindtap='home'>返回首页</view>
+</view>

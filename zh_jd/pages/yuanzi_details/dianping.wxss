@@ -38,9 +38,11 @@
   width: 93%;
   margin: 0 auto;
 }
-.comment_content{
-  margin:  80rpx 0;
+
+.comment_content {
+  margin: 80rpx 0;
 }
+
 /* 头像 */
 
 .comment_title image {
@@ -92,25 +94,47 @@
   height: 130rpx;
   margin-left: 3rpx;
 }
-.hui_fu{
-  background:#ecf6f4;
-  padding: 10rpx;
 
+.hui_fu {
+  background: #ecf6f4;
+  padding: 10rpx;
 }
+
 .hui_fu view {
   color: #40ab91;
-  font-size:31rpx;
+  font-size: 24rpx;
 }
 
 .hui_fu text {
-  font-size:31rpx;
+  font-size: 24rpx;
   font-family: SourceHanSansCN-Regular;
   font-weight: 400;
-  color: #222222;
-  line-height: 36rpx;
+  color: rgba(34, 34, 34, 1);
+  line-height: 40rpx;
 }
-.comment_gendou{
+
+.comment_gendou {
   position: absolute;
-  background: #40AB91;
-  right:20rpx;
+  background: #fff;
+  right: 29rpx;
+  width: 215rpx;
+  margin-top: -38rpx;
+  color: #40ab91;
+}
+
+.content_a {
+  overflow: hidden;
+  text-indent: length(100);
+  text-overflow: ellipsis;
+  text-overflow: -o-ellipsis-lastline;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.content_a.on {
+  display: block;
+  text-overflow: clip;
+  overflow: visible;
+  transform: 5s;
 }

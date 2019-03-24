@@ -6,7 +6,7 @@
       <view class="details_icon">
         <icon type="search" size="20" />
       </view>
-      <input class="details_search"  value="{{name}}" placeholder="{{name!='' ? name : '可以搜索珠海'}}"></input>
+      <input class="details_search" value="{{name}}" placeholder="{{name!='' ? name : '可以搜索珠海'}}"></input>
     </view>
   </view>
   <view class="screening_box">
@@ -27,24 +27,22 @@
       <navigator url="../screening/screening">
         <view class="fle1 box">
           <text>筛选</text>
-          <image  src="../../images/Path-2@2x.png"></image>
+          <image src="../../images/Path-2@2x.png"></image>
         </view>
       </navigator>
     </view>
     <view class="d_list">
-
-      <view class="d_content "  wx:for="{{room_list}}"   wx:key="id" >
+      <view class="d_content " wx:for="{{room_list}}" wx:key="id">
         <view class="d_img" data-id='{{item.id}}' bindtap='jumpDetails'>
           <image src='{{item.logo}}'></image>
         </view>
         <view class="d_good box">
-          <view wx:for="{{item.tab_arr}}" wx:for-item='tab'  wx:key="id">
+          <view wx:for="{{item.tab_arr}}" wx:for-item='tab' wx:key="id">
             <view class="d_good_font">{{tab}}</view>
           </view>
         </view>
         <view class="d_title box">
           <view class="d_site">
-            <!-- <image></image> -->
           </view>
           <view class="d_site_name">{{item.s_name}}</view>
         </view>

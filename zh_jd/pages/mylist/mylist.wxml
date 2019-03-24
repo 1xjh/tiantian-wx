@@ -18,7 +18,6 @@
         <view class="weui-tab__panel">
 
           <!--全部 -->
-
           <view hidden="{{activeIndex != 'all'}}">
             <!-- <view wx:if="{{allOrder==null||order==false||allOrder==''}}"> -->
             <view wx:if="{{aruzhu==false && azhifu==false && awancheng==false}}">
@@ -27,14 +26,14 @@
               </view>
               <view class='aaa'>没有订单，定个房间试试吧</view>
             </view>
-             <block wx:for="{{ruzhu}}" wx:if="{{ruzhu!=''}}" wx:key="index">
+            <block wx:for="{{ruzhu}}" wx:if="{{ruzhu!=''}}" wx:key="index">
               <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset" data-oid="{{item.id}}">
                 <view class="mylist1" bindtap='details' data-xid="{{item.id}}">
                   <view class="mylist_title">
-                    <text>定单号 : {{item.danhao}}</text>
-                    <text class="mylist_title3" wx:if="{{item.status==1}}">已支付</text>
-                    <text class="mylist_title3" wx:if="{{item.status==2}}">待入住</text>
-                    <text class="mylist_title3" wx:if="{{item.status==3}}">已完成</text>
+                    <text>定单号 : {{item.order_no}}</text>
+                    <text class="mylist_title3" wx:if="{{item.status==0}}">待支付</text>
+                    <text class="mylist_title3" wx:if="{{item.status==1}}">待入住</text>
+                    <text class="mylist_title3" wx:if="{{item.status==2}}">已完成</text>
                   </view>
                   <view class="line"></view>
                   <view class="mylist_centent_box">
@@ -42,20 +41,22 @@
                       <image src='../../images/beijing.png'></image>
                     </view>
                     <view class="mylist_title_box">
-                      <view class="mylist_title1">{{item.name}}</view>
-                      <view class="mylist_title2">{{item.title}}</view>
-                      <view class="mylist_title2">{{item.start}}</view>
-                      <view class="mylist_title2">{{item.end}}</view>
+                      <view class="mylist_title1">{{item.seller_name}}</view>
+                      <view class="mylist_title2">{{item.room_name}}</view>
+                      <view class="mylist_title2">{{item.arrival_time}}</view>
+                      <view class="mylist_title2">{{item.departure_time}}</view>
                     </view>
                   </view>
                 </view>
                 <view class="mylist_banner1 mylist_title2">
-                  <view class="mylist_banner2">合计：{{item.price}}</view>
+                  <view class="mylist_banner2" >合计：{{item.online_price}}
+                    <text wx:if="{{item.status===0}}">31分后订单自动取</text>
+                  </view>
+                  <view class="mylist_fangdong" wx:if="{{item.status===0}}">联系房东</view>
                   <view class="mylist_banner3" hidden="{{quxiaodingdan}}">
-                    <!-- <view class="mylist_banner4" bindtap="click1" data-oid="{{item.id}}">取消订单</view> -->
                     <view class="mylist_banner5">
-                      <button formType="submit" bindtap='click_money'  wx:if="{{item.status==1}}">去付款</button>
-                      <button formType="submit" bindtap='click_money'  wx:if="{{item.status==3}}">去评价</button>
+                      <button formType="submit" bindtap='click_money' wx:if="{{item.status==0}}">去付款</button>
+                      <button formType="submit" bindtap='click_money' wx:if="{{item.status==2}}">去评价</button>
                     </view>
                   </view>
                 </view>
@@ -73,10 +74,10 @@
               <view class='aaa'>没有订单，定个房间试试吧</view>
             </view>
             <block wx:for="{{ruzhu}}" wx:if="{{ruzhu!=''}}" wx:key="key">
-              <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset" data-oid="{{item.id}}" wx:if="{{item.status==1}}">
+              <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset" data-oid="{{item.id}}" wx:if="{{item.status==0}}">
                 <view class="mylist1" bindtap='details' data-xid="{{item.id}}">
                   <view class="mylist_title">
-                    <text>定单号 : {{item.danhao}}</text>
+                    <text>定单号 : {{item.order_no}}</text>
                     <text class="mylist_title3">待支付</text>
                   </view>
                   <view class="line"></view>
@@ -85,17 +86,19 @@
                       <image src='../../images/beijing.png'></image>
                     </view>
                     <view class="mylist_title_box">
-                      <view class="mylist_title1">{{item.name}}</view>
-                      <view class="mylist_title2">{{item.title}}</view>
-                      <view class="mylist_title2">{{item.start}}</view>
-                      <view class="mylist_title2">{{item.end}}</view>
+                      <view class="mylist_title1">{{item.seller_name}}</view>
+                      <view class="mylist_title2">{{item.room_name}}</view>
+                      <view class="mylist_title2">{{item.arrival_time}}</view>
+                      <view class="mylist_title2">{{item.departure_time}}</view>
                     </view>
                   </view>
                 </view>
                 <view class="mylist_banner1 mylist_title2">
-                  <view class="mylist_banner2">合计：{{item.price}}</view>
-                  <view class="mylist_banner3" hidden="{{quxiaodingdan}}">
-                    <!-- <view class="mylist_banner4" bindtap="click1" data-oid="{{item.id}}">取消订单</view> -->
+                  <view class="mylist_banner2">合计：{{item.online_price}}
+                    <text>31分后订单自动取</text>
+                  </view>
+                  <view class="mylist_fangdong">联系房东</view>
+                  <view class="mylist_banner3">
                     <view class="mylist_banner5">
                       <button formType="submit" bindtap='click_money'>去付款</button>
                     </view>
@@ -107,7 +110,7 @@
           <!--待入住  -->
           <view class="weui-tab__content mylist_back" hidden="{{activeIndex != 1}}">
             <!-- <view wx:if="{{check==null||check==''||orders==false}}"> -->
-             <view wx:if="{{aruzhu==false}}">
+            <view wx:if="{{aruzhu==false}}">
               <view class="mylist_back1">
                 <image class="mylist_back2" src="../../images/backg.png"></image>
               </view>
@@ -117,7 +120,7 @@
               <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset" data-oid="{{item.id}}" wx:if="{{item.status==2}}">
                 <view class="mylist1" bindtap='details' data-xid="{{item.id}}">
                   <view class="mylist_title">
-                    <text>定单号 : {{item.danhao}}</text>
+                    <text>定单号 : {{item.order_no}}</text>
                     <text class="mylist_title3">待入住</text>
                   </view>
                   <view class="line"></view>
@@ -126,17 +129,15 @@
                       <image src='../../images/beijing.png'></image>
                     </view>
                     <view class="mylist_title_box">
-                      <view class="mylist_title1">{{item.name}}</view>
-                      <view class="mylist_title2">{{item.title}}</view>
-                      <view class="mylist_title2">{{item.start}}</view>
-                      <view class="mylist_title2">{{item.end}}</view>
+                      <view class="mylist_title1">{{item.seller_name}}</view>
+                      <view class="mylist_title2">{{item.room_name}}</view>
+                      <view class="mylist_title2">{{item.arrival_time}}</view>
+                      <view class="mylist_title2">{{item.departure_time}}</view>
                     </view>
                   </view>
                 </view>
                 <view class="mylist_banner1 mylist_title2">
-                  <view class="mylist_banner2">合计：{{item.price}}</view>
-                  <view class="mylist_banner3" hidden="{{quxiaodingdan}}">
-                  </view>
+                  <view class="mylist_banner2">合计：{{item.online_price}}</view>
                 </view>
               </form>
             </block>
@@ -150,11 +151,11 @@
               </view>
               <view class='aaa'>没有以玩的的订单，去定个房吧</view>
             </view>
-             <block wx:for="{{ruzhu}}" wx:if="{{ruzhu!=''}}" wx:key="index">
-              <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset" data-oid="{{item.id}}" wx:if="{{item.status==3}}">
+            <block wx:for="{{ruzhu}}" wx:if="{{ruzhu!=''}}" wx:key="index">
+              <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset" data-oid="{{item.id}}" wx:if="{{item.status===2}}">
                 <view class="mylist1" bindtap='details' data-xid="{{item.id}}">
                   <view class="mylist_title">
-                    <text>定单号 : {{item.danhao}}</text>
+                    <text>定单号 : {{item.order_no}}</text>
                     <text class="mylist_title3">已完成</text>
                   </view>
                   <view class="line"></view>
@@ -163,17 +164,16 @@
                       <image src='../../images/beijing.png'></image>
                     </view>
                     <view class="mylist_title_box">
-                      <view class="mylist_title1">{{item.name}}</view>
-                      <view class="mylist_title2">{{item.title}}</view>
-                      <view class="mylist_title2">{{item.start}}</view>
-                      <view class="mylist_title2">{{item.end}}</view>
+                      <view class="mylist_title1">{{item.seller_name}}</view>
+                      <view class="mylist_title2">{{item.room_name}}</view>
+                      <view class="mylist_title2">{{item.arrival_time}}</view>
+                      <view class="mylist_title2">{{item.departure_time}}</view>
                     </view>
                   </view>
                 </view>
                 <view class="mylist_banner1 mylist_title2">
-                  <view class="mylist_banner2">合计：{{item.price}}</view>
+                  <view class="mylist_banner2">合计：{{item.online_price}}</view>
                   <view class="mylist_banner3" hidden="{{quxiaodingdan}}">
-                    <!-- <view class="mylist_banner4" bindtap="click1" data-oid="{{item.id}}">取消订单</view> -->
                     <view class="mylist_banner5">
                       <button formType="submit" bindtap='click_money'>去评价</button>
                     </view>

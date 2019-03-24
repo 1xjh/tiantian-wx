@@ -1,0 +1,21 @@
+/* zh_jd/pages/feedback/s_feedback.wxss */
+
+.s_feedback_title {
+  font-size: 26rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(2, 34, 34, 1);
+  width:90%;
+  margin: 100rpx auto;
+  text-align: center;
+}
+.s_feedback_home{
+   width: 100%;
+  height: 100rpx;
+  background:#40AB91;
+  text-align: center;
+  color:#fff;
+  line-height: 100rpx;
+  position: fixed;
+  bottom:0;
+}

@@ -14,7 +14,14 @@ Page({
   onLoad: function (options) {
 
   },
-
+  more:function(){
+    wx.navigateTo({
+      url: 'sheji_details',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,7 +1,7 @@
 <!--zh_jd/pages/coupon/coupon.wxml-->
 <view class='container fon'>
   <view class='header rel'>
-    <view class='background ab' style="background:{{color}}"></view>
+    <view class='background ab'></view>
     <view class='option rel'>
       <view class='option_son ab udlr'>
         <view class="{{selected_effective?'effective':'default'}}" bindtap='selected_effective'>有效</view>
@@ -10,60 +10,27 @@
       </view>
     </view>
   </view>
-  <view class='users' wx:if="{{hotel_id!=null}}" bindtap='not_user'>不使用优惠券</view>
-  <view class="body {{selected_effective?'show':'hidden'}}">
-    <view class="coupons">
-      <!--没有领取  -->
-      <view class='coupons_son rel' bindtap='receive' wx:for="{{unreceive}}" id="{{item.id}}" wx:key="{{item.value}}">
-        <view class='son_left rel'>
-          <view class='ab'></view>
-          <view class='ab'></view>
-          <view class='ab'>{{item.preferential}}</view>
-        </view>
-        <view class='son_right rel'>
-          <view class='ab ab1'>{{item.name}}</view>
-           <view class='ab ab0' wx:if="{{item.instruction}}">{{item.instruction}}</view>
-          <view class='ab ab0' wx:else>无特殊说明</view>
-          <view class='ab ab2'>{{item.start_time}}到{{item.end_time}}</view>
-        </view>
-        <!-- <view class='butt'></view> -->
-        <view class='ab not_user'>未领取</view>
-      </view>
-      <!--已经领取  -->
-      <block wx:for="{{received}}" >
-<view class='coupons_son rel' wx:if="{{item.state==2}}" bindtap='coupon' data-id="{{item.id}}" id="{{item.seller_id}}" wx:key="{{item.value}}">
-        <view class='son_left rel'>
-          <view class='ab'></view>
-          <view class='ab'></view>
-          <view class='ab'>{{item.preferential}}</view>
-        </view>
-        <view class='son_right rel'>
-          <view class='ab ab1'>{{item.name}}</view>
-          <view class='ab ab0' wx:if="{{item.instruction}}">{{item.instruction}}</view>
-          <view class='ab ab0' wx:else>无特殊说明</view>
-          <view class='ab ab2'>{{item.start_time}}到{{item.end_time}}</view>
-        </view>
-        <view class='ab not_user'>
-          <view wx:if="{{hotel_id==0}}">已领取</view>
-          <view wx:else>
-            <view wx:if="{{item.hascoupon==1}}" data-cid='{{hotel_id}}' data-sid='{{item.seller_id}}'>可以使用</view>
-            <view wx:else style='background:#ccc'>无法使用</view>
-          </view>
-
+  <view class="{{selected_effective?'show':'hidden'}}">
+    <!-- 优惠卷 -->
+    <view  wx:for="{{coupon}}" wx:key="index" class='{{item.state===0? "coupon" : "active"}} box' bindtap='coupon' data-index="{{index}}">
+      <view class="coupon_price">
+        <view>￥</view>
+        <view>{{item.preferential}}
         </view>
       </view>
-      </block>
-      
-      <!--暂无优惠券  -->
-      <view class='none_coupon rel' wx:if="{{len==0}}">
-        <view class='ab udlr'>
-          <image mode='widFix' class='ab lr' src="../../images/fotel.png"></image>
-          <view class='ab'>暂无可用的优惠券</view>
-        </view>
+      <view class="coupon_content">
+        <view>{{item.name}}</view>
+        <view>{{}}</view>
+        <view>{{}}</view>
+        <view>有效期：</view>
+        <view>{{item.start_time}}至{{item.end_time}}</view>
+      </view>
+      <view class="coupon_image">
+        <image src="{{item.state===0? hasSelect : noSelect}}"></image>
       </view>
     </view>
   </view>
-  <view class="body {{selected_already?'show':'hidden'}}">
+  <view class="{{selected_already?'show':'hidden'}}">
     <view class="coupons">
       <view class='coupons_son rel' wx:for="{{arr}}" wx:key="{{item.value}}" wx:if="{{arr!=null||arr!=''}}">
         <view class='son_left rel'>
@@ -90,7 +57,7 @@
       </view>
     </view>
   </view>
-  <view class="body {{selected_overdue?'show':'hidden'}}">
+  <view class="{{selected_overdue?'show':'hidden'}}">
     <view class="coupons">
       <view class='coupons_son rel' wx:for="{{overdue}}" wx:if="{{overdue!=null||overdue!=''||overdue.length>=1}}">
         <view class='son_left rel'>

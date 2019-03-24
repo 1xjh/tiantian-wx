@@ -10,15 +10,38 @@ Page({
     index: 0,
     inde: 0,
     prompt: false,
-    items: [
-      { name: '停车', value: '停车' },
-      { name: 'wifi', value: 'wifi' },
-      { name: '早餐', value: '早餐' },
-      { name: '叫醒', value: '叫醒' },
-      { name: '健身房', value: '健身房' },
-      { name: '银联', value: '银联' },
-      { name: '24小时热水', value: '24小时热水' },
-      { name: '会议室', value: '会议室' }
+    items: [{
+        name: '停车',
+        value: '停车'
+      },
+      {
+        name: 'wifi',
+        value: 'wifi'
+      },
+      {
+        name: '早餐',
+        value: '早餐'
+      },
+      {
+        name: '叫醒',
+        value: '叫醒'
+      },
+      {
+        name: '健身房',
+        value: '健身房'
+      },
+      {
+        name: '银联',
+        value: '银联'
+      },
+      {
+        name: '24小时热水',
+        value: '24小时热水'
+      },
+      {
+        name: '会议室',
+        value: '会议室'
+      }
     ],
     choice: true,
     getmsg: "获取验证码",
@@ -28,137 +51,124 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this
-    wx.setNavigationBarColor({
-      frontColor: '#ffffff',
-      backgroundColor: wx.getStorageSync('platform_color'),
-      animation: {
-        duration: 0,
-        timingFunc: 'easeIn'
-      }
-    })
     // 获取用户openid
     var openid = wx.getStorageSync("openid")
     // 获取用户id
     var user_id = wx.getStorageSync("users").id
     console.log('用户的openid为' + ' ' + openid + ' ' + '用户的user_id为' + ' ' + user_id)
     that.setData({
-      user_id:user_id
+      user_id: user_id
     })
     // 判断用户是否已经入驻
-    app.util.request({
-      'url': 'entry/wxapp/checkinfo',
-      'cachetime': '0',
-      data:{user_id:user_id},
-      success: function (res) {
-        
+    // app.util.request({
+    //   'url': 'entry/wxapp/checkinfo',
+    //   'cachetime': '0',
+    //   data: {
+    //     user_id: user_id
+    //   },
+    //   success: function(res) {
+    //     console.log(res)
+    //     if (res.data != false) {
+    //       wx: wx.showModal({
+    //         title: '入驻提示',
+    //         content: '您已经入驻过了',
+    //         showCancel: true,
+    //         cancelText: '取消',
+    //         cancelColor: '',
+    //         confirmText: '确定',
+    //         confirmColor: '',
+    //         success: function(res) {
 
-
-
-        console.log(res)
-        if(res.data!=false){
-          wx:wx.showModal({
-            title: '入驻提示',
-            content: '您已经入驻过了',
-            showCancel: true,
-            cancelText: '取消',
-            cancelColor: '',
-            confirmText: '确定',
-            confirmColor: '',
-            success: function(res) {
-
-              if (res.confirm) {
-                console.log('用户点击确定')
-                wx:wx.reLaunch({
-                  url: '../logs/logs',
-                  success: function(res) {},
-                  fail: function(res) {},
-                  complete: function(res) {},
-                })
-              } else if (res.cancel) {
-                console.log('用户点击取消')
-                wx: wx.reLaunch({
-                  url: '../logs/logs',
-                  success: function (res) { },
-                  fail: function (res) { },
-                  complete: function (res) { },
-                })
-              }
-            },
-            fail: function(res) {},
-            complete: function(res) {},
-          })
-        }
-        // that.setData({
-        //   url: res.data
-        // })
-      }
-    })
+    //           if (res.confirm) {
+    //             console.log('用户点击确定')
+    //             wx: wx.reLaunch({
+    //               url: '../logs/logs',
+    //               success: function(res) {},
+    //               fail: function(res) {},
+    //               complete: function(res) {},
+    //             })
+    //           } else if (res.cancel) {
+    //             console.log('用户点击取消')
+    //             wx: wx.reLaunch({
+    //               url: '../logs/logs',
+    //               success: function(res) {},
+    //               fail: function(res) {},
+    //               complete: function(res) {},
+    //             })
+    //           }
+    //         },
+    //         fail: function(res) {},
+    //         complete: function(res) {},
+    //       })
+    //     }
+    //   }
+    // })
     // 获取上传图片所需的链接
-    app.util.request({
-      'url': 'entry/wxapp/url',
-      'cachetime': '0',
-      success: function (res) {
-        console.log(res)
-        that.setData({
-          url: res.data
-        })
-      }
-    })
+    // app.util.request({
+    //   'url': 'entry/wxapp/url',
+    //   'cachetime': '0',
+    //   success: function(res) {
+    //     console.log(res)
+    //     that.setData({
+    //       url: res.data
+    //     })
+    //   }
+    // })
     // 获取平台指定的地点
-    app.util.request({
-      'url': 'entry/wxapp/getcity',
-      'cachetime': '0',
-      success: function (res) {
-        console.log(res)
-        var city = res.data.map(function (item) {
-          return item.city
-        })
-        console.log(city)
-        that.setData({
-          city: city,
-          citys:res.data
-        })
-      }
-    })
+    // app.util.request({
+    //   'url': 'entry/wxapp/getcity',
+    //   'cachetime': '0',
+    //   success: function(res) {
+    //     console.log(res)
+    //     var city = res.data.map(function(item) {
+    //       return item.city
+    //     })
+    //     console.log(city)
+    //     that.setData({
+    //       city: city,
+    //       citys: res.data
+    //     })
+    //   }
+    // })
   },
   // 选择酒店星级
-  bindPickerChanges: function (e) {
+  bindPickerChanges: function(e) {
     // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
   },
   // 选择酒店地区
-  bindRegionChange: function (e) {
+  bindRegionChange: function(e) {
     // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       inde: e.detail.value
     })
   },
   // 选择酒店成立时间
-  startDateChange: function (e) {
+  startDateChange: function(e) {
     // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       dates: e.detail.value
     })
   },
   // 选择酒店设施
-  choice: function (e) {
+  choice: function(e) {
     this.setData({
       choice: true
     })
   },
   // 关闭酒店设施
-  complete: function (e) {
+  complete: function(e) {
     var that = this
     that.setData({
       choice: false
     })
   },
   // 上传图片
-  choose: function (e) {
+  choose: function(e) {
     var that = this
     var url = that.data.url
     var uniacid = wx.getStorageSync("users").uniacid
@@ -168,7 +178,7 @@ Page({
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths[0]
@@ -177,13 +187,13 @@ Page({
           filePath: tempFilePaths,
           name: 'upfile',
           formData: {},
-          success: function (res) {
+          success: function(res) {
             console.log(res)
             that.setData({
               uplogo1: res.data
             })
           },
-          fail: function (res) {
+          fail: function(res) {
             console.log(res)
           },
         })
@@ -194,7 +204,7 @@ Page({
     })
   },
   // 上传图片
-  choose1: function (e) {
+  choose1: function(e) {
     var that = this
     var url = that.data.url
     var uniacid = wx.getStorageSync("users").uniacid
@@ -203,7 +213,7 @@ Page({
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths[0]
@@ -212,13 +222,13 @@ Page({
           filePath: tempFilePaths,
           name: 'upfile',
           formData: {},
-          success: function (res) {
+          success: function(res) {
             console.log(res)
             that.setData({
               uplogo2: res.data
             })
           },
-          fail: function (res) {
+          fail: function(res) {
             console.log(res)
           },
         })
@@ -229,7 +239,7 @@ Page({
     })
   },
   // 上传图片
-  choose2: function (e) {
+  choose2: function(e) {
     var that = this
     var url = that.data.url
     var uniacid = wx.getStorageSync("users").uniacid
@@ -238,7 +248,7 @@ Page({
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths[0]
@@ -247,13 +257,13 @@ Page({
           filePath: tempFilePaths,
           name: 'upfile',
           formData: {},
-          success: function (res) {
+          success: function(res) {
             console.log(res)
             that.setData({
               uplogo3: res.data
             })
           },
-          fail: function (res) {
+          fail: function(res) {
             console.log(res)
           },
         })
@@ -264,7 +274,7 @@ Page({
     })
   },
   // 多选框
-  checkboxChange: function (e) {
+  checkboxChange: function(e) {
     var that = this
     console.log(e)
     var facilities = e.detail.value
@@ -273,7 +283,7 @@ Page({
     })
   },
   // 获取用户输入的手机号
-  user_name: function (e) {
+  user_name: function(e) {
     var that = this
     console.log(e)
     var name = e.detail.value
@@ -282,7 +292,7 @@ Page({
     })
   },
   // 验证码
-  sendmessg: function (e) {
+  sendmessg: function(e) {
     var that = this
     console.log(that.data)
     var name = that.data.name
@@ -293,11 +303,12 @@ Page({
         image: '',
         duration: 2000,
         mask: true,
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
       })
-    } else {
+    }
+    else {
       // 获取6位数的随机数
       var Num = "";
       for (var i = 0; i < 6; i++) {
@@ -308,17 +319,21 @@ Page({
       app.util.request({
         'url': 'entry/wxapp/sms2',
         'cachetime': '0',
-        data: { code: Num, tel: name},
-        success: function (res) {
+        data: {
+          code: Num,
+          tel: name
+        },
+        success: function(res) {
           console.log(res)
-          if(res.data.msg=='success'){
+          if (res.data.msg == 'success') {
             wx: wx.showToast({
               title: '发送成功',
               icon: '',
               image: '',
               duration: 2000,
             })
-          }else{
+          }
+          else {
             wx: wx.showToast({
               title: '发送失败',
               icon: '',
@@ -333,7 +348,7 @@ Page({
       })
       var time = 60
       // 60秒倒计时
-      var inter = setInterval(function () {
+      var inter = setInterval(function() {
         that.setData({
           getmsg: time + "s后重新发送",
           send: true
@@ -352,7 +367,7 @@ Page({
     }
 
   },
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     var that = this
     console.log(e)
     console.log(that.data)
@@ -390,18 +405,18 @@ Page({
     var num = that.data.num
     // 补充说明
     var textarea = e.detail.value.textarea
-    if (textarea == '' || textarea==null){
-      textarea=''
+    if (textarea == '' || textarea == null) {
+      textarea = ''
     }
     console.log('酒店的名称为' + ' ' + hotel_name + ' ' + '酒店星级为' + ' ' + star + ' ' + '酒店地区为' + ' ' + address + ' ' + '酒店具体地址为' + ' ' + hotel_address + ' ' + '酒店联系人姓名为' + ' ' + hotel_contacts + ' ' + '酒店电话为' + ' ' + hotel_tel + ' ' + '酒店的成立时间为' + ' ' + dates)
-    console.log(logo+' '+logo1+' '+' '+logo2)
+    console.log(logo + ' ' + logo1 + ' ' + ' ' + logo2)
     var reg_email = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$")
     var title = ''
     if (hotel_name == '') {
       title = '请输入酒店名称'
     } else if (star == '') {
       title = '请输入酒店星级'
-    }else if (hotel_address == '') {
+    } else if (hotel_address == '') {
       title = '请输入酒店具体地址'
     } else if (hotel_contacts == '') {
       title = '请输入酒店联系人姓名'
@@ -435,11 +450,12 @@ Page({
         cancelColor: '',
         confirmText: '确定',
         confirmColor: '',
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
       })
-    } else {
+    }
+    else {
       // 酒店设施
       var wake = 0
       var wifi = 0
@@ -480,7 +496,7 @@ Page({
         'url': 'entry/wxapp/savecheck',
         'cachetime': '0',
         data: {
-          user_id:that.data.user_id,
+          user_id: that.data.user_id,
           name: hotel_name,
           star: star,
           city: address,
@@ -502,9 +518,9 @@ Page({
           boardroom: boardroom,
           water: water,
         },
-        success: function (res) {
+        success: function(res) {
           console.log(res)
-          wx:wx.reLaunch({
+          wx: wx.reLaunch({
             url: '../logs/logs',
             success: function(res) {},
             fail: function(res) {},
@@ -513,58 +529,58 @@ Page({
         }
       })
     }
-    
-   
+
+
   },
-  reset: function (e) {
+  reset: function(e) {
     // this.onload()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

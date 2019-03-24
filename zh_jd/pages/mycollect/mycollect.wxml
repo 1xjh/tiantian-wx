@@ -1,50 +1,39 @@
-<!--zh_jd/pages/mycollect/mycollect.wxml-->
+uh<!--zh_jd/pages/mycollect/mycollect.wxml-->
 <view class='many_hotel'>
-  <view class='hotel fon' wx:for="{{hotel}}" wx:for-item="hotel" wx:key="{{hotel.value}}" id="{{hotel.id}}" data-name="{{hotel.name}}" >
-    <navigator url='../hotel/hotel_detail?id={{hotel.id}}'>
-      <view class='hotel_icon fl rel'>
-        <image mode='aspectFill' wx:if="{{url}}{{hotel.img}}!=''" class='ab ud' src="{{url}}{{hotel.ewm_logo}}"></image>
-      </view>
-      <view class='hotel_info fl rel'>
-        <view class='info_name'>{{hotel.name}}</view>
-        <view class='info_address rel'>
-          <view class='ab ud'>
-            <image  class=' ab udlr' style='width:100%;' mode='widthFix' src='../../images/ditu.png'></image>
+<view  wx:if="{{mycollect!=''}}">
+    <view  class='hotel fon' wx:for="{{mycollect}}" wx:key="{{index}}" id="{{item.id}}">
+      <navigator url='../yuanzi_details/yuanzi_details?id={{item.id}}'>
+        <view class="mycollect_box">
+          <view class="d_bakcground"></view>
+          <view class="d_img">
+            <image src='{{item.room.logo}}'></image>
           </view>
-          <!-- <text class='fl'>距您:</text>
-          <text class='fl' wx:if="{{hotel.distance!=NaN}}">{{hotel.distance}}千米</text>
-          <text class='fl' wx:if="{{hotel.distance==NaN}}">0千米</text> -->
-          <text class='fl'>{{hotel.address}} </text>
+          <view class="d_good box" >
+            <view wx:for="{{item.room.tab_arr}}" wx:key="key">
+              <view class="d_good_font">{{item}}</view>
+            </view>
+          </view>
+          <view class="d_title box">
+            <view class="d_site">
+              <!-- <image></image> -->
+            </view>
+            <view class="d_site_name">{{item.room.link_name}}</view>
+          </view>
+          <view class="d_info box">
+            <view class="d_fang">{{item.room.name}} </view>
+            <text class="d_ren" decode="{{true}}">{{item.room.room_norms}}  {{item.room.people}}人</text>
+            <view class="d_fen">{{item.room.room_score}}</view>
+          </view>
+          <view class="d_info box">
+            <view class="d_price1">市场价格：{{item.room.original_price}}元</view>
+            <view class="d_price2">会员价格: {{item.room.online_price}}元</view>
+          </view>
+          <view class="d_yuding">
+            <view>预定</view>
+          </view>
         </view>
-        <view class='info_score'>
-          <text>{{hotel.score}}</text>
-          <text>分</text>
-          <text></text>
-          <text>{{hotel.total}}</text>
-          <text>条评论</text>
-        </view>
-        <!-- <view class='info_privilege'>
-            <view>星级:</view>
-            <view wx:for="{{star1}}" wx:if="{{hotel.num==1}}">
-                <image class='img' mode='widthFix' src='{{item.num}}'></image>
-            </view>
-            <view wx:for="{{star3}}" wx:if="{{hotel.num==3}}">
-                <image class='img' mode='widthFix' src='{{item.num}}'></image>
-            </view>
-            <view wx:for="{{star4}}" wx:if="{{hotel.num==4}}">
-                <image class='img' mode='widthFix' src='{{item.num}}'></image>
-            </view>
-            <view wx:for="{{star5}}" wx:if="{{hotel.num==5}}">
-                <image class='img' mode='widthFix' src='{{item.num}}'></image>
-            </view>
-        </view> -->
-        <!-- <view class='price ab'>
-          <text>￥</text>
-          <text>{{hotel.price}}</text>
-          <text>起</text>
-        </view> -->
-      </view>
-    </navigator>
-  </view>
-  <view style='text-align:center;color:#808080;font-size:12px;'>无更多信息</view>
+      </navigator>
+    </view>
+</view>
+  <view wx:else style='text-align:center;color:#808080;font-size:12px;'>无更多信息</view>
 </view>
