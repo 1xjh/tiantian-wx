@@ -15,9 +15,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    // getBywhereAccommoda 接收  name  开始和离店时间
+    if(options.name!=undefined){
+      app.util.request({
+        'url': 'index/Accommoda/getBywhereAccommoda',
+        'cachetime': '0',
+        data: { name: options.name, startDate: options.startDate, endDate:options.endDate},
+        success: function (res) {
+          console.log(res);
+        },
+      })
+    }
     //首页进来的条件，要缓存
-    console.log(options)
     if(options.save==1){
       delete options.save; 
       wx.setStorageSync("parameter", options);
@@ -38,7 +47,6 @@ Page({
       this.data.parameter.tourist_id = options.tourist_id;
     }
       request(this);
-
   },
   jumpDetails:function(e){
     console.log(e)

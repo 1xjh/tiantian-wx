@@ -9,6 +9,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     avatarUrl: '',
     nickName: '',
+    isLogin:false,
   },
   // 优惠券
   collect: function() {
@@ -33,7 +34,8 @@ Page({
           var nickName = user_info.nickName;
           that.setData({
             avatarUrl: avatarUrl,
-            nickName: nickName
+            nickName: nickName,
+            isLogin:true
           })
         }
       }
@@ -48,12 +50,13 @@ Page({
       }
     })
   },
+  // 登录
   bindGetUserInfo(e) {
     console.log(e, "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
-    var that = this
+    var that = this 
     var user_info = e.detail.userInfo //用户信息
     wx.setStorageSync("user_info", user_info)
-    // var user_info = wx.getStorageSync('user_info')
+
     that.setData({
       avatarUrl: user_info.avatarUrl,
       nickName: user_info.nickName
@@ -73,6 +76,12 @@ Page({
               code: code
             },
             success: function(res) {
+            
+              wx.setStorageSync("is_login", true)
+              that.setData({
+                isLogin:!that.data.isLogin
+              })
+
               console.log(res.data.data, "dddkkk")
 
               wx.setStorageSync("key", res.data.session_key)
@@ -129,11 +138,30 @@ Page({
       withShareTicket: true
     })
   },
+  // 退出
+  secLogin(e){
+    var that=this
+    wx.showModal({
+      title: '请确认是否退出登录',
+      success(res) {
+        if (res.confirm) {
+          wx.removeStorageSync("user_info")
+          that.setData({
+            isLogin: !that.data.isLogin,
+            avatarUrl: '',
+            nickName: ''
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    
   },
 
   /**

@@ -33,7 +33,7 @@
   <view class="yz_coupon box">
     <view class="yz_coupon_dian" bindtap='junmpCoupon'>点击领取店铺优惠卷</view>
     <!-- 店铺优惠卷 -->
-    <view class="{{coupon_index? 'yz_coupon_box':'show'}}">
+    <view class="show  {{coupon_index ? 'yz_coupon_box' : ''}}">
       <view class="yz_coupon_title">店铺优惠卷</view>
       <view wx:for="{{details.coupon}}" wx:key="index" class='{{item.state===0? "coupon" : "active"}} box' bindtap='coupon' data-index="{{index}}">
         <view class="coupon_price">

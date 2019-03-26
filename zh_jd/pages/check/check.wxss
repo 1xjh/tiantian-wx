@@ -7,6 +7,7 @@
 page {
   height: 100%;
   background: #efeff4;
+  margin: 0 !important;
 }
 
 .container {
@@ -195,6 +196,7 @@ page {
   font-size: 30rpx;
   position: fixed;
   bottom:0;
+  z-index: 900;
 }
 
 .footer button:nth-child(1) {

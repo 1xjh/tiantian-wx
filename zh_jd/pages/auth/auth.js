@@ -21,7 +21,7 @@ Page({
           console.log(n)
           var a = n.authSetting["scope.userInfo"];
           a && (wx.reLaunch({
-            url: "../index/index"
+            url: "../logs/logs"
           }), clearInterval(e), t.setData({
             userInfo: a
           }));

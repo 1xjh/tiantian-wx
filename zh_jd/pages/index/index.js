@@ -131,10 +131,6 @@ Page({
     var that = this;
     var startDate = that.data.date;
     var endDate = that.data.tomorrow;
-    // console.log(startDate);
-    // console.log('入住时间礼拜' + new Date(startDate).getDay())
-    // console.log('离店时间礼拜' + new Date(endDate).getDay())
-    // console.log(endDate);
     wx.navigateTo({
       url: '../calendar/calendar?startDate=' + startDate + "&endDate=" + endDate
     })
@@ -187,85 +183,6 @@ Page({
     wx.setStorageSync('startDate', '')
     wx.setStorageSync('endDate', '')
 
-    // 获取用户登录信息
-    // wx.login({
-    //   success: function(res) {
-    //     var code = res.code
-    //     console.log(res)
-    //     console.log(code,"codew d dddd033IyBcA0afdBe1B90gA0JVpcA0IyBcb")
-    //     wx.setStorageSync("code", res.code)
-    //     wx.getUserInfo({
-    //       success: function(res) {
-    //         var encryptedData = res.encryptedData
-    //         // console.log(encryptedData)
-    //         var iv = res.iv;
-    //         // console.log(iv)
-
-    //         wx.setStorageSync("user_info", res.userInfo)
-    //         that.setData({
-    //           avatarUrl: res.userInfo.avatarUrl,
-    //           nickName: res.userInfo.nickName
-    //         })
-
-    //         app.util.request({
-    //           'url': 'index/Info/getWxUserInfo',
-    //           'cachetime': '0',
-    //           data: {
-    //             code: code
-    //           },
-    //           success: function(res) {
-    //             console.log(res.data.data,"dddkkk")
-
-    //             wx.setStorageSync("key", res.data.session_key)
-    //             var session_key = res.data.data.session_key;
-
-    //             var img = that.data.avatarUrl
-    //             var name = that.data.nickName
-    //             // 异步保存用户openid
-    //             wx.setStorageSync("openid", res.data.data.openid)
-    //             var openid = res.data.openid
-    //             // console.log(openid)
-    //             // 获取用户登录信息
-    //             app.util.request({
-    //               'url': 'index/Info/getallUserInfo',
-    //               'cachetime': '0',
-    //               method: "post",
-    //               data: {
-    //                 encryptedData: encryptedData,
-    //                 iv: iv,
-    //                 session_key: session_key
-    //               },
-    //               success: function(res) {
-    //                 // console.log(res)
-    //                 // 异步保存用户登录信息
-    //                 wx.setStorageSync('token', res.data.data.user_token);
-    //                 wx.setStorageSync('users', res.data.data);
-    //               },
-    //             })
-    //           },
-    //         })
-    //       },
-    //       fail: function(e) {
-    //         // console.log(e)
-    //         wx.showModal({
-    //           title: '提示',
-    //           content: '授权获取用户信息失败！',
-    //           confirmText: '重新获取',
-    //           success: function(res) {
-    //             // console.log(res)
-    //             if (res.confirm) {
-    //               wx.reLaunch({
-    //                 url: '../auth/auth',
-    //               })
-    //             } else if (res.cancel) {
-    //               that.onLoad()
-    //             }
-    //           }
-    //         })
-    //       }
-    //     })
-    //   }
-    // })
     wx.getSystemInfo({
       success: function(res) {
         console.log(res, "[pppppp")
@@ -357,9 +274,8 @@ Page({
   //搜索酒店
   searchTo: function() {
     var name = this.data.searchName;
-    // console.log(name)
     wx.navigateTo({
-      url: "../details/details?name=" + name + "&save=1",
+      url: "../details/details?name=" + name + "&save=1" + "&startDate=" + this.data.startDate + "&endDate=" + this.data.endDate,
     })
   },
   searchClick: function(e) {
@@ -554,14 +470,6 @@ function pintai(e, city) {
         title: "天天"
       })
 
-      // wx.setNavigationBarColor({
-      //   frontColor: '#ffffff',
-      //   backgroundColor: wx.getStorageSync('platform_color'),
-      //   animation: {
-      //     duration: 0,
-      //     timingFunc: 'easeIn'
-      //   }
-      // })
       if (res.data.type == 1) {
         wx: wx.setStorageSync('hotel', res.data.seller_id)
       }

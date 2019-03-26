@@ -11,12 +11,15 @@
     <view class="orders_time">
       <view class="orders_box" bindtap="bindViewTap">
         <view class="orders_start">
-          <text>{{date}}</text>
+          <text wx:if="{{isTimeNew}}">{{dates}}</text>
+          <text wx:else>{{date}}</text>
           <view role="" aria-label="">14：00后入住</view>
         </view>
-        <view class="orders_day">共{{time}}晚</view>
+        <view class="orders_day" wx:if="{{isTimeNew}}">共{{times}}晚</view>
+        <view class="orders_day" wx:else>共{{time}}晚</view>
         <view class="orders_end">
-          <text>{{tomorrow}}</text>
+          <text wx:if="{{isTimeNew}}">{{tomorrows}}</text>
+          <text wx:else>{{tomorrow}}</text>
           <view role="" aria-label="">12：00前离店</view>
         </view>
       </view>
@@ -101,7 +104,8 @@
   <!-- 底部 -->
   <view class='orders_bottom box'>
     <view class='orders_bottom1'>
-      <view>￥{{orders.original_price * room}}</view>
+      <view wx:if="{{coupon_price==0}}">￥{{price * room}}</view>
+      <view wx:else>￥{{price * room - coupon_price}}</view>
       <text>含押金100元（可退）</text>
     </view>
     <view class='orders_bottom2' bindtap="submit">提交订单</view>

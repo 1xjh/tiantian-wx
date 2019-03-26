@@ -1,0 +1,4 @@
+<!--zh_jd/pages/check/check_s.wxml-->
+<view class="check_s">
+  资料提交成功！资料审核将在7个工作日内完成， 审核结果将通过邮件回复，请注意查看邮箱信息
+</view> 

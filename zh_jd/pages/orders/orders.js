@@ -20,14 +20,19 @@ Page({
     orders: [],
     id: 49,
     coupon_price: 0,
+    isTimeNew:true,
+    price:''
   },
   // 日历时间
   bindViewTap: function() {
     var that = this;
+    that.setData({
+      isTimeNew:false
+    })
     var startDate = that.data.date;
     var endDate = that.data.tomorrow;
     wx.navigateTo({
-      url: '../calendar/calendar?startDate=' + startDate + "&endDate=" + endDate
+      url: '../calendar/calendar?startDate=' + startDate + "&endDate=" + endDate +"&id="+that.data.id
     })
   },
   // 房间数量加减
@@ -98,7 +103,19 @@ Page({
   // 提交订单
   submit: function() {
     var that = this
-    var price = that.data.orders.original_price * that.data.room
+    var price = that.data.price * that.data.room
+    var arrival_time
+    var departure_time
+    var days
+    if (that.data.isTimeNew == true) {
+      arrival_time = that.data.arrival_times
+      departure_time = that.data.departure_times
+      days = that.data.times
+    }else{
+      arrival_time = that.data.arrival_time
+      departure_time = that.data.departure_time
+      days = that.data.time
+    }
     if (that.data.name_id == 0) {
       wx.showModal({
         content: '最少添加一位入住人信息',
@@ -114,24 +131,24 @@ Page({
         'cachetime': '0',
         "method": "post",
         data: {
-          goods_id: 49,
+          goods_id: that.data.id,
           seller_id: that.data.orders.seller_id,
           room_name: that.data.orders.name,
-          arrival_time: that.data.arrival_time,
-          departure_time: that.data.departure_time,
-          days: that.data.time,
-          days:30,
+          arrival_time: arrival_time,
+          departure_time: departure_time,
+          days: days,
           tel: that.data.bindPhone,
           checkids: that.data.name_id,
           room_num: that.data.room,
           people_num: that.data.people,
-          seller_name: that.data.orders.s_name
+          seller_name: that.data.orders.s_name,
+          coupons_id: that.data.coupons_id
         },
         success: function(res) {
           console.log(res.data.success)
           if (res.data.success == 1) {
             wx.navigateTo({
-              url: '../dingdanzhifu/dingdanzhifu?price=' + price,
+              url: '../dingdanzhifu/dingdanzhifu?price=' + price + "&order_id=" + res.data.data +"&number=2400",
             })
           } else if (res.data.success == "notstock") {
             wx.showModal({
@@ -151,7 +168,7 @@ Page({
   // 优惠券
   couponPrice: function() {
     var that = this
-    var price = that.data.orders.original_price * that.data.room
+    var price = that.data.price * that.data.room
     wx.navigateTo({
       url: '../coupon/coupon?price=' + price,
       success: function(res) {},
@@ -169,25 +186,23 @@ Page({
       'url': 'index/Accommoda/getRoomDetail',
       'cachetime': '0',
       data: {
-        id: 49
+        id: options.id
       },
       success: function(res) {
         that.setData({
-          orders: res.data.data
+          orders: res.data.data,
+          price: options.price
         })
       },
     })
-    // 床和人的总数量
-    if (options.name_id === undefined) {
-      return false;
-    } else {
-      var name_num = options.name_id.split(",")
-      console.log(name_num)
-      that.setData({
-        name_id: options.name_id,
-        name_num: name_num
-      })
-    }
+    that.setData({
+      id: options.id,
+      dates: options.date,
+      tomorrows: options.tomorrow,
+      times: options.time,
+      departure_times: options.departure_time,
+      arrival_times: options.arrival_time,
+    })
   },
 
   /**

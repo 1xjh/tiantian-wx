@@ -66,7 +66,7 @@
     <!-- 热门推荐 -->
     <view  class="content_box">
       <view>
-        <navigator url="../details/details?onsale=1">
+        <navigator url="../details/details?is_hot=1&save=1">
           <view class="title_left">
             <text>热门推荐</text>
             <view>住进网红名宿,变声偶像主角</view>
@@ -86,7 +86,7 @@
      <!-- 周末去哪尔住 -->
     <view  class="content_box">
       <view>
-        <navigator url="../details/details?onsale=1">
+        <navigator url="../details/details?save=1">
           <view class="title_left">
             <text>周末去哪尔住</text>
             <view>换个地方,发现城市之类</view>

@@ -1,0 +1,11 @@
+page{
+  margin: 0 !important;
+}
+.check_s{
+  width: 90%;
+  margin:100rpx auto;
+  font-size:31rpx;
+  font-family:SimSun;
+  font-weight:400;
+  color:rgba(34,34,34,1);
+}

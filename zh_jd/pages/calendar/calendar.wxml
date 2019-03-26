@@ -23,10 +23,13 @@
     <!--循环空-->
     <view wx:if="{{object.hasEmptyGrid}}" class="grid white-color" wx:for="{{object.empytGrids}}" wx:key="{{index}}" data-idx="{{index}}"></view>
     <!--循环天-->
-    <view class="grid white-color {{item.status==3 ? 'border-radius pink-bg' : ''}}" wx:for="{{object.days}}" wx:key="{{index}}" data-idx="{{index}}" data-object="{{object}}" bindtap="selectAction" style="">
+    <view class="grid white-color {{(object.year+'-'+object.month+'-'+item.day)==date_string?'bink-bg-s':''}} {{item.status==3 ? 'border-radius pink-bg' : ''}} {{item.status==4 ? 'border-radius pink-bg4' : ''}} {{(object.year+'-'+object.month+'-'+item.day)==start_string?'bink-bg-s':''}}" wx:for="{{object.days}}"
+      wx:key="{{index}}" data-idx="{{index}}" data-object="{{object}}" bindtap="selectAction" style="">
       <!--天-->
-      <view class="day {{item.status==0 ? 'disable' : 'enable'}} {{item.status==3 ? 'border-radius pink-bg' : ''}}">{{item.day}}</view>
+      <view class="day {{item.status==0? 'disable' : 'enable'}}  {{item.status==3 ? 'border-radius pink-bg' : ''}}" >{{ item.day }}</view>
       <view class="{{item.status==3 ? 'border-radius pink-bg1' : 'pink-bg2'}}">{{(object.year+'-'+object.month+'-'+item.day)==date_string?'离店':'入住'}}</view>
+      <!-- 无房 -->
+      <view wx:if="{{item.status==4}}" class="wufang">无房</view>
       <!--今天-->
       <view wx:if="{{item.status==1}}" style="color:#40AB91;font-size:26rpx;text-align:center;">今天</view>
     </view>

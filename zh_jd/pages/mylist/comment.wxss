@@ -1,0 +1,143 @@
+/* zh_jd/pages/mylist/comment.wxss */
+
+.comment {
+  border: 1px solid #eee;
+  font-size: 25rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(178, 178, 178, 1);
+  line-height: 25rpx;
+  width: 100%;
+}
+
+.comment_box {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.comment_title {
+  font-size: 24rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(178, 178, 178, 1);
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 上传图 */
+
+.add-image, .up-pic image {
+  margin-top: 2%;
+  margin-left: 2%;
+  width: 150rpx;
+  height: 150rpx;
+  color: #ddd;
+  font-size: 144rpx;
+  line-height: 95%;
+  text-align: center;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 10rpx;
+}
+
+.picture_list {
+  padding: 20rpx;
+  margin-left: 12%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.picture_item {
+  margin: 10px;
+  margin-left: 0;
+  position: relative;
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.picture_item .del {
+  position: absolute;
+  top: -11rpx;
+  right: -11rpx;
+  color: #fff;
+  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+  z-index: 2;
+  line-height: 35rpx;
+  text-align: center;
+  background-color: #f00;
+}
+
+.upload_progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.7;
+  border-radius: 8rpx;
+  background-color: #000;
+  color: #fff;
+  width: 160rpx;
+  height: 160rpx;
+  text-align: center;
+  line-height: 160rpx;
+  font-size: 12px;
+}
+
+.picture_item image {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+/* 小星星 */
+
+.comment1-description {
+  margin-top: 35rpx;
+}
+
+.comment1-description1 {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #333;
+  margin-left: 108rpx;
+}
+
+.comment1-description .star-pos .hideStar {
+  z-index: 2;
+  width: 40rpx;
+  height: 33rpx;
+  margin-left: 10rpx;
+}
+
+.star-pos {
+  margin-left: 60rpx;
+  flex: 3;
+}
+
+.star-pos image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.xingxing>view {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* 发布 */
+
+.fabu {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: #40ab91;
+  color: #fff;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}

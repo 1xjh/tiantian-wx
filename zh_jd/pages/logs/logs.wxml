@@ -87,12 +87,12 @@
         <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
       </button>
     </view>
-    <view class='contant rel'>
-      <navigator url='javascript:;'>
-        <image mode='widthFix' class='img3 ab ud' src='../../images/shezhi.png'></image>
-        <text>设置</text>
+    <view class='contant rel' wx:if="{{isLogin}}">
+      <view bindtap='secLogin'>
+        <image mode='widthFix' class='img3 ab ud' src='../../images/esc.png'></image>
+        <text>退出</text>
         <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
-      </navigator>
+     </view>
     </view>
   </view>
 </view>

@@ -1,0 +1,113 @@
+/* zh_jd/pages/member/member.wxss */
+page{
+  background:#eee;
+   margin:0  !important;
+}
+.member_max_img{
+  background: #fff;
+  width: 100%;
+  height: 500rpx;
+}
+.member_max_img image{
+  width:100%;
+  height: 100%;
+}
+.member-bg{
+  width: 95%;
+  background:#fff;
+  margin: 20rpx auto;
+}
+
+.member_briefs>view{
+  text-align: center;
+}
+.member_min_img{
+  width:145rpx;
+  height:98rpx;
+  margin: 85rpx 0rpx 13rpx 10rpx;
+}
+.member_min_img image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.member_briefs{
+  display: flex;
+  justify-content: space-around;
+}
+.title_1{
+  font-size:24rpx;
+  font-family:SourceHanSansCN-Medium;
+  font-weight:500;
+  color:rgba(177,115,83,1);
+}
+.title_2{
+  font-size:24rpx;
+  font-family:SourceHanSansCN-Medium;
+  font-weight:500;
+  color:rgba(34,34,34,1);
+  padding:10rpx 0;
+}
+.title_3{
+  font-size:26rpx;
+  font-family:SourceHanSansCN-Medium;
+  font-weight:500;
+  color:rgba(255,1,1,1);
+}
+.title_4{
+  font-size:24rpx;
+  font-family:SourceHanSansCN-Medium;
+  font-weight:500;
+  color:rgba(146,146,146,1);
+  text-decoration:line-through; 
+  padding-bottom: 50rpx;
+}
+/* 会员时间选择 */
+
+.member_type_image{
+  width: 48rpx;
+  height: 48rpx;
+  margin: 0rpx 30rpx;
+}
+.member_type_image image{
+  width: 100%;
+  height: 100%;
+  display:block;
+}
+.box{
+  display: flex;
+  padding-top: 40rpx;
+ }
+ .box:last-child{
+  display: flex;
+  padding-bottom:40rpx;
+ }
+ .member_time{
+    font-size:28rpx;
+    font-family:SourceHanSansCN-Medium;
+    font-weight:500;
+    color:rgba(34,34,34,1);
+ }
+ .member_price{
+   width: 100%;
+   height: 100rpx;
+   display: flex;
+   color:#fff;
+   line-height: 100rpx;
+   font-size:30rpx;
+ }
+.member_price .member_left{
+    background:rgba(64,171,145,1);
+    text-align: center;
+    flex:2;
+}
+.member_price .member_right{
+    background:#318974;
+    text-align: center;
+    flex:3;
+}
+.background{
+  width: 100%;
+  height: 200rpx;
+  background:#eee;
+}

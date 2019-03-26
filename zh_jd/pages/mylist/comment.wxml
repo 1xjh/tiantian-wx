@@ -1,0 +1,104 @@
+<view class="comment_box">
+  <view class="comment_title">分享你的入住体验吧</view>
+  <textarea placeholder="请输入你的宝贵意见" class='comment' bindinput='getTextareaInput' maxlength="260" />
+</view>
+<view>
+  <view class="picture_list">
+    <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
+      <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+      <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+      <text class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text> </view>
+
+    <view class='picture_item'>
+
+      <view class="add-image" bindtap='uploadpic'>
+        <text>+</text> </view>
+    </view>
+  </view>
+</view>
+<!--星星评价-->
+<view class="xingxing">
+    <view class="comment1-description">
+      <view class="comment1-description1">卫生环境</view>
+      <view class="star-pos" style="display:flex;flex-direction:row;">
+        <view class="starsM hideStar" bindtap="changeSanitation1">
+          <image src="{{flag1>=1? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeSanitation2">
+          <image src="{{flag1>=2? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeSanitation3">
+          <image src="{{flag1>=3? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeSanitation4">
+          <image src="{{flag1>=4? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeSanitation5">
+          <image src="{{flag1>=5? images1:images2}}"></image>
+        </view>
+      </view>
+    </view>
+     <view class="comment1-description">
+      <view class="comment1-description1">交通位置</view>
+      <view class="star-pos" style="display:flex;flex-direction:row;">
+        <view class="starsM hideStar" bindtap="changeTraffic1">
+          <image src="{{flag2>=1? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeTraffic2">
+          <image src="{{flag2>=2? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeTraffic3">
+          <image src="{{flag2>=3? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeTraffic4">
+          <image src="{{flag2>=4? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeTraffic5">
+          <image src="{{flag2>=5? images1:images2}}"></image>
+        </view>
+      </view>
+    </view>
+     <view class="comment1-description">
+      <view class="comment1-description1">房东服务</view>
+      <view class="star-pos" style="display:flex;flex-direction:row;">
+        <view class="starsM hideStar" bindtap="changeServe1">
+          <image src="{{flag3>=1? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeServe2">
+          <image src="{{flag3>=2? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeServe3">
+          <image src="{{flag3>=3? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeServe4">
+          <image src="{{flag3>=4? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeServe5">
+          <image src="{{flag3>=5? images1:images2}}"></image>
+        </view>
+      </view>
+    </view>
+     <view class="comment1-description">
+      <view class="comment1-description1">室内装修</view>
+      <view class="star-pos" style="display:flex;flex-direction:row;">
+        <view class="starsM hideStar" bindtap="changeDecorate1">
+          <image src="{{flag4>=1? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeDecorate2">
+          <image src="{{flag4>=2? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeDecorate3">
+          <image src="{{flag4>=3? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeDecorate4">
+          <image src="{{flag4>=4? images1:images2}}"></image>
+        </view>
+        <view class="starsM hideStar" bindtap="changeDecorate5">
+          <image src="{{flag4>=5? images1:images2}}"></image>
+        </view>
+      </view>
+    </view>
+
+</view>
+<!-- 发布 -->
+<view class="fabu"  bindtap='uploadimage'>发布</view>

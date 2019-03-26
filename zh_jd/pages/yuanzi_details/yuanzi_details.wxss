@@ -574,7 +574,7 @@ button::after {
   line-height: 50rpx;
 }
 .show{
-  transition:all 1s;
+  transition: 1s;
   width: 100%;
   height: 80%;
   position: fixed;
@@ -593,4 +593,3 @@ button::after {
   text-align: center;
   line-height: 100rpx;
 }
-

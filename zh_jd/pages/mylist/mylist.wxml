@@ -62,7 +62,6 @@
                 </view>
               </form>
             </block>
-
           </view>
           <!--待支付  -->
           <view hidden="{{activeIndex != 0}}">

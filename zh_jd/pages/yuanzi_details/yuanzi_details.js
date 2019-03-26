@@ -15,14 +15,15 @@ Page({
     quan_arr:[],
     noSelect: '../../images/coupon_1.png',
     hasSelect: '../../images/coupon_2.png',
-    coupon_index: true
+    coupon_index: true,
+    animationData: {}
   },
   bindViewTap: function() {
     var that = this;
     var startDate = that.data.date;
     var endDate = that.data.tomorrow;
     wx.navigateTo({
-      url: '../calendar/calendar?startDate=' + startDate + "&endDate=" + endDate
+      url: '../calendar/calendar?startDate=' + startDate + "&endDate=" + endDate +"&id="+that.data.id
     })
   },
   synopsis: function(e) {
@@ -34,6 +35,7 @@ Page({
   // 立即预定
   lijiyuding:function(e){
     var that = this
+    var price = that.data.details.shop_price * that.data.time
     app.util.request({
       "url":"index/Info/chestock",
       'cachetime': '0',
@@ -45,7 +47,7 @@ Page({
       success:function(res){
           if(res.data.success==1){
             wx.navigateTo({
-              url: '../orders/orders?id=' + that.data.id,
+              url: '../orders/orders?date=' + that.data.date + "&tomorrow=" + that.data.tomorrow + "&id=" + that.data.id + "&time=" + that.data.time + "&arrival_time=" + that.data.arrival_time + "&departure_time=" + that.data.departure_time + "&price=" + price
             })
           }else{
               wx.showToast({
@@ -116,18 +118,21 @@ Page({
     }
   },
   junmpCoupon:function(e){
-    var that = this
-    that.setData({
-      coupon_index: !that.data.coupon_index
+    var that =this 
+    var isShow = that.data.coupon_index ? false : true;
+      that.setData({
+        coupon_index: isShow
     })
-    console.log(that.data.coupon_index)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    options.id = 49;
+    console.log(options,"我详情页来拿id了")
     var that = this;
+    that.setData({
+      id:options.id
+    })
     //获取数据
     app.util.request({
       'url': 'index/Accommoda/getRoomDetail',

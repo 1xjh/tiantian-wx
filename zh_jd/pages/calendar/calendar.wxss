@@ -85,6 +85,10 @@ page{
 }
 .pink-bg {
      background-color: #40AB91; 
+     opacity: 0.5;
+}
+.bink-bg-s{
+    opacity: 1;
 }
 .pink-bg1 {
   font-size: 26rpx;
@@ -156,4 +160,13 @@ page{
   background: #40AB91;
   flex: 3;
   text-align: center;
+}
+.wufang{
+  font-size: 26rpx;
+  color: #000;
+  display: block; 
+  line-height:20rpx;
+}
+.pink-bg4{
+  background:#eee;
 }

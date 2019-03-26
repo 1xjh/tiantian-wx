@@ -16,7 +16,7 @@
         <view class='hotel_name '>
           <view class='total fl'>民宿地区</view>
           <view class='input fl'>
-            <input name='hotel_name' placeholder='请输入民宿城市'></input>
+            <input name='address' placeholder='请输入民宿城市'></input>
           </view>
         </view>
         <view class='hotel_name '>
@@ -78,7 +78,7 @@
           <view class='ab code' wx:if="{{getmsg=='获取验证码'}}" bindtap='sendmessg'>
             {{getmsg}}
           </view>
-          <view class='ab code' wx:if="{{getmsg!='获取验证码'}}" bindtap='sendmessg'>
+          <view class='ab code' wx:if="{{getmsg!='获取验证码'}}" >
             {{getmsg}}
           </view>
         </view>

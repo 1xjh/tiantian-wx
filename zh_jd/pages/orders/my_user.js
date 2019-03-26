@@ -40,12 +40,17 @@ Page({
     console.log(that.data.name_id)
   },
   baoCun:function(){
-      wx.navigateTo({
-        url: 'orders?name_id='+this.data.name_id,
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
-      })
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1]; //当前页面
+    var prevPage = pages[pages.length - 2]; //上一个页面
+    var name_num = this.data.name_id.split(",")
+    prevPage.setData({
+      name_id: this.data.name_id,
+      name_num:name_num
+    })
+    wx: wx.navigateBack({
+      url: '../orders/orders'
+    })
   },
   /**
    * 生命周期函数--监听页面加载

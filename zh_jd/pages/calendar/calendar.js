@@ -1,12 +1,18 @@
 var app = getApp()
 var Data = require("../../utils/data.js");
+var time = require('../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    date_string: ''
+    date_string: '',
+    start_string:'',
+    days:[],
+    alltime: [],
+    length:'',
+    id:""
   },
 
   /**
@@ -14,6 +20,11 @@ Page({
    */
   //==================加载数据================
   onLoad: function(options) {
+    if(options.id!=undefined){
+      this.setData({
+        id:options.id
+      })
+    }
     // 开始时间和结束时间
     if (options.startDate && options.endDate) {
       var startDate = Data.formatDate(options.startDate, "yyyy-MM-dd");
@@ -36,9 +47,15 @@ Page({
       org_year: date.getFullYear(), //现在时间的年月日
       org_month: date.getMonth(),
       org_day: cur_day,
+      cur_year: cur_year,
+      cur_month: cur_month,
       weeks_ch
     })
-    this.initData(cur_year, cur_month);
+    if(options.id!=undefined){
+      arr(this,options.id)
+    }else{
+      this.initData(cur_year, cur_month);
+    }
   },
 
   // ————————————日历——————————
@@ -87,6 +104,7 @@ Page({
   },
   // =============获取当月有多少天（下个月月初是多少）==========
   getThisMonthDays: function(year, month) {
+    // console.log(year, month,"dddddddd")
     return new Date(year, month, 0).getDate();
   },
   // =============获取当月第一周第一天是周几===========
@@ -110,10 +128,11 @@ Page({
    */
   calculateDays: function(year, month) {
     var mObject = {}; //月对象
-    mObject["year"] = year;
-    mObject["month"] = month;
+    mObject["year"] = year;  
+    mObject["month"] = month;  
     //计算当前年月空的几天
     var empytGrids = this.calculateEmptyGrids(year, month);
+
     if (empytGrids.length > 0) {
       mObject["hasEmptyGrid"] = true;
       mObject["empytGrids"] = empytGrids;
@@ -122,9 +141,11 @@ Page({
       mObject["empytGrids"] = [];
     }
     var days = [];
+
     var thisMonthDays = this.getThisMonthDays(year, month); //这个月有多少天
-    //现在的时间
-    var cusDate = new Date(this.data.org_year, this.data.org_month, this.data.org_day);
+
+    var cusDate = new Date(this.data.org_year, this.data.org_month, this.data.org_day);    //现在的时间
+
     var startDate;
     var endDate;
     if (this.data.startDate && this.data.endDate) {
@@ -134,15 +155,23 @@ Page({
     if (this.data.startDate) {
       startDate = Data.stringToDate(this.data.startDate);
     }
+   // 获取被预约的时间
+     var predetermine  = this.data.alltime //已经被人预定的时间  
+
     for (let i = 1; i <= thisMonthDays; i++) {
       var day = {};
       //加入的时间
       var date = new Date(year, month - 1, i);
-      // console.log(date)
       //status 0-不可选择 1-当前时间 2-可选择 3-被选中
       day["day"] = i;
+      var y=year.toString(),m=month.toString(),d=day["day"].toString()
+      var timeString = y+m+d;  //所有时间值
+ 
       //比现在的时间比较是大于还是小于，小于则不可点击
       var time = parseInt(Data.calculateTime(date, cusDate));
+      // console.log(time)
+
+
       if (time < 0) {
         day["status"] = 0;
       } else if (time == 0) {
@@ -150,10 +179,17 @@ Page({
       } else {
         day["status"] = 2;
       }
-
+          // console.log(timeString)
+      for (var t = 0; t < this.data.length; t++) {
+        if (timeString == predetermine[t]){
+          day["status"] = 4;
+       }
+      }
+  
       if (this.data.startDate && this.data.endDate) {
         var stime = parseInt(Data.calculateTime(date, startDate));
         var etime = parseInt(Data.calculateTime(date, endDate));
+        //
         if (stime >= 0 && etime <= 0) {
           day["status"] = 3;
         }
@@ -166,7 +202,7 @@ Page({
       days.push(day);
     }
     mObject["days"] = days;
-    console.log(days, 'kk')
+    // console.log(days, 'kk')
     return mObject;
   },
   // 选择时间
@@ -179,7 +215,6 @@ Page({
     //现在的时间
     var cusDate = new Date(this.data.org_year, this.data.org_month, this.data.org_day);
     var time = parseInt(Data.calculateTime(selectDate, cusDate));
-    console.log(time);
     if (time < 0) {
       console.log("请选择合理的时间");
       wx.showToast({
@@ -226,16 +261,19 @@ Page({
 
       } else if (sDate < eDate) {
         var date_string = eDate.slice(0, 4) + '-' + parseInt(eDate.slice(5, 7)) + '-' + parseInt(eDate.slice(8, 10))
+        var start_string = sDate.slice(0, 4) + '-' + parseInt(sDate.slice(5, 7)) + '-' + parseInt(sDate.slice(8, 10))
         this.setData({
           startDate: sDate,
           endDate: eDate,
           time: time,
-          date_string: date_string
+          date_string: date_string,
+          start_string: start_string
         })
       }
 
     }
   },
+  // 确定
   sure: function(e) {
     var sDate = this.data.startDate;
     var eDate = this.data.endDate;
@@ -261,6 +299,7 @@ Page({
       })
     }
   },
+  // 清空
   abrogate: function(e) {
     this.setData({
       startDate: this.data.date,
@@ -280,6 +319,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    arr(this, this.data.id)
     var startDate = this.data.startDate;
     var endDate = this.data.endDate;
     // 默认显示入住时间为当天
@@ -419,3 +459,23 @@ Page({
 
   }
 })
+
+function arr(e,id){
+  var arr= []
+  app.util.request({
+    'url': 'index/Info/getTargetDate',
+    'cachetime': '0',
+    data: { id: id },
+    success: function (res) {
+      for (var q = 0; q < res.data.data.length; q++) {
+        var kkk = time.js_date_time(res.data.data[q].dateday)
+        arr.push(kkk)
+        e.setData({
+          alltime: arr,
+          length: res.data.data.length
+        })
+      }
+      e.initData(e.data.cur_year, e.data.cur_month);
+    },
+  })
+}
