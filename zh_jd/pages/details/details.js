@@ -9,23 +9,23 @@ Page({
     parameter:{},
     page:1,
     room_list:'',
+    vip:10
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // getBywhereAccommoda 接收  name  开始和离店时间
-    if(options.name!=undefined){
-      app.util.request({
-        'url': 'index/Accommoda/getBywhereAccommoda',
-        'cachetime': '0',
-        data: { name: options.name, startDate: options.startDate, endDate:options.endDate},
-        success: function (res) {
-          console.log(res);
-        },
-      })
+    var isLogin = wx.getStorageSync("is_lgoin")
+    var vip = wx.getStorageSync("users");
+    if (vip){
+      vip = vip.member.value == 10 ? 1 : vip.member.value * 0.1
+      console.log(vip, "我的vip")
     }
+    this.setData({
+      isLogin: isLogin,
+      vip:vip
+    })
     //首页进来的条件，要缓存
     if(options.save==1){
       delete options.save; 
@@ -46,14 +46,40 @@ Page({
     if (options.tourist_id) {
       this.data.parameter.tourist_id = options.tourist_id;
     }
+    if (options.saixuan) {
+      var saixuan=JSON.parse(options.saixuan);
+      this.data.parameter.room_num = saixuan.room_num;
+      this.data.parameter.room_price = saixuan.room_price;
+      this.data.parameter.room_type = saixuan.room_type;
+      if (saixuan.bed_num>0){
+        this.data.parameter.bed_num = saixuan.bed_num;
+      }
+      if (saixuan.people_num>0){
+       this.data.parameter.people_num = saixuan.people_num;
+      }
+
+    }
+
       request(this);
   },
   jumpDetails:function(e){
-    console.log(e)
     var id = e.currentTarget.dataset.id;
     console.log(id);
     wx.navigateTo({
       url: '../yuanzi_details/yuanzi_details?id='+id
+    })
+  },
+  // 搜索
+  searchList:function(e){
+    var value = e.detail.value
+    var parameter = wx.getStorageSync("parameter")
+    app.util.request({
+      'url': 'index/Accommoda/getBywhereAccommoda',
+      'cachetime': '0',
+      data:parameter,
+      success: function (res) {
+        console.log(res,"搜索的实时数据")
+      },
     })
   },
   /**
@@ -88,11 +114,12 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    request(this,1);
-    this.setData({
+    var that = this
+    request(that,1);
+    that.setData({
       page:1
     })
-    wx.stopPullDownRefresh
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -122,22 +149,29 @@ function request(e,page=1){
       'cachetime': '0',
       data: e.data.parameter,
       success: function (res) {
-        console.log(res);
-        if(res.data.success="1"){
+        console.log(res,"ddddddddddd");
+        if(res.data.success==1){
           var res = res.data.data;
           if (e.data.page !=1) {
             var tmp = e.data.room_list;
             for (var i = 0; i < res.length; i++) {
               tmp.push(res[i]);
             }
+            console.log("我的数据1")
             e.setData({
               room_list: tmp
             })
           }else{
+            console.log("我的数据2")
             e.setData({
-              room_list: res
+              room_list: res,
             })
           }
+        }else{
+          console.log("我的数据3")
+          e.setData({
+            isList:true
+          })
         }
        
       },

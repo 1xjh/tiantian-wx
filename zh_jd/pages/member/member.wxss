@@ -20,9 +20,11 @@ page{
 
 .member_briefs>view{
   text-align: center;
+  width:26%;
 }
 .member_min_img{
-  width:145rpx;
+  /* width:145rpx; */
+  width:165rpx;
   height:98rpx;
   margin: 85rpx 0rpx 13rpx 10rpx;
 }
@@ -34,6 +36,8 @@ page{
 .member_briefs{
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  
 }
 .title_1{
   font-size:24rpx;
@@ -95,6 +99,8 @@ page{
    color:#fff;
    line-height: 100rpx;
    font-size:30rpx;
+   position: fixed;
+   bottom:0;
  }
 .member_price .member_left{
     background:rgba(64,171,145,1);
@@ -108,6 +114,6 @@ page{
 }
 .background{
   width: 100%;
-  height: 200rpx;
+  height: 150rpx;
   background:#eee;
 }

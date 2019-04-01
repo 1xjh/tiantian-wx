@@ -3,8 +3,8 @@
   <view class='add_user_title'>+ 添加入住人</view>
 </navigator>
   <view class="add_user">
-    <view class="box add_user_content" wx:for="{{items}}"  wx:key="index">
-        <view bindtap='xuan' data-index="{{index}}" data-id="{{item.id}}">
+    <view class="box add_user_content" wx:for="{{items}}"  wx:key="index"  bindtap='xuan' data-index="{{index}}" data-id="{{item.id}}">
+        <view>
             <image src='{{item.check? hasSelect : noSelect}}'></image>
         </view>
         <view>

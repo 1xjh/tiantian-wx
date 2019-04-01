@@ -1,8 +1,7 @@
-uh<!--zh_jd/pages/mycollect/mycollect.wxml-->
+
 <view class='many_hotel'>
 <view  wx:if="{{mycollect!=''}}">
-    <view  class='hotel fon' wx:for="{{mycollect}}" wx:key="{{index}}" id="{{item.id}}">
-      <navigator url='../yuanzi_details/yuanzi_details?id={{item.id}}'>
+    <view  class='hotel fon' wx:for="{{mycollect}}" wx:key="{{index}}"  bindtap='jumpDetails' data-id="{{item.room_id}}">
         <view class="mycollect_box">
           <view class="d_bakcground"></view>
           <view class="d_img">
@@ -32,7 +31,6 @@ uh<!--zh_jd/pages/mycollect/mycollect.wxml-->
             <view>预定</view>
           </view>
         </view>
-      </navigator>
     </view>
 </view>
   <view wx:else style='text-align:center;color:#808080;font-size:12px;'>无更多信息</view>

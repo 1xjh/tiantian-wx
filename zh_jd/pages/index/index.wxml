@@ -13,7 +13,7 @@
       <navigator url="../city/city">
         <view class="residence_title">
             <view>{{city}}市</view>
-            <text>全国名宿院子</text>
+            <text>全国民宿院子</text>
         </view>
       </navigator>
     <view class="line"></view>
@@ -37,7 +37,7 @@
     </view>
     <view class="line"></view>
     <view class="search_text" bindtap='searchTo'>
-      <text>搜索名宿院子</text>
+      <text>搜索民宿院子</text>
     </view>
   </view>
   <!-- 内容 -->
@@ -58,7 +58,7 @@
       </view>
       <scroll-view scroll-x class="scroll-header" scroll-with-animation="false">
           <view  class="scroll-view-item img_coller" wx:for="{{family}}" wx:key="key">
-            <image src="{{item.logo}}"></image>
+            <image src="{{item.logo}}" bindtap='jumpJia' data-id="{{item.id}}"></image>
             <view class="f_title">{{item.type_name}}</view>
           </view>
       </scroll-view>
@@ -69,7 +69,7 @@
         <navigator url="../details/details?is_hot=1&save=1">
           <view class="title_left">
             <text>热门推荐</text>
-            <view>住进网红名宿,变声偶像主角</view>
+            <view>住进网红民宿,变声偶像主角</view>
           </view>
           <view class='imgRight'>
             <text>更多</text>
@@ -79,7 +79,7 @@
       </view>
       <view class="hot_img_box">
           <view class="hot_img" wx:for="{{recommend}}"  wx:key="index"  wx:if="{{index<4}}">
-            <image src="{{item.logo}}" lazy-load="true"></image>
+            <image src="{{item.logo}}" lazy-load="true" bindtap='jumpRecommend' data-id="{{item.id}}"></image>
           </view>
       </view>
     </view>
@@ -88,7 +88,7 @@
       <view>
         <navigator url="../details/details?save=1">
           <view class="title_left">
-            <text>周末去哪尔住</text>
+            <text>周末去哪儿住</text>
             <view>换个地方,发现城市之类</view>
           </view>
           <view class='imgRight'>
@@ -99,7 +99,7 @@
       </view>
       <view class="hot_img_box">
           <view class="hot_img" wx:for="{{quan_arr}}" wx:key="index" wx:if="{{index<2}}" >
-            <image src="{{item.logo}}" lazy-load="true"></image>
+            <image src="{{item.logo}}" lazy-load="true" bindtap='jumpQuna' data-id="{{item.id}}"></image>
           </view>
       </view>
     </view>

@@ -9,7 +9,7 @@ Page({
     order_id:'',
     hidden: false,
     fouhidden: true,
-     timer: '',//定时器名字
+    timer: '',//定时器名字
     countDownNum: '0'
   },
   click1: function() {

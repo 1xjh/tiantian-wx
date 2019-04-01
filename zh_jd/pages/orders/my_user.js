@@ -57,14 +57,18 @@ Page({
    */ 
   onLoad: function(options) {
     var that =this
+    that.reload()
+  },
+  reload:function(){
+    var that = this
     app.util.request({
       'url': 'index/Accommoda/getUserChech',
       'cachetime': '0',
-      success: function(res) {
-        var data=res.data.data;
+      success: function (res) {
+        var data = res.data.data;
 
-        for(var i=0;i<data.length;i++){
-          data[i].check=false;
+        for (var i = 0; i < data.length; i++) {
+          data[i].check = false;
         }
 
         that.setData({
@@ -74,7 +78,6 @@ Page({
       },
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -86,7 +89,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    var that = this
+    that.reload()
   },
 
   /**
@@ -107,7 +111,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    var that = this
+    that.reload()
+    wx.stopPullDownRefresh();
   },
 
   /**

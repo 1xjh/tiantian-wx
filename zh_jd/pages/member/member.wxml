@@ -6,47 +6,27 @@
   <!-- 会员类型 -->
   <view class="member-bg">
     <view class='member_briefs'>
-      <view>
+      <view wx:for="{{member}}" wx:key="index">
           <view class="member_min_img"> <image src='../../images/zaixianfu.png'></image></view>
-          <view class="title_1">所有房型8.0折</view>
+          <view class="title_1">所有房型{{item.value}}折</view>
           <view class="title_2">一年会员</view>
-          <view class="title_3">特惠价¥100</view>
-          <view class="title_4">¥200</view>
-      </view>
-       <view>
-          <view class="member_min_img"> <image src='../../images/zaixianfu.png'></image></view>
-          <view class="title_1">所有房型8.0折</view>
-          <view class="title_2">一年会员</view>
-          <view class="title_3">特惠价¥100</view>
-          <view class="title_4">¥200</view>
-      </view>
-       <view>
-          <view class="member_min_img"> <image src='../../images/zaixianfu.png'></image></view>
-          <view class="title_1">所有房型8.0折</view>
-          <view class="title_2">一年会员</view>
-          <view class="title_3">特惠价¥100</view>
-          <view class="title_4">¥200</view>
+          <view class="title_3">特惠价¥{{item.recharge}}</view>
+          <view class="title_4">¥{{item.discount}}</view>
       </view>
     </view>
   </view> 
   <!-- 一年使用权限 -->
   <view class="member-bg">
-      <view class="box">
-          <view class='member_type_image'><image src='../../images/member1.png'></image></view>
-          <view class="member_time">钻石会员（一年使用权限）</view>
-      </view>
-       <view class="box">
-          <view class='member_type_image'><image src='../../images/member1.png'></image></view>
-          <view class="member_time">钻石会员（一年使用权限）</view>
-      </view>
-       <view class="box">
-          <view class='member_type_image'><image src='../../images/member1.png'></image></view>
-          <view class="member_time">钻石会员（一年使用权限）</view>
+      <view class="box" wx:for="{{member}}" wx:key="index">
+          <view class='member_type_image' bindtap='price' data-index="{{index}}" data-price="{{item.recharge}}" data-id="{{item.id}}">
+            <image src='{{index==navIndex? "../../images/member2.png" : "../../images/member1.png"}}'></image>
+          </view>
+          <view class="member_time">{{item.name}}（一年使用权限）</view>
       </view>
   </view>
   <view class='background'></view>
   <view class="member_price">
-      <view class="member_left">￥100</view>
-      <view class="member_right">确定支付</view>
+      <view class="member_left">￥{{price}}</view>
+      <view class="member_right" bindtap='playgo'>确定支付</view>
   </view>
 </view>

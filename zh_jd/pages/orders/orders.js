@@ -20,19 +20,21 @@ Page({
     orders: [],
     id: 49,
     coupon_price: 0,
-    isTimeNew:true,
-    price:''
+    isTimeNew: true,
+    price: '',
+    lianZhuTian: ["1"],
+    lianZhuzhe: ["1"]
   },
   // 日历时间
   bindViewTap: function() {
     var that = this;
     that.setData({
-      isTimeNew:false
+      isTimeNew: false
     })
     var startDate = that.data.date;
     var endDate = that.data.tomorrow;
     wx.navigateTo({
-      url: '../calendar/calendar?startDate=' + startDate + "&endDate=" + endDate +"&id="+that.data.id
+      url: '../calendar/calendar?startDate=' + startDate + "&endDate=" + endDate + "&id=" + that.data.id
     })
   },
   // 房间数量加减
@@ -111,7 +113,7 @@ Page({
       arrival_time = that.data.arrival_times
       departure_time = that.data.departure_times
       days = that.data.times
-    }else{
+    } else {
       arrival_time = that.data.arrival_time
       departure_time = that.data.departure_time
       days = that.data.time
@@ -126,11 +128,29 @@ Page({
         content: '手机号不能为空',
       })
     } else {
+      var coupons = that.data.coupons_id
+      if (that.data.coupons == undefined && that.data.coupon_price==0) {
+        coupons = 0
+      }
+      var price 
+      if (that.data.coupon_price == 0 && that.data.time == 1){
+            price=that.data.prices1
+      } else if (that.data.time == 1){
+        price = that.data.prices1 - that.data.coupon_price
+
+      } else if (that.data.coupon_price == 0){
+        price = that.data.prices2
+      }else{
+        price = that.data.prices2 - that.data.coupon_price
+      }
+      console.log(price,"结算的价格")
       app.util.request({
         'url': 'index/Order/submitorder',
         'cachetime': '0',
         "method": "post",
         data: {
+          is_yj: that.data.orders.is_deposit,
+          yj_cost: that.data.orders.yj_cost,
           goods_id: that.data.id,
           seller_id: that.data.orders.seller_id,
           room_name: that.data.orders.name,
@@ -142,13 +162,13 @@ Page({
           room_num: that.data.room,
           people_num: that.data.people,
           seller_name: that.data.orders.s_name,
-          coupons_id: that.data.coupons_id
+          coupons_id: coupons
         },
         success: function(res) {
           console.log(res.data.success)
           if (res.data.success == 1) {
             wx.navigateTo({
-              url: '../dingdanzhifu/dingdanzhifu?price=' + price + "&order_id=" + res.data.data +"&number=2400",
+              url: '../dingdanzhifu/dingdanzhifu?price=' + price + "&order_id=" + res.data.data + "&number=2400",
             })
           } else if (res.data.success == "notstock") {
             wx.showModal({
@@ -181,6 +201,12 @@ Page({
    */
   onLoad: function(options) {
     var that = this
+    var vip = wx.getStorageSync("users")
+    vip = vip.member.value == 10 ? 1 : vip.member.value * 0.1
+    that.setData({
+        vip:vip,
+        price: options.price
+    })
     // 入住人信息
     app.util.request({
       'url': 'index/Accommoda/getRoomDetail',
@@ -189,10 +215,21 @@ Page({
         id: options.id
       },
       success: function(res) {
+        var data = res.data.data;
+        data.yj_cost = parseFloat(data.is_deposit ? data.yj_cost : 0);
+        console.log(data,"kkkkkkkkkkkkkkkk")
         that.setData({
-          orders: res.data.data,
-          price: options.price
+          orders: data,
         })
+        var favourable = data.favourable
+        for (var b = 0; b < favourable.length; b++) {
+          console.log(555)
+          var a = favourable[b].day
+          var b = favourable[b].Sale
+          that.data.lianZhuTian.push(a)
+          that.data.lianZhuzhe.push(b)
+        }
+        prices(that, false)
       },
     })
     that.setData({
@@ -203,6 +240,7 @@ Page({
       departure_times: options.departure_time,
       arrival_times: options.arrival_time,
     })
+   
   },
 
   /**
@@ -215,7 +253,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function() { 
     var startDate = this.data.startDate;
     var endDate = this.data.endDate;
     // 默认显示入住时间为当天
@@ -322,6 +360,7 @@ Page({
         time: time
       });
     }
+    prices(this,true)
   },
 
   /**
@@ -359,7 +398,58 @@ Page({
 
   }
 })
-
+function toDecimal2(x) {
+  var f = parseFloat(x);
+  if (isNaN(f)) {
+    return false;
+  }
+  var f = Math.round(x * 100) / 100;
+  var s = f.toString();
+  var rs = s.indexOf('.');
+  if (rs < 0) {
+    rs = s.length;
+    s += '.';
+  }
+  while (s.length <= rs + 2) {
+    s += '0';
+  }
+  return s;
+}
+function prices(that, isPrice) {
+ var k  = that.data
+  if (isPrice){ 
+    for (var m = 0; m < k.lianZhuTian.length; m++) {
+      if (k.time >= k.lianZhuTian[m]) {
+        var a = k.lianZhuzhe[m]
+      }
+    }
+    var a = a == 1 ? a : parseFloat(a * 0.1)
+    console.log(k.orders.set_favourable,"KKKKKKK可否共享")
+    if (k.orders.set_favourable == 2 && k.coupon_price!=0) {
+      var prices2 = toDecimal2(parseFloat((k.orders.online_price * k.time * k.room * k.vip).toFixed(2)) + k.orders.yj_cost)
+      console.log(prices2,"不享受连住优惠和优惠券")
+    }else{
+      var prices2 = toDecimal2(parseFloat((k.orders.online_price * k.time * k.room * k.vip * a).toFixed(2)) + k.orders.yj_cost)
+      console.log(prices2,"享受连住优惠和优惠券")
+    }
+    that.setData({
+      prices2: prices2,
+    })
+  }else{
+    for (var m = 0; m < k.lianZhuTian.length; m++) {
+      if (k.time >= k.lianZhuTian[m]) {
+        var a = k.lianZhuzhe[m]
+      }
+    }
+    console.log(k.orders.set_favourable, "KKKKKKK可否共享")
+    var a = a == 1 ? a : parseFloat(a * 0.1)
+    var prices1 = toDecimal2(parseFloat((k.price * k.room).toFixed(2)) + k.orders.yj_cost) 
+    var prices2=0
+    that.setData({
+      prices1:prices1,
+    })
+  }
+}
 function RoomNum(e, id, date, tomorrow) {
   app.util.request({
     'url': 'index/Accommoda/getRoomNum',

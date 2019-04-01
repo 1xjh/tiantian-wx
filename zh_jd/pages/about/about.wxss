@@ -1,0 +1,9 @@
+/* zh_jd/pages/about/about.wxss */
+.about{
+  font-size:26rpx;
+  font-family:SimSun;
+  font-weight:400;
+  color:rgba(34,34,34,1);
+  width: 90%;
+  margin: 30rpx auto;
+}

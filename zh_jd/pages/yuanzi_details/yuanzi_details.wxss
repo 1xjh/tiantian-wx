@@ -1,9 +1,6 @@
 /* zh_jd/pages/yuanzi_details/yuanzi_details.wxss */
 
 /* 轮播 */
-page{
-  margin:0  !important;
-}
 .swiper {
   width: 100%;
   height: 450rpx;
@@ -209,8 +206,8 @@ page{
 }
 
 .liuyan view image {
-  width: 36rpx;
-  height: 39rpx;
+ width:31rpx;
+ height:30rpx;
 }
 
 .yz_pingjia {
@@ -592,4 +589,57 @@ button::after {
   bottom: 0;
   text-align: center;
   line-height: 100rpx;
+}
+/* 评分 */
+.conmmentbox{
+  display: inline-block;
+  font-size: 22rpx;
+  color: #F74754;
+}
+.conmmentstars{
+  width: 26rpx;
+  height: 26rpx;
+}
+.doortimes{
+	color: #F74754;
+	margin-left: 10rpx;
+}
+.starbox{
+	width: 130rpx;
+	height: 30rpx;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	float: left;
+}
+.stars{
+	width: 130rpx;
+	height: 30rpx;
+	position: relative;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+.stars2{
+	height: 30rpx;
+	width: 130rpx;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.stars image,.stars2 image{
+	width: 26rpx;
+	height: 26rpx;
+	float: left;
+	white-space:nowrap;
+}
+.stars view,.stars2 view{
+	width: 130rpx;
+	position: absolute;
+  display: flex;
+}
+.star_box{
+  width: 150rpx;
+  height: 40rpx
 }

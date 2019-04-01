@@ -1,0 +1,44 @@
+<view>
+  <view class="d_type">
+    <view class="d_auto d_t1" wx:if="{{order.status===4}}">订单以完成</view>
+    <view class="d_auto d_t1" wx:if="{{order.status===0}}">订单待支付</view>
+    <view class="d_auto d_t1" wx:if="{{order.status===2}}">订单以取消</view>
+    <view class="d_auto d_t1" wx:if="{{order.status===5}}">退款中</view>
+    <view class="d_auto d_t1" wx:if="{{order.status===6}}">退款成功</view>
+    <view class="d_auto d_t1" wx:if="{{order.status===1}}">订单以待入住</view>
+    <view class="d_auto d_t2" wx:if="{{order.is_rz===1 && order.status===4}}">成功入住</view>
+  </view>
+  <view class='d_t3'>
+    <view class='d_auto d_number'>订单号：{{order.order_no}}</view>
+    <view  class='d_auto d_time'>下单时间：{{order.cerated_time}}</view>
+    <view class="d_auto d_refund" wx:if="{{order.status===1}}" data-id="{{order.id}}" bindtap='jump_refund'>申请退款</view>
+    <view class="d_auto d_refund" wx:if="{{order.status===5 || order.status===6}}" data-id="{{order.id}}" bindtap='refund_details'>查看退款详情</view>
+  </view>
+  <view class='d_t4'>
+    <view  class='d_auto d_name'>{{order.seller_name}}</view>
+    <view  class='d_auto box d_d'>
+      <view>{{order.room_name}}</view>
+      <view>{{order.room_num}}间</view>
+      <view>共{{order.days}}晚</view>
+    </view>
+    <view  class='d_auto d_d'>入住时间：{{order.arrival_time}} 至 {{order.departure_time}}</view>
+    <view  class='d_auto d_d'>入 住 人：{{order.name}}</view>
+    <view  class='d_auto d_d'>联系电话：{{order.tel}}</view>
+  </view>
+  <view  class='box d_t5'>
+    <view bindtap='d_call'>联系电话</view>
+    <view><button class='button'  open-type="contact">联系客服</button></view>
+    <view bindtap='intoMap'>查看地图</view>
+  </view>
+  <view class="d_t6">
+    <view  class='d_auto box'>
+      <view>支付方式</view>
+      <view>{{order.pay_way}}</view>
+    </view>
+    <view  class='d_auto box'>
+      <view>订单总价</view>
+      <view>¥{{order.dis_cost}}</view>
+    </view>
+  </view>
+  <!-- <view class='d_go' bindtap=''>返回首页</view> -->
+</view>

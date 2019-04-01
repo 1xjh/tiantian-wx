@@ -1,24 +1,27 @@
 {
   "pages": [
+    "zh_jd/pages/mylist/mylist",
+    "zh_jd/pages/index/index",
+    "zh_jd/pages/logs/logs",
+    "zh_jd/pages/auth/auth",
+    "zh_jd/pages/yuanzi_details/yuanzi_details",
+    "zh_jd/pages/screening/screening",
+    "zh_jd/pages/coupon/coupon",
+    "zh_jd/pages/mylist/details",
+    "zh_jd/pages/mylist/ refund",
+    "zh_jd/pages/member/member",
     "zh_jd/pages/mylist/comment",
     "zh_jd/pages/feedback/feedback",
     "zh_jd/pages/check/check",
-    "zh_jd/pages/mylist/mylist",
     "zh_jd/pages/yuanzi_details/dianping",
     "zh_jd/pages/check/check_s",
-    "zh_jd/pages/index/index",
     "zh_jd/pages/dingdanzhifu/dingdanzhifu",
     "zh_jd/pages/orders/orders",
-    "zh_jd/pages/yuanzi_details/yuanzi_details",
     "zh_jd/pages/member/member_success",
-    "zh_jd/pages/member/member",
-    "zh_jd/pages/logs/logs",
     "zh_jd/pages/calendar/calendar",
-    "zh_jd/pages/screening/screening",
     "zh_jd/pages/details/details",
     "zh_jd/pages/mycollect/mycollect",
     "zh_jd/pages/feedback/s_feedback",
-    "zh_jd/pages/coupon/coupon",
     "zh_jd/pages/orders/my_user",
     "zh_jd/pages/yuding/yuding",
     "zh_jd/pages/orders/append",
@@ -27,17 +30,12 @@
     "zh_jd/pages/sheji/sheji",
     "zh_jd/pages/yuanzi_details/synopsis",
     "zh_jd/pages/city/city",
-    "zh_jd/pages/dingevaluate/dingevaluate",
-    "zh_jd/pages/pinglun/pinglun",
     "zh_jd/pages/logs/rurle",
-    "zh_jd/pages/logs/insider/insider",
-    "zh_jd/pages/mypublish/mypublish",
-    "zh_jd/pages/logs/refund/refund",
-    "zh_jd/pages/auth/auth"
+    "zh_jd/pages/about/about"
   ],
   "permission": {
     "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置"
+      "desc": "你的位置信息将用于小程序位置定位"
     }
   },
   "window": {
@@ -60,7 +58,7 @@
       },
       {
         "pagePath": "zh_jd/pages/sheji/sheji",
-        "text": "精选民宿",
+        "text": "设计",
         "iconPath": "zh_jd/images/position11.png",
         "selectedIconPath": "zh_jd/images/position22.png"
       },

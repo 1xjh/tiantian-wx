@@ -12,7 +12,10 @@ Page({
     coupon_inex: 0,
     selected_effective: true,
     selected_already: false,
-    selected_overdue: false
+    selected_overdue: false,
+    affective: true,
+    already: true,
+    overdue:true,
   },
   selected_effective: function(e) {
     var that = this
@@ -104,6 +107,26 @@ Page({
         that.setData({
           coupon: res.data.data
         })
+        var coupon = that.data.coupon
+        console.log(coupon)
+        for (var i = 0; i < coupon.length;i++){
+          console.log(coupon[i].state)
+          if (coupon[i].state == 2){
+             that.setData({
+               affective: false,
+             })
+          }
+          if (coupon[i].state == 1) {
+            that.setData({
+              already: false,
+            })
+          }
+          if (coupon[i].state == 3) {
+            that.setData({
+              overdue: false,
+            })
+          }
+        }
       },
     })
   },

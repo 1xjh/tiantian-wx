@@ -1,12 +1,13 @@
 <!--zh_jd/pages/details/details.wxml-->
 <!-- 我的头部 -->
+<wxs module="filters" src="details.wxs"></wxs>
 <view class="details">
   <view class="details_head">
     <view>
       <view class="details_icon">
         <icon type="search" size="20" />
       </view>
-      <input class="details_search" value="{{name}}" placeholder="{{name!='' ? name : '可以搜索珠海'}}"></input>
+      <input class="details_search" value="{{name}}" bindinput='searchList' placeholder="{{name!='' ? name : '可以搜索珠海'}}"></input>
     </view>
   </view>
   <view class="screening_box">
@@ -53,12 +54,19 @@
         </view>
         <view class="d_info box">
           <view class="d_price1">市场价格：{{item.original_price}}元</view>
-          <view class="d_price2">会员价格: {{item.online_price}}元</view>
+          <view class="d_price2" wx:if="{{isLogin}}">会员价格: {{filters.toFix(item.online_price * vip)}}元</view>
+          <view class="d_price2" wx:else>活动价格: {{item.online_price}}元</view>
         </view>
-        <view class="d_yuding">
+        <view class="d_yuding" data-id='{{item.id}}' bindtap='jumpDetails'>
           <view>预定</view>
         </view>
       </view>
     </view>
   </view>
+    <view class='none_coupon rel' wx:if="{{isList}}">
+      <view class='ab udlr'>
+        <image mode='widFix' class='ab lr' src="../../images/fotel.png"></image>
+        <view class='ab'>非常抱歉！未找到相关房源</view>
+      </view>
+    </view>
 </view>

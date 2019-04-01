@@ -9,21 +9,33 @@ Page({
     art: '',
     date: '',
     tomorrow: '',
-    id: 49,
+    id: "",
     details: [],
-    message:[],
-    quan_arr:[],
+    message: [],
+    quan_arr: [],
     noSelect: '../../images/coupon_1.png',
     hasSelect: '../../images/coupon_2.png',
     coupon_index: true,
-    animationData: {}
+    isCoupon: false,
+    lianZhuTian: ["1"],
+    lianZhuzhe: ["1"]
   },
+  // 图放大
+  previewImg: function (e) {
+    var src = e.currentTarget.dataset.src;
+    var imgList = e.currentTarget.dataset.effect_pic;
+    wx.previewImage({
+      current: src, 
+      urls: imgList 
+    })
+  },
+  // 跳转到日历
   bindViewTap: function() {
     var that = this;
     var startDate = that.data.date;
     var endDate = that.data.tomorrow;
     wx.navigateTo({
-      url: '../calendar/calendar?startDate=' + startDate + "&endDate=" + endDate +"&id="+that.data.id
+      url: '../calendar/calendar?startDate=' + startDate + "&endDate=" + endDate + "&id=" + that.data.id
     })
   },
   synopsis: function(e) {
@@ -33,128 +45,165 @@ Page({
     })
   },
   // 立即预定
-  lijiyuding:function(e){
+  submitOrder: function(e) {
     var that = this
-    var price = that.data.details.shop_price * that.data.time
-    app.util.request({
-      "url":"index/Info/chestock",
-      'cachetime': '0',
-      'method': "post",
-      data: {
-        id: that.data.id, 
-        arrival_time: that.data.arrival_time,
-        departure_time: that.data.departure_time},
-      success:function(res){
-          if(res.data.success==1){
+    if(that.data.isLogin){
+      app.util.request({
+        "url": "index/Info/chestock",
+        'cachetime': '0',
+        'method': "post",
+        data: {
+          id: that.data.id,
+          arrival_time: that.data.arrival_time,
+          departure_time: that.data.departure_time
+        },
+        success: function (res) {
+          if (res.data.success == 1) {
             wx.navigateTo({
-              url: '../orders/orders?date=' + that.data.date + "&tomorrow=" + that.data.tomorrow + "&id=" + that.data.id + "&time=" + that.data.time + "&arrival_time=" + that.data.arrival_time + "&departure_time=" + that.data.departure_time + "&price=" + price
+              url: '../orders/orders?date=' + that.data.date + "&tomorrow=" + that.data.tomorrow + "&id=" + that.data.id + "&time=" + that.data.time + "&arrival_time=" + that.data.arrival_time + "&departure_time=" + that.data.departure_time + "&price=" + that.data.price
             })
-          }else{
-              wx.showToast({
-                title: '该时间段无房源',
-                icon: 'none',
-                duration: 1000,
-                success: function(res) {},
-                fail: function(res) {},
-                complete: function(res) {},
-              })
+          } else {
+            wx.showToast({
+              title: '该时间段无房源',
+              icon: 'none',
+              duration: 1000,
+              success: function (res) { },
+              fail: function (res) { },
+              complete: function (res) { },
+            })
           }
-      }
-    })
+        }
+      })
+    }else{
+      wx.navigateTo({
+        url: '../auth/auth',
+      })
+    }
+   
   },
   // 便利设施
-  facility:function(e){
-      var that =this
-      wx.navigateTo({
-        url: 'facility?id=' + that.data.id,
-      })
+  facility: function(e) {
+    var that = this
+    wx.navigateTo({
+      url: 'facility?id=' + that.data.details.id,
+    })
   },
   // 评论
   jump_dianping: function(e) {
     var that = this
     wx.navigateTo({
-      url: 'dianping?id=' + that.data.id,
+      url: 'dianping?id=' + that.data.details.id,
     })
   },
+
   jump_call: function(e) {
     wx.makePhoneCall({
       phoneNumber: '88888' // 仅为示例，并非真实的电话号码
     })
   },
   // 优惠卷
-  coupon: function (e) {
+  coupon: function(e) {
     var that = this
-    var index = e.currentTarget.dataset.index;
-    var coupon = that.data.coupon
-    if (coupon[index] === 1) {
-      app.util.request({
-        'url': 'index/Accommoda/drawcoupon',
-        'cachetime': '0',
-        'method': "post",
-        data: {
-          id: coupon[index].id
-        },
-        success: function (res) {
-          console.log(res.data.success)
-          if (res.data.success == 1) {
-            coupon[index].state = 1
-            that.setData({
-              coupon: coupon
-            })
-          } else {
-            console.log("系统错误")
-          }
-        },
-      })
-    } else {
-      wx.showToast({
-        title: '可以直接使用',
-        icon: "none",
-        duration: 500,
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
+    if(that.data.isLogin){
+      var index = e.currentTarget.dataset.index;
+      var coupon = that.data.coupon;
+      console.log(coupon[index].state)
+      if (coupon[index].state === 0) {
+        app.util.request({
+          'url': 'index/Accommoda/drawcoupon',
+          'cachetime': '0',
+          'method': "post",
+          data: {
+            id: coupon[index].id
+          },
+          success: function (res) {
+            if (res.data.success == 1) {
+              coupon[index].state = 2
+              that.setData({
+                coupon: coupon,
+              })
+            } else {
+              console.log("优惠券以使用")
+            }
+          },
+        })
+      } else {
+        wx.showToast({
+          title: '优惠卷以领取',
+          icon: "none",
+          duration: 500,
+          success: function (res) { },
+          fail: function (res) { },
+          complete: function (res) { },
+        })
+      }
+    }else{
+      wx.navigateTo({
+        url: '../auth/auth',
       })
     }
   },
-  junmpCoupon:function(e){
-    var that =this 
+  junmpCoupon: function(e) {
+    var that = this
     var isShow = that.data.coupon_index ? false : true;
-      that.setData({
-        coupon_index: isShow
+    that.setData({
+      coupon_index: isShow
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options,"我详情页来拿id了")
+    console.log(options.id,"这是什么id")
     var that = this;
+    var isLogin = wx.getStorageSync("is_lgoin")
     that.setData({
-      id:options.id
+      isLogin: isLogin
     })
+    that.setData({
+      id: options.id
+    })
+    that.reload(options)
+  },
+  // 下拉刷新
+  reload: function (options){
     //获取数据
+    var that = this
+    var isLogin = wx.getStorageSync("is_lgoin")
+    that.setData({
+      isLogin: isLogin
+    })
     app.util.request({
       'url': 'index/Accommoda/getRoomDetail',
       'cachetime': '0',
       data: {
-        id: options.id
+        id: that.data.id
       },
-      success: function(res) {
+      success: function (res) {
         var art = app.convertHtmlToText(res.data.data.introduction)
-        
-        // console.log(collect)
         that.setData({
           details: res.data.data,
-          art: art
+          art: art,
+          coupon: res.data.data.coupon
         })
+        // 获取连住优惠
+        var favourable = res.data.data.favourable
+        for (var b = 0; b < favourable.length; b++) {
+          var a = favourable[b].day
+          var b = favourable[b].Sale
+          that.data.lianZhuTian.push(a)
+          that.data.lianZhuzhe.push(b)
+        }
+        prices(that, false)
       },
     })
     //留言
     app.util.request({
       'url': 'index/Info/getComment',
       'cachetime': '0',
-      data: { id:65},
+      data: {
+        id: that.data.id
+      },
       success: function (res) {
         // var message = res.data.data.info
         that.setData({
@@ -172,48 +221,58 @@ Page({
   },
   // 地图定位
   intoMap: function() {
-    var that =this
-    var a =
+    var that = this
     wx.openLocation({
       latitude: parseFloat(that.data.details.longitude),
       longitude: parseFloat(that.data.details.latitude),
-      name: "广州市黄埔大道中309-315号",
-      address: "广州市黄埔大道中309-315号",
+      name: that.data.details.address,
+      address: that.data.details.name,
       scale: 28
     })
   },
-
+  jumpdDetails:function(e){
+    wx.navigateTo({
+      url: '../yuanzi_details/yuanzi_details?id=' + e.currentTarget.dataset.id
+    })
+  },
   // 收藏
   collect: function(e) {
     var that = this
-    var url = this.data.details.collect ? 'index/Accommoda/quxiaoCollRomm' : 'index/Accommoda/collectRoom';
-    app.util.request({
-      'url': url,
-      "method":"post",
-      data: {
-        id: that.data.details.id,
-      },
-      success: function(res) {
-        if(res.data.success==1){
+    if(that.data.isLogin){
+      var url = this.data.details.collect ? 'index/Accommoda/quxiaoCollRomm' : 'index/Accommoda/collectRoom';
+      app.util.request({
+        'url': url,
+        "method": "post",
+        data: {
+          id: that.data.details.id,
+        },
+        success: function (res) {
+          if (res.data.success == 1) {
             that.data.details.collect = !that.data.details.collect;
             that.setData({
               details: that.data.details
             })
             // 返回更新数据
-          var pages = getCurrentPages();
-          if (pages.length > 1) {
-            var prePage = pages[pages.length - 2];
-            prePage.onLoad()
+            var pages = getCurrentPages();
+            if (pages.length > 1) {
+              var prePage = pages[pages.length - 2];
+              prePage.onLoad()
+            }
           }
+          wx.showToast({
+            title: res.data.msg,
+            success: function (res) { },
+            fail: function (res) { },
+            complete: function (res) { },
+          })
         }
-        wx.showToast({
-          title: res.data.msg,
-          success: function(res) {},
-          fail: function(res) {},
-          complete: function(res) {},
-        })
-      }
-    })
+      })
+    }else{
+      wx.navigateTo({
+        url: '../auth/auth',
+      })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -293,7 +352,7 @@ Page({
         arrival_time: startDate,
         departure_time: endDate
       })
-      console.log(date,113333333333333321111)
+      console.log(date, 113333333333333321111)
       var s1 = new Date(startDate.replace(/-/g, "/"));
       var s2 = new Date(endDate.replace(/-/g, "/"));
       var days = s2.getTime() - s1.getTime();
@@ -346,6 +405,9 @@ Page({
         time: time
       });
     }
+    prices(this, true)
+    var that =this
+    that.reload()
   },
 
   /**
@@ -366,7 +428,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    var that = this
+    that.reload()
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -388,11 +452,90 @@ function quna(e, city) {
   app.util.request({
     'url': 'index/Accommoda/getBywhereAccommoda',
     'cachetime': '0',
-    data: { "city": city },
-    success: function (res) {
+    data: {
+      "city": city
+    },
+    success: function(res) {
       e.setData({
         quan_arr: res.data.data
       })
     },
   })
+}
+function toDecimal2(x) {
+  var f = parseFloat(x);
+  if (isNaN(f)) {
+    return false;
+  }
+  var f = Math.round(x * 100) / 100;
+  var s = f.toString();
+  var rs = s.indexOf('.');
+  if (rs < 0) {
+    rs = s.length;
+    s += '.';
+  }
+  while (s.length <= rs + 2) {
+    s += '0';
+  }
+  return s;
+}
+// 计算价格
+function prices(e, isPrice) {
+    var k = e.data
+  if (e.data.isLogin){
+    var vip = wx.getStorageSync("users")
+    vip = vip.member.value == 10 ? 1 : vip.member.value * 0.1
+    if (isPrice) {
+      for (var m = 0; m < k.lianZhuTian.length; m++) {
+        if (k.time >= k.lianZhuTian[m]) {
+          var a = k.lianZhuzhe[m]
+        }
+      }
+      var a = a == 1 ? a : parseFloat(a * 0.1)
+      var price = k.details.online_price * k.time * vip * a
+      price = toDecimal2(price)
+      e.setData({
+        price: price
+      })
+    } else {
+      for (var m = 0; m < k.lianZhuTian.length; m++) {
+        if (k.time >= k.lianZhuTian[m]) {
+          var a = k.lianZhuzhe[m]
+        }
+      }
+      var a = a == 1 ? a : parseFloat(a * 0.1)
+      var price = k.details.online_price * k.time * vip * a
+      price = toDecimal2(price)
+      e.setData({
+        price: price
+      })
+    }
+  } else {
+    if (isPrice){
+      for (var m = 0; m < k.lianZhuTian.length; m++) {
+        if (k.time >= k.lianZhuTian[m]) {
+          var a = k.lianZhuzhe[m]
+        }
+      }
+      var a = a == 1 ? a : parseFloat(a * 0.1)
+      var price= k.details.online_price * k.time * a
+      price = toDecimal2(price)
+      e.setData({
+        price: price
+      })
+    }else{
+      for (var m = 0; m < k.lianZhuTian.length; m++) {
+        if (k.time >= k.lianZhuTian[m]) {
+          var a = k.lianZhuzhe[m]
+        }
+      }
+      var a = a == 1 ? a : parseFloat(a * 0.1)
+      var price = k.details.online_price * k.time * a
+      price = toDecimal2(price)
+      e.setData({
+        price: price
+      })
+    }
+  }
+ 
 }

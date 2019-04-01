@@ -1,15 +1,32 @@
 <!--zh_jd/pages/yuanzi_details/dianping.wxml-->
+<wxs module="filters" src="toF.wxs"></wxs>
 <view>
   <!-- 综合评分 -->
   <view class="comment_top box">
     <view class="comment_left">
-      <view class="comment_left_fen">{{info_one.score.sum}}分</view>
-      <view class="box comment_image">
-        <image src='../../images/xing-hui@2x.png'></image>
-        <image src='../../images/xing-hui@2x.png'></image>
-        <image src='../../images/xing-hui@2x.png'></image>
-        <image src='../../images/xing-hui@2x.png'></image>
-        <image src='../../images/xing-hui@2x.png'></image>
+      <view class="comment_left_fen">{{filters.toFix(info_one.score.sum)}}分</view>
+      <view class="conmmentbox">
+        <view class="starbox">
+          <view class="stars2" style="width: 130rpx">
+            <view>
+              <image src='../../images/xing-hui@3x.png'></image>
+              <image src='../../images/xing-hui@3x.png'></image>
+              <image src='../../images/xing-hui@3x.png'></image>
+              <image src='../../images/xing-hui@3x.png'></image>
+              <image src='../../images/xing-hui@3x.png'></image>
+            </view>
+          </view>
+          <view class="stars" style="width: {{praisestars}};">
+            <view>
+              <image src="../../images/xing-hong@3x.png"></image>
+              <image src="../../images/xing-hong@3x.png"></image>
+              <image src="../../images/xing-hong@3x.png"></image>
+              <image src="../../images/xing-hong@3x.png"></image>
+              <image src="../../images/xing-hong@3x.png"></image>
+            </view>
+          </view>
+        </view>
+        {{ praiseNum }}分
       </view>
       <view>
         {{info_one.info.nv_length}}条点评
@@ -39,35 +56,50 @@
       </view>
       <!-- 等级 -->
       <view class="comment_fen box">
-        <view>{{item.score}}分</view>
-        <view>
-          <image src='../../images/xing-hui@2x.png'></image>
-          <image src='../../images/xing-hui@2x.png'></image>
-          <image src='../../images/xing-hui@2x.png'></image>
-          <image src='../../images/xing-hui@2x.png'></image>
-          <image src='../../images/xing-hui@2x.png'></image>
+        <view>{{filters.toFix(item.score)}}分</view>
+        <view class="starbox">
+          <view class="stars2" style="width: 130rpx">
+            <view>
+              <image src='../../images/xing-hui@3x.png'></image>
+              <image src='../../images/xing-hui@3x.png'></image>
+              <image src='../../images/xing-hui@3x.png'></image>
+              <image src='../../images/xing-hui@3x.png'></image>
+              <image src='../../images/xing-hui@3x.png'></image>
+            </view>
+          </view>
+          <view class="stars" style="width: {{(item.score/5) * 100 + '%'}};">
+            <view>
+              <image src="../../images/xing-hong@3x.png"></image>
+              <image src="../../images/xing-hong@3x.png"></image>
+              <image src="../../images/xing-hong@3x.png"></image>
+              <image src="../../images/xing-hong@3x.png"></image>
+              <image src="../../images/xing-hong@3x.png"></image>
+            </view>
+          </view>
         </view>
       </view>
       <!-- 内容 -->
       <view class='comment_a_content'>
         <view class="content_a {{toggleIndex===index && isShow===true? 'on':''}}">
-          {{item.content}}{{index}}{{toggleIndex}}
+          {{item.content}}
         </view>
         <a wx:if="{{item.strleng>100}}">
-            <view class="comment_gendou"  bindtap='toggle' data-index="{{index}}" wx:if="{{isShow===false}}">
+          <view class="comment_gendou" bindtap='toggle' data-index="{{index}}" wx:if="{{isShow===false}}">
             展开全部
-        </view>
-        <view class="comment_gendou"  bindtap='toggle' data-index="{{index}}" wx:else>
+          </view>
+          <view class="comment_gendou" bindtap='toggle' data-index="{{index}}" wx:else>
             收起
-        </view>
-   </a>
+          </view>
+        </a>
       </view>
       <!-- 用户上传的图 -->
-      <view class="comment_info_image box">
-        <image src='{{item.img}}'></image>
+      <view class="comment_info_image box" wx:if="{{item.img[0]!=''}}" >
+          <view wx:for="{{item.img}}" wx:for-item="items" wx:key="key" bindtap="previewImg" data-effect_pic='{{item.img}}' data-src='{{items}}'>
+            <image src='{{items}}' mode="aspectFill"></image>
+          </view>
       </view>
       <!-- 房东回复 -->
-      <view class="hui_fu" wx:if="{{item.reply!=''}}">
+      <view class="hui_fu" wx:if="{{item.reply}}">
         <view>房东回复:
           <text>{{item.reply}}</text>
         </view>

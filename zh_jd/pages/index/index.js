@@ -160,7 +160,19 @@ Page({
 
   //事件处理函数
   onLoad: function(option) {
-    console.log(option);
+    var that = this
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log(res, "[pppppp")
+        that.setData({
+          screenHeight: res.screenHeight,
+          screenWidth: res.screenWidth,
+        });
+      }
+    })
+  that.reload(option)
+  },
+  reload: function (option){
     if (option.city) {
       this.setData({
         city: option.city
@@ -174,7 +186,6 @@ Page({
       let vm = this;
       vm.getUserLocation();
     }
-
     qqmapsdk = new QQMapWX({
       key: 'QIVBZ-OMFCO-BQPWW-S3Y3M-4WOSS-TAFMG' //这里自己的key秘钥
     });
@@ -182,21 +193,33 @@ Page({
     var that = this
     wx.setStorageSync('startDate', '')
     wx.setStorageSync('endDate', '')
-
-    wx.getSystemInfo({
-      success: function(res) {
-        console.log(res, "[pppppp")
-        that.setData({
-          screenHeight: res.screenHeight,
-          screenWidth: res.screenWidth,
-        });
-      }
+  },
+  // 家庭定制
+  jumpJia: function(e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../yuanzi_details/yuanzi_details?id=' + id
     })
-
+  },
+  // 热门推荐
+  jumpRecommend: function(e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../yuanzi_details/yuanzi_details?id=' + id
+    })
+  },
+  // 去哪
+  jumpQuna: function(e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../yuanzi_details/yuanzi_details?id=' + id
+    })
   },
   clickimg: function(e) {
     var that = this;
     var index = e.currentTarget.dataset.index
+    console.log(that.data.platform.banner)
+    console.log(index)
   },
   // 轮播图尺寸设置
   bannerImg: function(e) {
@@ -294,7 +317,8 @@ Page({
   // 下拉刷新
   onPullDownRefresh() {
     var that = this
-    that.onLoad()
+    var option = that.data.city
+    that.reload(option)
     wx.stopPullDownRefresh();
   },
   onShow: function() {
@@ -510,5 +534,4 @@ function quna(e, city) {
       })
     },
   })
-  console.log(e.data.quan_arr, "周末去哪");
 }

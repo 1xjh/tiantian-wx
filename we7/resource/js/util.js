@@ -60,7 +60,6 @@ function getSign(url, data, token) {
 		// }
    
     if (JSON.stringify(data)!="{}") { //post
-    console.log(data,"sss")
 			var theRequest = [];
 			for (let param in data) {
 				if (param && data[param]) {
@@ -79,7 +78,7 @@ function getSign(url, data, token) {
       querystring = _.uniq(querystring, true, 'name');
      
       for (let i = 0; i < querystring.length; i++) {
-        if (querystring[i] && querystring[i].name && querystring[i].value) {
+        if (querystring[i] && querystring[i].name && querystring[i].value!="") {
           urlData += querystring[i].name + '=' + querystring[i].value;
           if (i < (querystring.length - 1)) {
             urlData += '&';
@@ -93,7 +92,6 @@ function getSign(url, data, token) {
 
 		token = token ? token : wx.getStorageSync("token");
     sign = md5(urlData +"token="+token + "&yan="+getApp().siteInfo.yan);
-    console.log(urlData + "token=" + token + "&yan=" + getApp().siteInfo.yan);
 		return sign;
 	}
 }

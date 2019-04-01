@@ -1,5 +1,5 @@
 // zh_jd/pages/mylist/comment.js
-var app= getApp().globalData;
+var app = getApp();
 Page({
 
   /**
@@ -8,162 +8,170 @@ Page({
   data: {
     list: '',
     upload_picture_list: [],
-    all:[],
+    all: [],
     flag1: 5,
     flag2: 5,
     flag3: 5,
     flag4: 5,
-    images1:"../../images/xing-hong@3x.png",
+    images1: "../../images/xing-hong@3x.png",
     images2: "../../images/xing-hui@3x.png",
+    order_id:'',
+    content:"此用户没有填写评价内容"
   },
-  changeSanitation1 : function () {
+  changeSanitation1: function() {
     var that = this;
     that.setData({
       flag1: 1
     });
   },
-  changeSanitation2: function () {
+  changeSanitation2: function() {
     var that = this;
     that.setData({
       flag1: 2
     });
   },
-  changeSanitation3: function () {
+  changeSanitation3: function() {
     var that = this;
     that.setData({
       flag1: 3
     });
   },
-  changeSanitation4: function () {
+  changeSanitation4: function() {
     var that = this;
     that.setData({
       flag1: 4
     });
   },
-  changeSanitation5: function () {
+  changeSanitation5: function() {
     var that = this;
     that.setData({
       flag1: 5
     });
   },
-  changeTraffic1: function () {
+  changeTraffic1: function() {
     var that = this;
     that.setData({
       flag2: 1
     });
   },
-  changeTraffic2: function () {
+  changeTraffic2: function() {
     var that = this;
     that.setData({
       flag2: 2
     });
   },
-  changeTraffic3: function () {
+  changeTraffic3: function() {
     var that = this;
     that.setData({
       flag2: 3
     });
   },
-  changeTraffic4: function () {
+  changeTraffic4: function() {
     var that = this;
     that.setData({
       flag2: 4
     });
   },
-  changeTraffic5: function () {
+  changeTraffic5: function() {
     var that = this;
     that.setData({
       flag2: 5
     });
   },
-  changeServe1: function () {
+  changeServe1: function() {
     var that = this;
     that.setData({
       flag3: 1
     });
   },
-  changeServe2: function () {
+  changeServe2: function() {
     var that = this;
     that.setData({
       flag3: 2
     });
   },
-  changeServe3: function () {
+  changeServe3: function() {
     var that = this;
     that.setData({
       flag3: 3
     });
   },
-  changeServe4: function () {
+  changeServe4: function() {
     var that = this;
     that.setData({
       flag3: 4
     });
   },
-  changeServe5: function () {
+  changeServe5: function() {
     var that = this;
     that.setData({
       flag3: 5
     });
   },
-  changeDecorate1: function () {
+  changeDecorate1: function() {
     var that = this;
     that.setData({
       flag4: 1
     });
   },
-  changeDecorate2: function () {
+  changeDecorate2: function() {
     var that = this;
     that.setData({
       flag4: 2
     });
   },
-  changeDecorate3: function () {
+  changeDecorate3: function() {
     var that = this;
     that.setData({
       flag4: 3
     });
   },
-  changeDecorate4: function () {
+  changeDecorate4: function() {
     var that = this;
     that.setData({
       flag4: 4
     });
   },
-  changeDecorate5: function () {
+  changeDecorate5: function() {
     var that = this;
     that.setData({
       flag4: 5
     });
   },
+  
+  // 获取文本内容
+  bindText(e){
+    console.log(e.detail.value)
+    this.setData({
+      content:e.detail.value
+    })
+  },
   //选择图片方法
-  uploadpic: function (e) {
+  uploadpic: function(e) {
     var that = this //获取上下文
     var upload_picture_list = that.data.upload_picture_list
     var all = that.data.all
     //选择图片
     wx.chooseImage({
-      count: 8,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
-      success: function (res) {
+      count: 9,
+      success: function(res) {
         var tempFilePaths = res.tempFilePaths[0]
         wx.uploadFile({
-          url: "https://www.tiantiandj.com/xcx/index.php/index/Tool/upload_goodsimg?img_type=enter",
+          url: "https://www.tiantiandj.com/xcx/index.php/index/Tool/upload_goodsimg?img_type=comment",
           filePath: tempFilePaths,
           name: 'file',
           formData: {},
-          success: function (res) {
+          success: function(res) {
             var img_url = JSON.parse(res.data)
-            var img=img_url.data.src;
+            var img = img_url.data.src;
             all.push(img)
-            console.log(all,"sss")
             that.setData({
               all: all,
             });
           },
-          fail: function (res) {
-            console.log(res)
+          fail: function(res) {
           },
         })
         that.setData({
@@ -178,88 +186,123 @@ Page({
         }
         //显示
         that.setData({
-       
           upload_picture_list: upload_picture_list,
         });
-        console.log(upload_picture_list)
-        console.log(that.data.all,"dsfsdfd")
       }
     })
   },
-  //点击上传事件
-  uploadimage: function () {
+  //点击上传事件 
+  uploadimages: function() {
+    var that = this
+    app.util.request({
+      'url': 'index/Tool/comment',
+      'cachetime': '0',
+      "method":"post",
+      data: {
+        order_id: that.data.order_id,
+        health: that.data.flag1,
+        traffic: that.data.flag2,
+        landlord: that.data.flag3,
+        indoor: that.data.flag4,
+        img: that.data.all,
+        content:that.data.content,
+      },
+      success: function(res) {
+        if(res.data.success==1){
+          wx.showToast({
+            title: '评论成功',
+            icon: 'none',
+            duration: 1000,
+            success: function(res) {
+              wx.reLaunch({
+                url: '../mylist/mylist',
+              })
 
-    // $data = getParameters("get", ["order_id"订单, 'health', 'traffic', 'landlord', 'img', 'indoor', 'content']);
+            },
+            fail: function(res) {},
+            complete: function(res) {},
+          })
+        }else{
+          wx.showToast({
+            title: '评论失败',
+          })
+        }
+      },
+    })
   },
 
   // 删除图片
-  deleteImg: function (e) {
+  deleteImg: function(e) {
     let upload_picture_list = this.data.upload_picture_list;
-    let all=this.data.all;
+    let all = this.data.all;
     let index = e.currentTarget.dataset.index;
     upload_picture_list.splice(index, 1);
-    all.splice(index,1)
+    all.splice(index, 1)
     this.setData({
-      all:all,
+      all: all,
       upload_picture_list: upload_picture_list
     });
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    console.log()
+    this.setData({
+      order_id: options.order_id
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
+
 function upload_file_server(url, that, upload_picture_list, j) {
   //上传返回值
   const upload_task = wx.uploadFile({
@@ -271,7 +314,7 @@ function upload_file_server(url, that, upload_picture_list, j) {
       'num': j
     },
     //附近数据，这里为路径     
-    success: function (res) {
+    success: function(res) {
       var data = JSON.parse(res.data);
       // //字符串转化为JSON  
       if (data.Success == true) {

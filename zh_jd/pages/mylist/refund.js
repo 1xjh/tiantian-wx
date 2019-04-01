@@ -1,4 +1,4 @@
-// zh_jd/pages/merchant/merchant.js
+// zh_jd/pages/mylist/ refund.js
 var app = getApp()
 Page({
 
@@ -6,12 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mycollectId:[],
-    mycollect:[]
+      refund:[]
   },
-  jumpDetails: function (e) {
-    wx.navigateTo({
-      url: '../yuanzi_details/yuanzi_details?id=' + e.currentTarget.dataset.id
+  r_call: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: '88888' // 仅为示例，并非真实的电话号码
     })
   },
   /**
@@ -19,18 +18,20 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    var refund = options.order_id
+    console.log(refund,"dfsdfsdfsdfsdfsd")
     app.util.request({
-      'url': 'index/Accommoda/getCollRoom',
+      'url': 'index/Order/drawback_detail',
       'cachetime': '0',
+      "method": "post",
+      data: {
+        order_id: refund
+      },
       success: function (res) {
-        console.log(res.data)
-        var mycollect = res.data.data
-        var mycollectId = res.data
+        console.log(res,"pppppppppppppp")
         that.setData({
-          mycollect:mycollect,
-          mycollectId: mycollectId
+          refund: res.data.data
         })
-        console.log(that.data.mycollect)
       },
     })
   },
@@ -53,34 +54,36 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+    wx.reLaunch({
+      url: '../mylist/mylist'
+    })
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   }
 })

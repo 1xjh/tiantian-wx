@@ -1,0 +1,147 @@
+/* zh_jd/pages/mylist/details.wxss */
+
+.d_type {
+  width: 100%;
+  height: 150rpx;
+  background: #40ab91;
+  color: #fff;
+}
+
+page {
+  background: #eee;
+  margin: 0 !important;
+}
+
+.box {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-boxflex;
+}
+
+.d_auto {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.d_t1 {
+  font-size: 30rpx;
+}
+
+.d_t2 {
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+
+.d_number {
+  font-size: 26rpx;
+  color: rgba(34, 34, 34, 1);
+}
+
+.d_time {
+  font-size: 20rpx;
+  color: rgba(34, 34, 34, 1);
+}
+
+.d_t3 {
+  background: #fff;
+  height: 100rpx;
+  margin-top: 8rpx;
+}
+
+.d_t3>view {
+  padding: 5rpx 0;
+}
+
+.d_t4 {
+  background: #fff;
+  margin-top: 5rpx;
+}
+
+.d_name {
+  font-size: 26rpx;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+}
+
+.d_d {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+}
+
+.d_t4>view {
+  padding: 10rpx 0;
+}
+
+.d_t5>view {
+  flex: 1;
+  background: #fff;
+  height: 60rpx;
+  margin: 3rpx 3rpx;
+  text-align: center;
+  font-size: 24rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  align-items: center;
+  line-height: 60rpx;
+  width: 30%;
+}
+
+.d_t6 {
+  margin-top: 30rpx;
+  background: #fff;
+  height: 150rpx;
+}
+
+.d_t6>view {
+  justify-content: space-between;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(107, 107, 107, 1);
+  padding-top: 22rpx;
+}
+
+/* .d_go{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  bottom:0;
+  line-height: 100rpx;
+  text-align: center;
+  background:#40ab91;
+  color:#Fff;
+} */
+
+/* 客服 */
+
+.button {
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  font-size: 24rpx;
+  line-height: 60rpx;
+  background: #fff;
+  color: rgba(34, 34, 34, 1);
+}
+
+.button::after {
+  border: none;
+}
+
+.d_refund {
+  font-size: 25rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(178, 178, 178, 1);
+  border: 1px solid #eee;
+  height: 38rpx;
+  float: right;
+  margin-right: 20rpx;
+  width:157rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  margin-top:-32px;
+}

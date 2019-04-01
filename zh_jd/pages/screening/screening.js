@@ -4,6 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
     moren:"无限",//默认显示为
     renShu:0, //入住人数
     chuangShu:0,//入住床数
@@ -12,8 +13,8 @@ Page({
     huxing: ["一居", "二居", "三居", "四居", "四居以上"],
     discount: ["今日甩卖", "断房特惠","连住优惠"],
     housing:[
-      {id:1, title: "整套出租", content: "独享整套房屋" },
-      {id:2, title: "独立单间", content:"共享部分空间"}
+      {id:1, title: "独立单间", content:"共享部分空间"},
+      {id:2, title: "整套出租", content: "独享整套房屋" }
     ],
     huIndex:0,//户型
     housingIndex:0,//出租类型
@@ -26,7 +27,6 @@ Page({
     rightValue: 1200,
     leftWidth: '40', 
     rightWidth: '40',
-    sumPrice:"80000"
   },
 
   // 左边滑块滑动的值
@@ -36,19 +36,6 @@ Page({
     that.setData({
       leftValue: e.detail.value //设置左边当前值
     })
-    if(this.data.rightValue<1200){
-      var sum = this.data.rightValue - this.data.leftValue;
-      this.setData({
-        sumPrice:sum
-      })
-    }else{
-      this.setData({
-        sumPrice: 8000
-      })
-    }
-    // console.log(this.data.rightValue)
-    console.log(this.data.sumPrice)
-    
   },
   // 右边滑块滑动的值
   rightChange: function (e) {
@@ -90,19 +77,20 @@ Page({
   },
   //保存
   jump_details:function(e){
-    var that = this
-    console.log(that.data.sumPrice)//价格
-    console.log(that.data.huIndex)//户型
-    console.log(that.data.renShu)//人数
-    console.log(that.data.chuangShu)//床数
-    console.log(that.data.housingIndex)//户型
-    console.log(that.data.discountIndex)//优惠
-    // wx.navigateTo({
-    //   url: '../details/details',
-    //   success: function(res) {},
-    //   fail: function(res) {},
-    //   complete: function(res) {},
-    // })
+    if (this.data.rightValue>1100){
+      this.data.rightValue = 80000
+    }
+    var that = this;
+    var tmp={};
+    tmp.room_price = that.data.leftValue+[,that.data.rightValue]//价格
+    tmp.room_num =parseInt(that.data.huIndex)+1//户型
+    tmp.people_num =that.data.renShu//人数
+    tmp.bed_num =that.data.chuangShu//床数
+    tmp.room_type =parseInt(that.data.housingIndex)//大户型
+    // tmp.room_price =that.data.discountIndex//优惠
+    wx.navigateTo({
+      url: '../details/details?saixuan=' + JSON.stringify(tmp),
+    })
   },
   // 人数数量的加减
   bindMinus: function () {

@@ -1,6 +1,6 @@
 <view class="comment_box">
   <view class="comment_title">分享你的入住体验吧</view>
-  <textarea placeholder="请输入你的宝贵意见" class='comment' bindinput='getTextareaInput' maxlength="260" />
+  <textarea placeholder="请输入你的宝贵意见" class='comment' bindinput='bindText'/>
 </view>
 <view>
   <view class="picture_list">
@@ -8,9 +8,7 @@
       <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
       <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
       <text class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text> </view>
-
-    <view class='picture_item'>
-
+    <view class='picture_item' wx:if="{{upload_picture_list.length<'9'}}">
       <view class="add-image" bindtap='uploadpic'>
         <text>+</text> </view>
     </view>
@@ -101,4 +99,4 @@
 
 </view>
 <!-- 发布 -->
-<view class="fabu"  bindtap='uploadimage'>发布</view>
+<view class="fabu"  bindtap='uploadimages'>发布</view>

@@ -202,7 +202,6 @@ Page({
       days.push(day);
     }
     mObject["days"] = days;
-    // console.log(days, 'kk')
     return mObject;
   },
   // 选择时间

@@ -1,0 +1,29 @@
+<!--zh_jd/pages/mylist/ refund.wxml-->
+<view>
+  <view class='r_t1'>
+    <view class="r_t2 r_auto" wx:if="{{refund.status===6}}">退款成功</view>
+    <view class="r_t2 r_auto" wx:if="{{refund.status===5}}">退款中</view>
+    <view class="r_t3 r_auto">退款将在1-5个工作日退回原支付渠道</view>
+  </view>
+  <view class="r_t4">
+      <view class="r_auto r_price1">退款总额：{{refund.online_price}}</view>
+      <view class="r_auto r_price2">原支付总额：¥{{refund.online_price-refund.poundage}} 扣除手续费￥{{refund.poundage}}</view>
+  </view>
+  <view class="r_t5">
+    <view class="r_auto1 r_conten"><image src='../../images/dian.png'></image>退款受理中</view>
+    <view class="r_auto1">{{refund_time}}</view>
+    <view wx:if="{{refund.status===6}}">
+      <view class="r_auto1 r_conten"><image src='../../images/dian.png'></image>退款离开我们公司，正退至您的微信账户</view>
+      <view class="r_auto1">2019-03-06  09：25</view>
+      <view class="r_auto1 r_conten"><image src='../../images/dian.png'></image>退款已退至您的微信账户</view>
+      <view class="r_auto1"> 2019-03-07  14：25前到账</view>
+      <view class="r_auto1">微信将把钱退至原支付账户</view>
+      <view class="r_auto1 r_bottom">若逾期未收到退款， 请致电微信客服95017</view>
+    </view>
+  </view>
+  <view  class='box d_t6'>
+    <view bindtap='r_call'>联系电话</view>
+    <view><button class='button'  open-type="contact">联系客服</button></view>
+    <view>查看地图</view>
+  </view>
+</view>

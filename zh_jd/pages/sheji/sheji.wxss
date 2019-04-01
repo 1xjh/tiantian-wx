@@ -64,11 +64,12 @@
 }
 
 .sheji_dou {
-  position: absolute;
-  color: #40ab91;
-  width:32%;
-  background: #fff;
-  margin-left: 189rpx;
-  margin-top: -41rpx;
-  font-size: 26rpx;
+  position:absolute;
+  color:#40ab91;
+  width:45%;
+  background:#fff;
+  margin-left:90rpx;
+  margin-top:-41rpx;
+  font-size:26rpx;
+  text-indent: 90rpx
 }

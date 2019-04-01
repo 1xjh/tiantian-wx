@@ -8,14 +8,13 @@
     </view>
   </view>
   <!-- 押金 -->
-  <view class="ddzf_price">待付金额：<text>¥{{price}}.00</text> </view>
+  <view class="ddzf_price">待付金额：<text>¥{{price}}</text> </view>
   <!-- 支付 -->
   <view class="daodian7">
     <view class="daodian7_1">
       <text class="daodian7_5">需支付：</text>
       <text class="daodian7_3">¥</text>
-      <text class="daodian7_4">{{price}}.</text>
-      <text class="daodian7_3">00</text>
+      <text class="daodian7_4">{{price}}</text>
     </view>
     <view class="daodian7_2" bindtap='payment'>
       立即支付

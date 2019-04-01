@@ -12,7 +12,7 @@
           <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="login">登陆</button>
         </view>
         <view class='nickname' wx:else>{{nickName}}
-          <text bindtap='Member' class='level'>砖石会员</text>
+          <text class='level'>{{vip}}</text>
         </view>
       </view>
     </view>
@@ -38,30 +38,30 @@
   <view class='mine'>
     <!-- 优惠券 -->
     <view class='order rel'>
-      <navigator url='../coupon/coupon'>
+      <view bindtap='jumpCoupon'>
         <image mode='widthFix' class='img3 ab ud' src='../../images/icon_coupon.png'></image>
         <text>我的优惠券</text>
         <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
-      </navigator>
+      </view>
     </view>
     <!-- 名宿入驻 -->
     <view class='order rel'>
-      <navigator url='../check/check'>
+      <view bindtap='jumpCheck'>
         <image mode='widthFix' class='img3 ab ud' src='../../images/move.png'></image>
         <text>名宿入驻</text>
         <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
-      </navigator>
+      </view>
     </view>
     <!-- 意见反馈 -->
     <view class='order rel'>
-      <navigator url="../feedback/feedback">
+      <view bindtap='jumpFeedback'>
         <image mode='widthFix' class='img3 ab ud' src='../../images/yj.png'></image>
         <text>意见反馈</text>
         <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
-      </navigator>
+      </view>
     </view>
     <view class='order rel'>
-      <navigator url=''>
+      <navigator url='../about/about'>
         <image mode='widthFix' class='img3 ab ud' src='../../images/gy.png'></image>
         <text>关于天天惦记</text>
         <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
@@ -73,11 +73,11 @@
       <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
     </view>
     <view class='business rel' bindtap='business'>
-      <navigator url='javascript:;'>
+      <view bindtap='jumpMember'>
         <image mode='widthFix' class='img3 ab ud' src='../../images/hy.png'></image>
         <text>升级会员</text>
         <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
-      </navigator>
+      </view>
     </view>
     <!-- 客服 -->
     <view class='contant rel'>

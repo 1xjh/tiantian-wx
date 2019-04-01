@@ -91,8 +91,11 @@ Page({
         success: function (res) {
           console.log(res)
           if (res.data.success==1){
-            wx.navigateTo({
-              url: 'my_user',
+            // wx.navigateTo({
+            //   url: 'my_user',
+            // })
+            wx.navigateBack({
+              delta: 1
             })
           }
         },

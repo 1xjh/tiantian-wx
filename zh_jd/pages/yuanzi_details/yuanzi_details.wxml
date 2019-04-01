@@ -1,9 +1,10 @@
 <!--zh_jd/pages/yuanzi_details/yuanzi_details.wxml-->
+<wxs module="filters" src="toF.wxs"></wxs>
 <view>
   <!-- 头部轮播 -->
   <view class="swiper">
     <swiper indicator-dots="true" indicator-active-color="#fb5100" autoplay="true" interval="3000" duration="1200" circular='true ' class="yz_banner">
-      <swiper-item wx:for="{{details.img}}" wx:key="key">
+      <swiper-item wx:for="{{details.img}}" bindtap="previewImg" wx:key="key" data-effect_pic='{{details.img}}' data-src='{{item}}'>
         <image src='{{item}}'></image>
       </swiper-item>
     </swiper>
@@ -35,7 +36,7 @@
     <!-- 店铺优惠卷 -->
     <view class="show  {{coupon_index ? 'yz_coupon_box' : ''}}">
       <view class="yz_coupon_title">店铺优惠卷</view>
-      <view wx:for="{{details.coupon}}" wx:key="index" class='{{item.state===0? "coupon" : "active"}} box' bindtap='coupon' data-index="{{index}}">
+      <view wx:for="{{coupon}}" wx:key="index" class='{{item.state===0? "coupon" : "active"}} box' bindtap='coupon' data-index="{{index}}">
         <view class="coupon_price">
           <view>￥</view>
           <view>{{item.preferential }}
@@ -43,8 +44,8 @@
         </view>
         <view class="coupon_content">
           <view>{{item.name}}</view>
-          <view>{{}}</view>
-          <view>{{}}</view>
+          <view>{{item.instruction}}</view>
+          <view>仅限线上支付使用</view>
           <view>有效期：</view>
           <view>{{item.start_time}}至{{item.end_time}}</view>
         </view>
@@ -106,10 +107,31 @@
     <view class="yz_box" wx:for="{{message}}" wx:key="index" wx:if="{{index<1}}">
       <view class="liuyan box" bindtap='jump_dianping'>
         <view class='yz_title'>留言 {{message.nv_length}}</view>
-        <view class='yz_pingjia box'>
-          <image src='../../images/xing-hui@2x.png'></image>
-          <view class="yz_pingJia_title">综合评价 {{item.score}}</view>
-          <image src='../../images/jiantou1.png'></image>
+        <view class='yz_pingjia box'> 
+          <view class='star_box'>
+            <view class="starbox">
+              <view class="stars2" style="width: 130rpx">
+                <view>
+                  <image src='../../images/xing-hui@3x.png'></image>
+                  <image src='../../images/xing-hui@3x.png'></image>
+                  <image src='../../images/xing-hui@3x.png'></image>
+                  <image src='../../images/xing-hui@3x.png'></image>
+                  <image src='../../images/xing-hui@3x.png'></image>
+                </view>
+              </view>
+              <view class="stars" style="width: {{(item.score/5) * 100 + '%'}};">
+                <view>
+                  <image src="../../images/xing-hong@3x.png"></image>
+                  <image src="../../images/xing-hong@3x.png"></image>
+                  <image src="../../images/xing-hong@3x.png"></image>
+                  <image src="../../images/xing-hong@3x.png"></image>
+                  <image src="../../images/xing-hong@3x.png"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="yz_pingJia_title">综合评价 {{filters.toFix(item.score)}}</view>
+           <image src='../../images/jiantou1.png'></image>
         </view>
       </view>
       <view class="name">
@@ -132,6 +154,7 @@
         <view class='yz_title'>交通位置</view>
         <image src='../../images/jiantou1.png'></image>
       </view>
+
       <map bindtap='intoMap' id="myMap" markers="{{markers}}" style="width:100%;height:244rpx;" longitude="116.313972" latitude="39.980014" scale='16'>
       </map>
 
@@ -215,7 +238,7 @@
     </view>
     <scroll-view scroll-x class="yz_circum_box box scroll-header" style="width: 100%">
       <view class="yz_circum_box box">
-        <view class="d_content" wx:for="{{quan_arr}}" wx:key="key">
+        <view class="d_content" wx:for="{{quan_arr}}" wx:key="key" bindtap='jumpdDetails' data-id="{{item.id}}">
           <view class="d_bakcground"></view>
           <view class="d_img">
             <image src='{{item.logo}}'></image>
@@ -273,8 +296,8 @@
           </view>
         </view>
         <view class='yz_button box'>
-          <view>￥{{details.shop_price * time}}</view>
-          <view bindtap='lijiyuding'>
+          <view>￥{{price}}</view>
+          <view bindtap='submitOrder'>
             <image src='../../images/sandian.png'></image>
             立即预订
           </view>

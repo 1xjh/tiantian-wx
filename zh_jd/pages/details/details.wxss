@@ -1,5 +1,8 @@
 /* zh_jd/pages/details/details.wxss */
-
+/* page{
+  background: #eee;
+  height: 100%;
+} */
 /* 输入框 */
 
 .details_head {
@@ -30,6 +33,8 @@
 
 .screening_box {
   margin-top: 20rpx;
+  background: #eee;
+  height: 100%;
 }
 
 /* 筛选screening */
@@ -73,14 +78,10 @@
   width: 100%;
   background: #eeeeee;
 }
-.d_list {
-  background: #eee;
-  height: 100vh;
-}
 
 .d_content {
   width: 95%;
-  margin: 0  auto;
+  margin: 26rpx auto;
   background: #fff;
 }
 
@@ -161,7 +162,31 @@
   line-height: 46rpx;
   border-radius:6px;
 }
+/* 无房 */
 .d_yuding>view{
  font-size:24rpx;
  text-align: center;
+}
+.none_coupon{
+  width: 100%;
+  height: 350rpx;
+  border-radius: 8rpx; 
+}
+.none_coupon>view{
+  width: 400rpx;
+  height: 250rpx;
+}
+.none_coupon>view view{
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #666;
+  bottom: 0;
+}
+.none_coupon image{
+  width: 200rpx;
+  height: 200rpx;
+  margin: 0 auto;
 }

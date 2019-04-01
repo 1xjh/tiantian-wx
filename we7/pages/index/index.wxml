@@ -10,7 +10,7 @@
 	<view class="nav">
 		<block wx:for="{{navs}}" wx:key="{{index}}" >
 		<navigator class="nav-item {{(index + 1) % 3 == 0 ? 'nav-item-no-border' : ''}}"  url="{{item.url}}" hover-class="navigator-hover">
-			<image class="nav-icon" src="{{item.icon}}" />
+			<image class="nav-icon" src="{{item.icon}}"/>
 			<view class="nav-title">{{item.name}}</view>
 		</navigator>
 		</block>
@@ -21,8 +21,8 @@
 			<view class="commend-header-title">{{item.name}}</view>
 			<view class="commend-column">
 				<navigator class="commend-item" wx:for="{{item.article}}" wx:for-item="subItem" hover-class="navigator-hover">
-					<image class="commend-thumb" src="{{subItem.thumb}}" />
-					<view class="commend-title">{{subItem.title}}</view>
+					<image class="commend-thumb" src="{{subItem.thumb}}"/>
+					<view class="commend-title">{{subItem.title}}</view> 
 				</navigator>
 			</view>
 		</block>

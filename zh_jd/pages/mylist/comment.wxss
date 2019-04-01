@@ -128,7 +128,9 @@
   display: flex;
   justify-content: space-around;
 }
-
+.xingxing{
+  padding-bottom:120rpx;
+}
 /* 发布 */
 
 .fabu {
@@ -140,4 +142,5 @@
   height: 100rpx;
   line-height: 100rpx;
   text-align: center;
+  z-index: 500
 }

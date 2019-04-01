@@ -10,9 +10,9 @@
       </view>
     </view>
   </view>
+  <!-- 有效 -->
   <view class="{{selected_effective?'show':'hidden'}}">
-    <!-- 优惠卷 -->
-    <view  wx:for="{{coupon}}" wx:key="index" class='{{item.state===0? "coupon" : "active"}} box' bindtap='coupon' data-index="{{index}}">
+    <view wx:for="{{coupon}}" wx:if="{{item.state===2}}" wx:key="index" class='active box' bindtap='coupon' data-index="{{index}}">
       <view class="coupon_price">
         <view>￥</view>
         <view>{{item.preferential}}
@@ -20,67 +20,71 @@
       </view>
       <view class="coupon_content">
         <view>{{item.name}}</view>
-        <view>{{}}</view>
-        <view>{{}}</view>
+        <view>{{item.instruction}}</view>
+        <view>仅限线上支付使用</view>
         <view>有效期：</view>
         <view>{{item.start_time}}至{{item.end_time}}</view>
       </view>
       <view class="coupon_image">
-        <image src="{{item.state===0? hasSelect : noSelect}}"></image>
+        <image src="../../images/coupon_1.png"></image>
+      </view>
+    </view>
+    <view class='none_coupon rel' wx:if="{{affective}}">
+      <view class='ab udlr'>
+        <image mode='widFix' class='ab lr' src="../../images/fotel.png"></image>
+        <view class='ab'>暂无已使用的优惠券</view>
       </view>
     </view>
   </view>
+  <!-- 已使用 -->
   <view class="{{selected_already?'show':'hidden'}}">
-    <view class="coupons">
-      <view class='coupons_son rel' wx:for="{{arr}}" wx:key="{{item.value}}" wx:if="{{arr!=null||arr!=''}}">
-        <view class='son_left rel'>
-          <view class='ab'></view>
-          <view class='ab'></view>
-          <view class='ab'>{{item.preferential}}</view>
-        </view>
-        <view class='son_right rel'>
-          <view class='ab ab1'>优惠券</view>
-          <view class='ab ab0' wx:if="{{item.instruction}}">{{item.instruction}}</view>
-          <view class='ab ab0' wx:else>无特殊说明</view>
-          <view class='ab ab2'>{{item.start_time}}到{{item.end_time}}</view>
-        </view>
-        <view class='ab not_user'>
-          <view style='background:#ccc'>已使用</view>
+    <view wx:for="{{coupon}}" wx:if="{{item.state===1}}" wx:key="index" class='active box' data-index="{{index}}">
+      <view class="coupon_price">
+        <view>￥</view>
+        <view>{{item.preferential}}
         </view>
       </view>
-
-      <view class='none_coupon rel' wx:if="{{arr==null||arr==''}}">
-        <view class='ab udlr'>
-          <image mode='widFix' class='ab lr' src="../../images/fotel.png"></image>
-          <view class='ab'>暂无已使用的优惠券</view>
-        </view>
+      <view class="coupon_content">
+        <view>{{item.name}}</view>
+        <view>{{item.instruction}}</view>
+        <view>仅限线上支付使用</view>
+        <view>有效期：</view>
+        <view>{{item.start_time}}至{{item.end_time}}</view>
+      </view>
+      <view class="coupon_image">
+        <image src="../../images/coupon_3.png"></image>
+      </view>
+    </view>
+    <view class='none_coupon rel' wx:if="{{already}}">
+      <view class='ab udlr'>
+        <image mode='widFix' class='ab lr' src="../../images/fotel.png"></image>
+        <view class='ab'>暂无已使用的优惠券</view>
       </view>
     </view>
   </view>
+  <!-- 已过期 -->
   <view class="{{selected_overdue?'show':'hidden'}}">
-    <view class="coupons">
-      <view class='coupons_son rel' wx:for="{{overdue}}" wx:if="{{overdue!=null||overdue!=''||overdue.length>=1}}">
-        <view class='son_left rel'>
-          <view class='ab'></view>
-          <view class='ab'></view>
-          <view class='ab'>{{item.conditions}}</view>
-        </view>
-        <view class='son_right rel'>
-          <view class='ab ab1'>{{item.name}}</view>
-          <view class='ab ab0' wx:if="{{item.instruction}}">{{item.instruction}}</view>
-          <view class='ab ab0' wx:else>无特殊说明</view>
-          <view class='ab ab2'>{{item.start_time}}到{{item.end_time}}</view>
-        </view>
-        <view class='ab not_user'>
-          <view style='background:#ccc'>已过期</view>
+    <view wx:for="{{coupon}}" wx:if="{{item.state===3}}" wx:key="index" class='active box' data-index="{{index}}">
+      <view class="coupon_price">
+        <view>￥</view>
+        <view>{{item.preferential}}
         </view>
       </view>
-
-      <view class='none_coupon rel' wx:if="{{overdue==null||overdue==''||overdue.length==0}}">
-        <view class='ab udlr'>
-          <image mode='widFix' class='ab lr' src="../../images/fotel.png"></image>
-          <view class='ab'>暂无过期的优惠券</view>
-        </view>
+      <view class="coupon_content">
+        <view>{{item.name}}</view>
+        <view>{{item.instruction}}</view>
+        <view>仅限线上支付使用</view>
+        <view>有效期：</view>
+        <view>{{item.start_time}}至{{item.end_time}}</view>
+      </view>
+      <view class="coupon_image">
+        <image src="../../images/coupon_1.png"></image>
+      </view>
+    </view>
+    <view class='none_coupon rel' wx:if="{{overdue}}">
+      <view class='ab udlr'>
+        <image mode='widFix' class='ab lr' src="../../images/fotel.png"></image>
+        <view class='ab'>暂无已使用的优惠券</view>
       </view>
     </view>
   </view>

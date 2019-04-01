@@ -104,9 +104,12 @@
   <!-- 底部 -->
   <view class='orders_bottom box'>
     <view class='orders_bottom1'>
-      <view wx:if="{{coupon_price==0}}">￥{{price * room}}</view>
-      <view wx:else>￥{{price * room - coupon_price}}</view>
-      <text>含押金100元（可退）</text>
+      <!-- <view wx:if="{{coupon_price==0 && time==1}}">￥{{price * room + orders.yj_cost}}</view> -->
+      <view wx:if="{{coupon_price==0 && time==1}}">￥{{prices1}}</view>
+      <view wx:elif="{{time==1}}">￥{{prices1-coupon_price}}</view>
+      <view wx:elif="{{coupon_price==0}}">￥{{prices2}}</view>
+      <view wx:else>￥{{prices2-coupon_price}}</view>
+      <text>含押金{{orders.yj_cost}}元（可退）</text>
     </view>
     <view class='orders_bottom2' bindtap="submit">提交订单</view>
   </view>

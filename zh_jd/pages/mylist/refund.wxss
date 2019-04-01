@@ -1,0 +1,122 @@
+/* zh_jd/pages/mylist/ refund.wxss */
+
+page {
+  background: #eee;
+  margin: 0 !important;
+}
+
+.box {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-boxflex;
+}
+
+.r_auto {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.r_t1 {
+  width: 100%;
+  background: #40ab91;
+  height: 150rpx;
+}
+
+.r_t2 {
+  font-size: 30rpx;
+  color: rgba(237, 237, 237, 1);
+}
+
+.r_t3 {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(237, 237, 237, 1);
+  padding-top: 20rpx;
+}
+
+.r_t4 {
+  background: #fff;
+  margin-top: 8rpx;
+}
+
+.r_price1 {
+  font-size: 28rpx;
+  color: rgba(34, 34, 34, 1);
+  padding: 20rpx 0rpx;
+}
+
+.r_price2 {
+  font-size: 24rpx;
+  color: rgba(34, 34, 34, 1);
+  padding-bottom: 20rpx;
+}
+.r_conten {
+  font-size: 24rpx;
+  color: rgba(34, 34, 34, 1);
+}
+
+.r_auto1 {
+  width: 80%;
+  font-size: 18rpx;
+  margin: 0rpx auto;
+  color: rgba(148, 147, 147, 1);
+  line-height: 44rpx;
+}
+
+/* 中间 */
+
+.r_t5 {
+  background: #fff;
+  margin: 5rpx 0;
+}
+
+.r_conten image {
+  width: 53rpx;
+  height: 40rpx;
+  margin-top: -8rpx;
+  position: absolute;
+  margin-left: -63rpx;
+}
+
+.r_conten {
+  line-height: 20rpx;
+  font-size: 24rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  padding-top:15px;
+  padding-bottom:10rpx;
+}
+
+.d_t6>view {
+  flex: 1;
+  background: #fff;
+  height: 60rpx;
+  margin: 3rpx 3rpx;
+  text-align: center;
+  font-size: 24rpx;
+  font-family: SimSun;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  align-items: center;
+  line-height: 60rpx;
+  width: 30%;
+}
+.r_bottom{
+  padding-bottom: 45rpx;
+}
+.button {
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  font-size: 24rpx;
+  line-height: 60rpx;
+  background: #fff;
+  color: rgba(34, 34, 34, 1);
+}
+
+.button::after {
+  border: none;
+}
